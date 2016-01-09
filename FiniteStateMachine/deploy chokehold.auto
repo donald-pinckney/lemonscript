@@ -1,0 +1,16 @@
+deploy chokehold
+
+// Drive back pulling the cans
+shift high
+drive straight: speed = -0.5, distance = 2800 clicks
+
+// Release cans by driving forward and lifting
+WHILE:
+  drive straight: speed = 5, distance = -600 clicks
+ALSO:
+  raise wings
+
+// Get ready for teleop
+calibrate elevator
+stop elevator
+stop driving
