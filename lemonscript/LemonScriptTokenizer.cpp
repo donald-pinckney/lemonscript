@@ -7,6 +7,9 @@
 //
 
 #include "LemonScriptTokenizer.h"
+
+#include <tuple>
+
 #include "ParsingUtils.h"
 
 using namespace std;
