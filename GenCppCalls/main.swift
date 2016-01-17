@@ -61,7 +61,7 @@ for numParams in 0...5 {
 
         let typeName = "f_" + underscoreList
 
-        typedefs += "typedef bool(*\(typeName))(\(commaList));\n"
+        typedefs += "typedef bool(*\(typeName))(void *,\(commaList));\n"
         
         if numParams == 0 {
             body += "\tif(vector<DataType>{\(COMMAList)} == params) {\n"
@@ -69,7 +69,7 @@ for numParams in 0...5 {
             body += "\telse if(vector<DataType>{\(COMMAList)} == params) {\n"
         }
         body += "\t\t\(typeName) tempFunc = (\(typeName))func;\n"
-        body += "\t\tretVal = tempFunc(\n"
+        body += "\t\tretVal = tempFunc(data,\n"
         
         var pCount = 0
         for p in params {
@@ -118,7 +118,7 @@ for numParams in 0...5 {
 
 print("#ifndef CppCommand_GENERATED_h\n#define CppCommand_GENERATED_h")
 print(typedefs)
-print("bool CppCommand::Update() {\n\tvoid *func = declaration->func;\n\tvector<DataType> params = declaration->parameters;\n\tbool retVal;\n")
+print("bool CppCommand::Update() {\n\tvoid *data = savedState.userData;void *func = declaration->func;\n\tvector<DataType> params = declaration->parameters;\n\tbool retVal;\n")
 print(body)
 print("\telse {\n\t\tthrow \"Too many arguments!\";\n\t}\n\treturn retVal;\n}")
 print("#endif /* CppCommand_GENERATED_h */")

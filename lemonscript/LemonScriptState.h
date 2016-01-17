@@ -24,7 +24,10 @@ class LemonScriptState {
 
     std::map<std::string, std::vector<const AvailableCppCommandDeclaration *> > availableCppCommands;
     
+    
 public:
+    
+    void *userData = NULL;
     
     // Declaration functions
     void declareVariable(int line, const std::string &name, DataType type, void *pointerToValue);
