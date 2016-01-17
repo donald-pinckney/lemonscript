@@ -1,3 +1,9 @@
+# Bazel things
+bazel-*
+*.swp
+*.pyc
+
+
 # Xcode
 #
 build/
