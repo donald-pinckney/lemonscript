@@ -16,7 +16,9 @@
 
 #include "AvailableCppCommandDeclaration.h"
 
-class LemonScriptState {
+#include "lemonscript.h"
+
+class lemonscript::LemonScriptState {
     
     // Will contain things such as variable bindings, etc.
     std::map<std::string, void *> variableAddresses;

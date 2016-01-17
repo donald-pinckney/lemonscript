@@ -13,6 +13,8 @@
 #include <vector>
 #include <string>
 
+#include "lemonscript.h"
+
 typedef enum {
     INT,
     FLOAT,
@@ -20,7 +22,7 @@ typedef enum {
 } DataType;
 
 
-class AvailableCppCommandDeclaration {
+class lemonscript::AvailableCppCommandDeclaration {
 
 public:
     

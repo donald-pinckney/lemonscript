@@ -13,6 +13,8 @@
 #include <string>
 #include <iostream>
 
+#include "lemonscript.h"
+
 namespace ParsingUtils {
     std::string removeCommentFromLine(const std::string &line);
     std::string peekLine(std::istream &is);

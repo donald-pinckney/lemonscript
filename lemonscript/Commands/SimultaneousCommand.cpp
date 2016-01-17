@@ -14,7 +14,7 @@
 #include "CompleteAnyCommand.h"
 #include "CompleteAllCommand.h"
 
-SimultaneousCommand::SimultaneousCommand(int l, const LemonScriptState &state, const std::string &sequenceString) : Command(l, state) {
+lemonscript::SimultaneousCommand::SimultaneousCommand(int l, const LemonScriptState &state, const std::string &sequenceString) : Command(l, state) {
     LemonScriptTokenizer tokenizer(sequenceString);
     
     
@@ -46,11 +46,11 @@ SimultaneousCommand::SimultaneousCommand(int l, const LemonScriptState &state, c
 }
 
 
-bool SimultaneousCommand::Update() {
+bool lemonscript::SimultaneousCommand::Update() {
     return Update(false);
 }
 
-bool SimultaneousCommand::Update(bool hard) {
+bool lemonscript::SimultaneousCommand::Update(bool hard) {
     
     size_t len = commands.size();
     bool allDone = true;

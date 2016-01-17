@@ -14,8 +14,9 @@
 #include "Command.h"
 #include "AvailableCppCommandDeclaration.h"
 
+#include "lemonscript.h"
 
-class CppCommand : public Command {
+class lemonscript::CppCommand : public Command {
     
     const AvailableCppCommandDeclaration *declaration = NULL;
     

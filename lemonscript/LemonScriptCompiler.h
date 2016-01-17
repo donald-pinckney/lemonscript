@@ -19,7 +19,9 @@
 #include "Commands/SequentialCommand.h"
 #include "ParsingUtils.h"
 
-class LemonScriptCompiler {
+#include "lemonscript.h"
+
+class lemonscript::LemonScriptCompiler {
     
     LemonScriptState *state;
     SequentialCommand *rootSequence;

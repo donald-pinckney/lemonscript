@@ -14,7 +14,9 @@
 #include "SimultaneousCommand.h"
 #include "SequentialCommand.h"
 
-class WhileAlsoCommand : public Command {
+#include "lemonscript.h"
+
+class lemonscript::WhileAlsoCommand : public Command {
     
     SequentialCommand *whileCondition = NULL;
     

@@ -14,7 +14,9 @@
 
 #include "Command.h"
 
-class SequentialCommand : public Command {
+#include "lemonscript.h"
+
+class lemonscript::SequentialCommand : public Command {
 
     std::vector<Command *> sequence;
     int currentIndex = 0;

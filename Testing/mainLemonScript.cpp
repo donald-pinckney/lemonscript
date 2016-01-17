@@ -22,7 +22,7 @@
 
 int main() {
         
-    LemonScriptState state;
+    lemonscript::LemonScriptState state;
     
     
     try {
@@ -30,18 +30,18 @@ int main() {
         state.declareVariable(1, "SECOND_RC_ENCODER", INT, &val);
                 
         
-        AvailableCppCommandDeclaration *driveStraight3 = new AvailableCppCommandDeclaration((void *)DriveStraight_3, "DriveStraight", {FLOAT, INT, BOOLEAN});
-        AvailableCppCommandDeclaration *driveStraight2 = new AvailableCppCommandDeclaration((void *)DriveStraight_2, "DriveStraight", {FLOAT, INT});
-        AvailableCppCommandDeclaration *deployChokehold = new AvailableCppCommandDeclaration((void *)DeployChokehold, "DeployChokehold", {});
-        AvailableCppCommandDeclaration *calibrateElevator = new AvailableCppCommandDeclaration((void *)CalibrateElevator, "CalibrateElevator", {});
-        AvailableCppCommandDeclaration *stopElevator = new AvailableCppCommandDeclaration((void *)StopElevator, "StopElevator", {});
-        AvailableCppCommandDeclaration *stopDriving = new AvailableCppCommandDeclaration((void *)StopDriving, "StopDriving", {});
-        AvailableCppCommandDeclaration *raiseWings = new AvailableCppCommandDeclaration((void *)RaiseWings, "RaiseWings", {});
+        lemonscript::AvailableCppCommandDeclaration *driveStraight3 = new lemonscript::AvailableCppCommandDeclaration((void *)DriveStraight_3, "DriveStraight", {FLOAT, INT, BOOLEAN});
+        lemonscript::AvailableCppCommandDeclaration *driveStraight2 = new lemonscript::AvailableCppCommandDeclaration((void *)DriveStraight_2, "DriveStraight", {FLOAT, INT});
+        lemonscript::AvailableCppCommandDeclaration *deployChokehold = new lemonscript::AvailableCppCommandDeclaration((void *)DeployChokehold, "DeployChokehold", {});
+        lemonscript::AvailableCppCommandDeclaration *calibrateElevator = new lemonscript::AvailableCppCommandDeclaration((void *)CalibrateElevator, "CalibrateElevator", {});
+        lemonscript::AvailableCppCommandDeclaration *stopElevator = new lemonscript::AvailableCppCommandDeclaration((void *)StopElevator, "StopElevator", {});
+        lemonscript::AvailableCppCommandDeclaration *stopDriving = new lemonscript::AvailableCppCommandDeclaration((void *)StopDriving, "StopDriving", {});
+        lemonscript::AvailableCppCommandDeclaration *raiseWings = new lemonscript::AvailableCppCommandDeclaration((void *)RaiseWings, "RaiseWings", {});
 
-        std::vector<const AvailableCppCommandDeclaration *> commands = {driveStraight3, driveStraight2, deployChokehold, calibrateElevator, stopElevator, stopDriving, raiseWings};
+        std::vector<const lemonscript::AvailableCppCommandDeclaration *> commands = {driveStraight3, driveStraight2, deployChokehold, calibrateElevator, stopElevator, stopDriving, raiseWings};
         
         std::ifstream ifs("deploy chokehold.auto");
-        LemonScriptCompiler compiler(ifs, commands, &state);
+        lemonscript::LemonScriptCompiler compiler(ifs, commands, &state);
         
         while (true) {
             bool isDone = compiler.PeriodicUpdate();

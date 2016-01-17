@@ -365,7 +365,7 @@ typedef bool(*f_bool_bool_bool_bool_int)(void *,bool, bool, bool, bool, int);
 typedef bool(*f_bool_bool_bool_bool_float)(void *,bool, bool, bool, bool, float);
 typedef bool(*f_bool_bool_bool_bool_bool)(void *,bool, bool, bool, bool, bool);
 
-bool CppCommand::Update() {
+bool lemonscript::CppCommand::Update() {
 	void *data = savedState.userData;void *func = declaration->func;
 	vector<DataType> params = declaration->parameters;
 	bool retVal;

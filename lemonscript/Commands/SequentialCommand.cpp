@@ -14,7 +14,7 @@
 #include "CompleteAnyCommand.h"
 #include "CompleteAllCommand.h"
 
-SequentialCommand::SequentialCommand(int l, const LemonScriptState &state, const std::string &sequenceString) : Command(l, state) {
+lemonscript::SequentialCommand::SequentialCommand(int l, const LemonScriptState &state, const std::string &sequenceString) : Command(l, state) {
     LemonScriptTokenizer tokenizer(sequenceString);
     
     
@@ -43,7 +43,7 @@ SequentialCommand::SequentialCommand(int l, const LemonScriptState &state, const
     }
 }
 
-bool SequentialCommand::Update() {
+bool lemonscript::SequentialCommand::Update() {
     Command *currentCommand = sequence[currentIndex];
     bool isDone = currentCommand->Update();
     

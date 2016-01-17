@@ -78,7 +78,7 @@ string camelCase(const string &s) {
     return string(resultTemp);
 }
 
-CppCommand::CppCommand(int l, const LemonScriptState &state, const std::string &commandStringInput) : Command(l, state) {
+lemonscript::CppCommand::CppCommand(int l, const LemonScriptState &state, const std::string &commandStringInput) : Command(l, state) {
     std::string commandString = ParsingUtils::removeCommentFromLine(commandStringInput);
     
     string functionName;

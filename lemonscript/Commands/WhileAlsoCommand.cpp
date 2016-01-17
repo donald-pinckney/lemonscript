@@ -12,7 +12,7 @@
 
 #include "ParsingUtils.h"
 
-WhileAlsoCommand::WhileAlsoCommand(int l, const LemonScriptState &s, const std::string &commandString) : Command(l, s) {
+lemonscript::WhileAlsoCommand::WhileAlsoCommand(int l, const LemonScriptState &s, const std::string &commandString) : Command(l, s) {
     const std::string whileDelim = "WHILE:\n";
     size_t whileLoc = commandString.find(whileDelim);
     size_t endOfWhileLoc = whileLoc + whileDelim.length();
@@ -36,7 +36,7 @@ WhileAlsoCommand::WhileAlsoCommand(int l, const LemonScriptState &s, const std::
 }
 
 
-bool WhileAlsoCommand::Update() {
+bool lemonscript::WhileAlsoCommand::Update() {
     
     bool conditionDone = whileCondition->Update();
     alsoCommands->Update(true);

@@ -18,7 +18,7 @@ using namespace ParsingUtils;
 
 
 
-tuple<string, TokenType, int> LemonScriptTokenizer::nextToken() {
+tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
     
     string firstLine;
     getline(*input, firstLine);

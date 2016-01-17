@@ -13,7 +13,9 @@
 
 #include "SimultaneousCommand.h"
 
-class CompleteAllCommand : public Command {
+#include "lemonscript.h"
+
+class lemonscript::CompleteAllCommand : public Command {
     
     SimultaneousCommand *allCommands = NULL;
     

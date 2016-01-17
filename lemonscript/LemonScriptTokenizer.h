@@ -13,6 +13,8 @@
 #include <string>
 #include <sstream>
 
+#include "lemonscript.h"
+
 typedef enum {
     CppToken,
     LetToken,
@@ -24,7 +26,7 @@ typedef enum {
     NOT_A_TOKEN
 } TokenType;
 
-class LemonScriptTokenizer {
+class lemonscript::LemonScriptTokenizer {
     
     std::istream *input;
     int currentLine = 0;

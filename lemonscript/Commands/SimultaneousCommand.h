@@ -13,13 +13,15 @@
 
 #include "Command.h"
 
+#include "lemonscript.h"
+
 typedef enum : unsigned int {
     NoneComplete,
     AnyComplete,
     AllComplete,
 } SimultaneousCommmandState;
 
-class SimultaneousCommand : Command {
+class lemonscript::SimultaneousCommand : Command {
     
     SimultaneousCommmandState state = SimultaneousCommmandState::NoneComplete;
     

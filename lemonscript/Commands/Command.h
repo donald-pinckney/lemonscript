@@ -15,7 +15,9 @@
 
 #include "LemonScriptState.h"
 
-class Command {
+#include "lemonscript.h"
+
+class lemonscript::Command {
 
 protected:
     const LemonScriptState &savedState;

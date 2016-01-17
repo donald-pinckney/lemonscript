@@ -77,6 +77,7 @@
 		508F60B21C34BB4C008ED63E /* LemonScriptCompiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemonScriptCompiler.h; sourceTree = "<group>"; };
 		50ACCCAB1C2D39F200964487 /* GenCppCalls */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GenCppCalls; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ACCCAD1C2D39F200964487 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		50C0CE581C4C56CC00C4C333 /* lemonscript.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lemonscript.h; sourceTree = "<group>"; };
 		50C5A5F91C2BFBBD00028D0B /* deploy chokehold.auto */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text; path = "deploy chokehold.auto"; sourceTree = "<group>"; tabWidth = 2; };
 		50C5A5FB1C2BFBE900028D0B /* sequence.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sequence.auto; sourceTree = "<group>"; };
 		50C5A5FF1C2BFC4300028D0B /* auto_functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = auto_functions.cpp; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 		50694F421C27D46600826B64 /* lemonscript */ = {
 			isa = PBXGroup;
 			children = (
+				50C0CE581C4C56CC00C4C333 /* lemonscript.h */,
 				503D6F011C4C2FE90007AC4C /* Testing */,
 				50F173C41C4B4D3500C870D9 /* Commands */,
 				501480671C2C08B400153984 /* AvailableCppCommandDeclaration.h */,

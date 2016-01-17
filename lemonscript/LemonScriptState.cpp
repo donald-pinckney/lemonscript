@@ -12,7 +12,7 @@
 #include "LemonScriptState.h"
 
 
-void LemonScriptState::declareVariable(int line, const std::string &name, DataType type, void *pointerToValue) {
+void lemonscript::LemonScriptState::declareVariable(int line, const std::string &name, DataType type, void *pointerToValue) {
     
     if(variableAddresses.find(name) != variableAddresses.end()) {
         throw "Line " + std::to_string(line) + ":\nDuplicate variable definition: " + name;
@@ -43,7 +43,7 @@ void LemonScriptState::declareVariable(int line, const std::string &name, DataTy
     variableTypes[name] = type;
 }
 
-void LemonScriptState::declareAvailableCppCommand(const AvailableCppCommandDeclaration *decl) {
+void lemonscript::LemonScriptState::declareAvailableCppCommand(const AvailableCppCommandDeclaration *decl) {
     std::string name = decl->functionName;
     std::vector<const AvailableCppCommandDeclaration *> &commands = availableCppCommands[name];
     for (auto it = commands.begin(); it != commands.end(); ++it) {
@@ -55,7 +55,7 @@ void LemonScriptState::declareAvailableCppCommand(const AvailableCppCommandDecla
     commands.push_back(decl);
 }
 
-void * LemonScriptState::addressOfVariable(const std::string &variableName) const {
+void * lemonscript::LemonScriptState::addressOfVariable(const std::string &variableName) const {
     auto it = variableAddresses.find(variableName);
     if(it != variableAddresses.end()) {
         return it->second;
@@ -64,7 +64,7 @@ void * LemonScriptState::addressOfVariable(const std::string &variableName) cons
     }
 }
 
-DataType LemonScriptState::typeOfVariable(const std::string &variableName) const {
+DataType lemonscript::LemonScriptState::typeOfVariable(const std::string &variableName) const {
     auto it = variableTypes.find(variableName);
     
     if(it != variableTypes.end()) {
@@ -74,7 +74,7 @@ DataType LemonScriptState::typeOfVariable(const std::string &variableName) const
     }
 }
 
-const AvailableCppCommandDeclaration * LemonScriptState::lookupCommandDeclaration(const std::string &name, const std::vector<DataType> &parameterTypes) const {
+const lemonscript::AvailableCppCommandDeclaration * lemonscript::LemonScriptState::lookupCommandDeclaration(const std::string &name, const std::vector<DataType> &parameterTypes) const {
     auto mapIt = availableCppCommands.find(name);
     if(mapIt == availableCppCommands.end()) {
         return NULL;
