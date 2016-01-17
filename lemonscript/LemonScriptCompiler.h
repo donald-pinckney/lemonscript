@@ -14,10 +14,9 @@
 #include <vector>
 
 #include "LemonScriptTokenizer.h"
-#include "IteratedFiniteStateMachine.h"
 #include "AvailableCppCommandDeclaration.h"
 #include "LemonScriptState.h"
-#include "SequentialCommand.h"
+#include "Commands/SequentialCommand.h"
 #include "ParsingUtils.h"
 
 class LemonScriptCompiler {

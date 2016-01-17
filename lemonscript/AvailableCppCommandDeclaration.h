@@ -29,7 +29,7 @@ public:
     std::vector<DataType> parameters; // in order from left to right
     
     
-    AvailableCppCommandDeclaration(void *f, const std::string &name, const std::vector<DataType> &ps) : func(f), functionName(name), parameters(ps) { };
+    AvailableCppCommandDeclaration(void *f, const std::string &name, const std::vector<DataType> &ps) : functionName(name), func(f), parameters(ps) { };
     
 };
 
