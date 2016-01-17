@@ -11,19 +11,20 @@
 
 #include <stdio.h>
 
-#include "Command.h"
+#include "SimultaneousCommand.h"
+#include "SequentialCommand.h"
 
 class WhileAlsoCommand : public Command {
     
-    const Command *whileCondition = NULL;
+    SequentialCommand *whileCondition = NULL;
     
-    std::vector<const Command *>alsoCommands;
+    SimultaneousCommand *alsoCommands = NULL;
     
     
 public:
     WhileAlsoCommand(int l, const LemonScriptState &s, const std::string &commandString);
     
-    bool Update() const;
+    bool Update();
     
 };
 

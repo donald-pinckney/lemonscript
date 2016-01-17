@@ -7,69 +7,30 @@
 //
 
 #include "LemonScriptTokenizer.h"
+#include "ParsingUtils.h"
 
-using namespace::std;
-
-// From http://stackoverflow.com/questions/10268872/c-fstream-function-that-reads-a-line-without-extracting
-string peekLine(istream &is) {
-    size_t len = is.tellg();
-    
-    string line;
-    
-    // Read line
-    getline(is, line);
-    
-    // Return to position before "Read line".
-    is.seekg(len , std::ios_base::beg);
-    
-    return line;
-}
-
-bool beginsWith(const string &x, const string &y) {
-    return x.compare(0, y.length(), y) == 0;
-}
-
-bool isExecutableLine(const string &line) {
-    for (auto it = line.begin(); it != line.end(); it++) {
-        char c = *it;
-        
-        if(c == '/') {
-            auto nextIt = it + 1;
-            if (nextIt != line.end()) {
-                char nextC = *nextIt;
-                
-                if(nextC == '/') {
-                    return false;
-                } else {
-                    throw "Invalid token '/'";
-                }
-            } else {
-                throw "Invalid token '/'";
-            }
-        }
-        
-        if(isalnum(c)) {
-            return true;
-        }
-    }
-    
-    return false;
-}
+using namespace std;
+using namespace ParsingUtils;
 
 
-//LemonScriptTokenizer::LemonScriptTokenizer(const string &toParse) {
-//    input = 
-//    input.str(toParse);
-//}
+
 
 tuple<string, TokenType, int> LemonScriptTokenizer::nextToken() {
     
     string firstLine;
     getline(*input, firstLine);
+    if(input->eof() && firstLine.length() == 0) {
+        return make_tuple("", NOT_A_TOKEN, -1);
+    }
+    
     currentLine++;
     
     while(isExecutableLine(firstLine) == false) {
         getline(*input, firstLine);
+        if(input->eof() && firstLine.length() == 0) {
+            return make_tuple("", NOT_A_TOKEN, -1);
+        }
+        
         currentLine++;
     }
     

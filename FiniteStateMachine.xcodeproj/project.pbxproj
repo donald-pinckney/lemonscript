@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		501480621C2BFEE200153984 /* Command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501480601C2BFEE200153984 /* Command.cpp */; };
+		5012E6C21C4AE9BA00675B88 /* SequentialCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5012E6C01C4AE9BA00675B88 /* SequentialCommand.cpp */; };
 		501480651C2C01A800153984 /* CppCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501480631C2C01A800153984 /* CppCommand.cpp */; };
 		501480681C2C08B400153984 /* AvailableCppCommandDeclaration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501480661C2C08B400153984 /* AvailableCppCommandDeclaration.cpp */; };
 		5014806B1C2C0AA600153984 /* LemonScriptState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501480691C2C0AA600153984 /* LemonScriptState.cpp */; };
 		5014806D1C2C17D400153984 /* mainLemonScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014806C1C2C17D400153984 /* mainLemonScript.cpp */; };
+		507B18101C4B0D58001BA48D /* SimultaneousCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B180E1C4B0D58001BA48D /* SimultaneousCommand.cpp */; };
+		507B18131C4B0F62001BA48D /* ParsingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B18111C4B0F62001BA48D /* ParsingUtils.cpp */; };
+		507B18161C4B4A47001BA48D /* CompleteAnyCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B18141C4B4A47001BA48D /* CompleteAnyCommand.cpp */; };
 		508F60AB1C3492E2008ED63E /* WhileAlsoCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508F60A91C3492E2008ED63E /* WhileAlsoCommand.cpp */; };
 		508F60AE1C3493D4008ED63E /* LemonScriptTokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508F60AC1C3493D4008ED63E /* LemonScriptTokenizer.cpp */; };
 		508F60B01C34B0DC008ED63E /* CVR3Tote.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 508F60AF1C34B0CB008ED63E /* CVR3Tote.auto */; };
 		508F60B31C34BB4C008ED63E /* LemonScriptCompiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508F60B11C34BB4C008ED63E /* LemonScriptCompiler.cpp */; };
 		50ACCCAE1C2D39F200964487 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACCCAD1C2D39F200964487 /* main.swift */; };
 		50C5A5FC1C2BFC0000028D0B /* deploy chokehold.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5A5F91C2BFBBD00028D0B /* deploy chokehold.auto */; };
-		50C5A5FE1C2BFC0400028D0B /* one.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5A5FB1C2BFBE900028D0B /* one.auto */; };
+		50C5A5FE1C2BFC0400028D0B /* sequence.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5A5FB1C2BFBE900028D0B /* sequence.auto */; };
 		50C5A6011C2BFC4300028D0B /* auto_functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C5A5FF1C2BFC4300028D0B /* auto_functions.cpp */; };
+		50F173C31C4B4C1100C870D9 /* CompleteAllCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50F173C11C4B4C1100C870D9 /* CompleteAllCommand.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,7 +35,7 @@
 			files = (
 				50C5A5FC1C2BFC0000028D0B /* deploy chokehold.auto in CopyFiles */,
 				508F60B01C34B0DC008ED63E /* CVR3Tote.auto in CopyFiles */,
-				50C5A5FE1C2BFC0400028D0B /* one.auto in CopyFiles */,
+				50C5A5FE1C2BFC0400028D0B /* sequence.auto in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,7 +51,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		501480601C2BFEE200153984 /* Command.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Command.cpp; sourceTree = "<group>"; };
+		5012E6C01C4AE9BA00675B88 /* SequentialCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SequentialCommand.cpp; sourceTree = "<group>"; };
+		5012E6C11C4AE9BA00675B88 /* SequentialCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequentialCommand.h; sourceTree = "<group>"; };
 		501480611C2BFEE200153984 /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
 		501480631C2C01A800153984 /* CppCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CppCommand.cpp; sourceTree = "<group>"; };
 		501480641C2C01A800153984 /* CppCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CppCommand.h; sourceTree = "<group>"; };
@@ -58,6 +63,12 @@
 		5014806C1C2C17D400153984 /* mainLemonScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mainLemonScript.cpp; sourceTree = "<group>"; };
 		50694F401C27D46600826B64 /* FiniteStateMachine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FiniteStateMachine; sourceTree = BUILT_PRODUCTS_DIR; };
 		50694F431C27D46600826B64 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		507B180E1C4B0D58001BA48D /* SimultaneousCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimultaneousCommand.cpp; sourceTree = "<group>"; };
+		507B180F1C4B0D58001BA48D /* SimultaneousCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimultaneousCommand.h; sourceTree = "<group>"; };
+		507B18111C4B0F62001BA48D /* ParsingUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParsingUtils.cpp; sourceTree = "<group>"; };
+		507B18121C4B0F62001BA48D /* ParsingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParsingUtils.h; sourceTree = "<group>"; };
+		507B18141C4B4A47001BA48D /* CompleteAnyCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompleteAnyCommand.cpp; sourceTree = "<group>"; };
+		507B18151C4B4A47001BA48D /* CompleteAnyCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteAnyCommand.h; sourceTree = "<group>"; };
 		508F60A91C3492E2008ED63E /* WhileAlsoCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WhileAlsoCommand.cpp; sourceTree = "<group>"; };
 		508F60AA1C3492E2008ED63E /* WhileAlsoCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhileAlsoCommand.h; sourceTree = "<group>"; };
 		508F60AC1C3493D4008ED63E /* LemonScriptTokenizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LemonScriptTokenizer.cpp; sourceTree = "<group>"; };
@@ -70,9 +81,11 @@
 		50ACCCAB1C2D39F200964487 /* GenCppCalls */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GenCppCalls; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ACCCAD1C2D39F200964487 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		50C5A5F91C2BFBBD00028D0B /* deploy chokehold.auto */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text; path = "deploy chokehold.auto"; sourceTree = "<group>"; tabWidth = 2; };
-		50C5A5FB1C2BFBE900028D0B /* one.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = one.auto; sourceTree = "<group>"; };
+		50C5A5FB1C2BFBE900028D0B /* sequence.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sequence.auto; sourceTree = "<group>"; };
 		50C5A5FF1C2BFC4300028D0B /* auto_functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = auto_functions.cpp; sourceTree = "<group>"; };
 		50C5A6001C2BFC4300028D0B /* auto_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = auto_functions.h; sourceTree = "<group>"; };
+		50F173C11C4B4C1100C870D9 /* CompleteAllCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompleteAllCommand.cpp; sourceTree = "<group>"; };
+		50F173C21C4B4C1100C870D9 /* CompleteAllCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteAllCommand.h; sourceTree = "<group>"; };
 		50F2AB611C2D4647008CA663 /* CppCommand_GENERATED.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CppCommand_GENERATED.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,16 +134,11 @@
 				509C2BBE1C295A9E00FE4E59 /* IteratedFiniteStateMachine.h */,
 				50C5A5F91C2BFBBD00028D0B /* deploy chokehold.auto */,
 				508F60AF1C34B0CB008ED63E /* CVR3Tote.auto */,
-				50C5A5FB1C2BFBE900028D0B /* one.auto */,
+				50C5A5FB1C2BFBE900028D0B /* sequence.auto */,
 				50C5A6001C2BFC4300028D0B /* auto_functions.h */,
 				50C5A5FF1C2BFC4300028D0B /* auto_functions.cpp */,
 				501480611C2BFEE200153984 /* Command.h */,
-				501480601C2BFEE200153984 /* Command.cpp */,
-				501480641C2C01A800153984 /* CppCommand.h */,
-				501480631C2C01A800153984 /* CppCommand.cpp */,
-				50F2AB611C2D4647008CA663 /* CppCommand_GENERATED.h */,
-				508F60AA1C3492E2008ED63E /* WhileAlsoCommand.h */,
-				508F60A91C3492E2008ED63E /* WhileAlsoCommand.cpp */,
+				50F173C41C4B4D3500C870D9 /* Commands */,
 				501480671C2C08B400153984 /* AvailableCppCommandDeclaration.h */,
 				501480661C2C08B400153984 /* AvailableCppCommandDeclaration.cpp */,
 				5014806A1C2C0AA600153984 /* LemonScriptState.h */,
@@ -139,6 +147,8 @@
 				508F60AC1C3493D4008ED63E /* LemonScriptTokenizer.cpp */,
 				508F60B21C34BB4C008ED63E /* LemonScriptCompiler.h */,
 				508F60B11C34BB4C008ED63E /* LemonScriptCompiler.cpp */,
+				507B18121C4B0F62001BA48D /* ParsingUtils.h */,
+				507B18111C4B0F62001BA48D /* ParsingUtils.cpp */,
 			);
 			path = FiniteStateMachine;
 			sourceTree = "<group>";
@@ -149,6 +159,26 @@
 				50ACCCAD1C2D39F200964487 /* main.swift */,
 			);
 			path = GenCppCalls;
+			sourceTree = "<group>";
+		};
+		50F173C41C4B4D3500C870D9 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				501480641C2C01A800153984 /* CppCommand.h */,
+				501480631C2C01A800153984 /* CppCommand.cpp */,
+				50F2AB611C2D4647008CA663 /* CppCommand_GENERATED.h */,
+				5012E6C11C4AE9BA00675B88 /* SequentialCommand.h */,
+				5012E6C01C4AE9BA00675B88 /* SequentialCommand.cpp */,
+				507B180F1C4B0D58001BA48D /* SimultaneousCommand.h */,
+				507B180E1C4B0D58001BA48D /* SimultaneousCommand.cpp */,
+				508F60AA1C3492E2008ED63E /* WhileAlsoCommand.h */,
+				508F60A91C3492E2008ED63E /* WhileAlsoCommand.cpp */,
+				507B18151C4B4A47001BA48D /* CompleteAnyCommand.h */,
+				507B18141C4B4A47001BA48D /* CompleteAnyCommand.cpp */,
+				50F173C21C4B4C1100C870D9 /* CompleteAllCommand.h */,
+				50F173C11C4B4C1100C870D9 /* CompleteAllCommand.cpp */,
+			);
+			name = Commands;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,15 +259,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5012E6C21C4AE9BA00675B88 /* SequentialCommand.cpp in Sources */,
+				507B18131C4B0F62001BA48D /* ParsingUtils.cpp in Sources */,
+				50F173C31C4B4C1100C870D9 /* CompleteAllCommand.cpp in Sources */,
 				50C5A6011C2BFC4300028D0B /* auto_functions.cpp in Sources */,
 				5014806B1C2C0AA600153984 /* LemonScriptState.cpp in Sources */,
 				508F60B31C34BB4C008ED63E /* LemonScriptCompiler.cpp in Sources */,
 				501480651C2C01A800153984 /* CppCommand.cpp in Sources */,
+				507B18161C4B4A47001BA48D /* CompleteAnyCommand.cpp in Sources */,
 				508F60AE1C3493D4008ED63E /* LemonScriptTokenizer.cpp in Sources */,
 				5014806D1C2C17D400153984 /* mainLemonScript.cpp in Sources */,
 				508F60AB1C3492E2008ED63E /* WhileAlsoCommand.cpp in Sources */,
 				501480681C2C08B400153984 /* AvailableCppCommandDeclaration.cpp in Sources */,
-				501480621C2BFEE200153984 /* Command.cpp in Sources */,
+				507B18101C4B0D58001BA48D /* SimultaneousCommand.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

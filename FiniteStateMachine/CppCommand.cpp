@@ -14,6 +14,8 @@
 #include <iostream>
 #include <sstream>
 
+#include "ParsingUtils.h"
+
 using namespace std;
 
 void printParamTypes(const vector<DataType> &types, ostream &stream) {
@@ -76,7 +78,9 @@ string camelCase(const string &s) {
     return string(resultTemp);
 }
 
-CppCommand::CppCommand(int l, const LemonScriptState &state, const std::string &commandString) : Command(l, state) {
+CppCommand::CppCommand(int l, const LemonScriptState &state, const std::string &commandStringInput) : Command(l, state) {
+    std::string commandString = ParsingUtils::removeCommentFromLine(commandStringInput);
+    
     string functionName;
     vector<void *> arguments;
     

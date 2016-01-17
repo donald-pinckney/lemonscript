@@ -24,7 +24,7 @@ public:
     int lineNumber;
     std::vector<void *> dependentVariables; // Subclasses are responsible for initializing this variable!
     
-    virtual bool Update() const = 0;
+    virtual bool Update() = 0;
 
 };
 

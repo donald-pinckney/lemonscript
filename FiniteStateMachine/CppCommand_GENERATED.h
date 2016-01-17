@@ -366,7 +366,7 @@ typedef bool(*f_bool_bool_bool_bool_int)(bool, bool, bool, bool, int);
 typedef bool(*f_bool_bool_bool_bool_float)(bool, bool, bool, bool, float);
 typedef bool(*f_bool_bool_bool_bool_bool)(bool, bool, bool, bool, bool);
 
-bool CppCommand::Update() const {
+bool CppCommand::Update() {
 	void *func = declaration->func;
 	vector<DataType> params = declaration->parameters;
 	bool retVal;

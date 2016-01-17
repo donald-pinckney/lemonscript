@@ -1,12 +1,13 @@
 deploy chokehold
 
 // Drive back pulling the cans
-shift high
-drive straight: speed = -0.5, distance = 2800 clicks
+//shift high
+drive straight: speed = -0.5, distance = clicks 2800
 
 // Release cans by driving forward and lifting
 WHILE:
-  drive straight: speed = 5, distance = -600 clicks
+  // here is a comment
+  drive straight: speed = 5.0, distance = clicks 600
 ALSO:
   raise wings
 

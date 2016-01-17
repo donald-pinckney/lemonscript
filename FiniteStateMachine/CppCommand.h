@@ -25,7 +25,7 @@ class CppCommand : public Command {
 public:
     CppCommand(int l, const LemonScriptState &s, const std::string &commandString);
     
-    bool Update() const;
+    bool Update();
     
 };
 

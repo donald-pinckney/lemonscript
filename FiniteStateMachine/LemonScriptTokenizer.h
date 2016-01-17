@@ -20,7 +20,8 @@ typedef enum {
     WhileAlsoToken,
     CompleteAnyToken,
     CompleteAllToken,
-    IfElseIfElseToken
+    IfElseIfElseToken,
+    NOT_A_TOKEN
 } TokenType;
 
 class LemonScriptTokenizer {

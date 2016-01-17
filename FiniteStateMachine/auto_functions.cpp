@@ -30,6 +30,7 @@ bool DriveStraight_3(float speed, int distance, bool left) {
     currentDistance += 10; // in.
     
     if(currentDistance > distance) {
+        currentDistance = 0;
         return true;
     }
     
@@ -45,8 +46,29 @@ bool DriveStraight_2(float speed, int distance) {
     currentDistance += 10; // in.
     
     if(currentDistance > distance) {
+        currentDistance = 0;
         return true;
     }
     
     return false;
+}
+
+bool CalibrateElevator() {
+    printf("Calibrating elevator...\n");
+    
+    return true;
+}
+
+bool StopElevator() {
+    printf("Elevator STOP\n");
+    return true;
+}
+bool StopDriving() {
+    printf("Driving STOP\n");
+    return true;
+}
+
+bool RaiseWings() {
+    printf("Raising wings\n");
+    return true;
 }

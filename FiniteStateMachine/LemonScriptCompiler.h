@@ -17,32 +17,34 @@
 #include "IteratedFiniteStateMachine.h"
 #include "AvailableCppCommandDeclaration.h"
 #include "LemonScriptState.h"
+#include "SequentialCommand.h"
+#include "ParsingUtils.h"
 
 class LemonScriptCompiler {
     
-    std::istream *input;
-    LemonScriptState state;
-    LemonScriptTokenizer tokenizer;
+    LemonScriptState *state;
+    SequentialCommand *rootSequence;
+    bool isDone = false;
     
 public:
     
-    LemonScriptCompiler(const std::string &toParse, const std::vector<const AvailableCppCommandDeclaration *> commands) : tokenizer(toParse) {
-        input = new std::istringstream(toParse);
+    LemonScriptCompiler(std::istream &toParse, const std::vector<const AvailableCppCommandDeclaration *> commands, LemonScriptState *stateParam) : state(stateParam) {
         
+        // Declare available commands
         for (auto it = commands.begin(); it != commands.end(); ++it) {
-            state.declareAvailableCppCommand(*it);
+            state->declareAvailableCppCommand(*it);
         }
-    }
-    LemonScriptCompiler(std::istream *toParse, const std::vector<const AvailableCppCommandDeclaration *> commands) : tokenizer(toParse) {
-        input = toParse;
         
-        for (auto it = commands.begin(); it != commands.end(); ++it) {
-            state.declareAvailableCppCommand(*it);
-        }
+        // THIS DOES ALL THE PARSING / COMPILATION
+        rootSequence = new SequentialCommand(1, *state, ParsingUtils::readWholeStream(toParse));
     }
     
-    
-    IteratedFiniteStateMachine *compile();
+    bool PeriodicUpdate() {
+        if(!isDone) {
+            isDone = rootSequence->Update();
+        }
+        return isDone;
+    }
 };
 
 #endif /* LemonScriptCompiler_hpp */

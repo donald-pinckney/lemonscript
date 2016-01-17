@@ -118,7 +118,7 @@ for numParams in 0...5 {
 
 print("#ifndef CppCommand_GENERATED_h\n#define CppCommand_GENERATED_h")
 print(typedefs)
-print("bool CppCommand::Update() const {\n\tvoid *func = declaration->func;\n\tvector<DataType> params = declaration->parameters;\n\tbool retVal;\n")
+print("bool CppCommand::Update() {\n\tvoid *func = declaration->func;\n\tvector<DataType> params = declaration->parameters;\n\tbool retVal;\n")
 print(body)
 print("\telse {\n\t\tthrow \"Too many arguments!\";\n\t}\n\treturn retVal;\n}")
 print("#endif /* CppCommand_GENERATED_h */")

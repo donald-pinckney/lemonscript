@@ -7,8 +7,3 @@
 //
 
 #include "LemonScriptCompiler.h"
-
-
-IteratedFiniteStateMachine *LemonScriptCompiler::compile() {
-    return NULL;
-}

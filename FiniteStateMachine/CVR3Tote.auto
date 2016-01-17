@@ -58,7 +58,7 @@ pause: 0.25 seconds
 WHILE:
   drive straight: speed = -0.65, distance = SECOND_RC_ENCODER
 ALSO:
-  COPMLETE ALL:
+  COMPLETE ALL:
     knock RC Forever: to right = false 
     lift to seven HP wait tote
 

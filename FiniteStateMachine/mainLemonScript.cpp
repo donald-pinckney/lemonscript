@@ -12,11 +12,16 @@
 #include <fstream>
 
 #include "CppCommand.h"
+#include "SequentialCommand.h"
+#include "SimultaneousCommand.h"
 #include "auto_functions.h"
 #include "LemonScriptTokenizer.h"
+#include "LemonScriptCompiler.h"
+
+#include "ParsingUtils.h"
 
 int main() {
-    
+        
     LemonScriptState state;
     
     
@@ -27,50 +32,20 @@ int main() {
         
         AvailableCppCommandDeclaration *driveStraight3 = new AvailableCppCommandDeclaration((void *)DriveStraight_3, "DriveStraight", {FLOAT, INT, BOOLEAN});
         AvailableCppCommandDeclaration *driveStraight2 = new AvailableCppCommandDeclaration((void *)DriveStraight_2, "DriveStraight", {FLOAT, INT});
-
         AvailableCppCommandDeclaration *deployChokehold = new AvailableCppCommandDeclaration((void *)DeployChokehold, "DeployChokehold", {});
-        
-        state.declareAvailableCppCommand(driveStraight2);
-        state.declareAvailableCppCommand(driveStraight3);
-        state.declareAvailableCppCommand(deployChokehold);
+        AvailableCppCommandDeclaration *calibrateElevator = new AvailableCppCommandDeclaration((void *)CalibrateElevator, "CalibrateElevator", {});
+        AvailableCppCommandDeclaration *stopElevator = new AvailableCppCommandDeclaration((void *)StopElevator, "StopElevator", {});
+        AvailableCppCommandDeclaration *stopDriving = new AvailableCppCommandDeclaration((void *)StopDriving, "StopDriving", {});
+        AvailableCppCommandDeclaration *raiseWings = new AvailableCppCommandDeclaration((void *)RaiseWings, "RaiseWings", {});
 
+        std::vector<const AvailableCppCommandDeclaration *> commands = {driveStraight3, driveStraight2, deployChokehold, calibrateElevator, stopElevator, stopDriving, raiseWings};
         
-        CppCommand test2Command(6, state, "drive straight: speed = -0.65, distance = SECOND_RC_ENCODER");
+        std::ifstream ifs("deploy chokehold.auto");
+        LemonScriptCompiler compiler(ifs, commands, &state);
         
-        while(true) {
-            bool b = test2Command.Update();
-            std::cout << b << std::endl;
-            
-            if(b) {
-                break;
-            }
-        }
-        
-        
-        
-        CppCommand testCommand(5, state, "  deploy chokehold  ");
-        testCommand.Update();
-        
-        
-        
-        
-        
-        
-        
-        
-        std::ifstream ifs("CVR3Tote.auto");
-        
-        LemonScriptTokenizer tok(&ifs);
-        
-        while(true) {
-            std::string token;
-            TokenType type;
-            int lineNum;
-            
-            std::tie(token, type, lineNum) = tok.nextToken();
-            
-            std::cout << "line " << lineNum << ", " << type << std::endl;
-            std::cout << token << std::endl;
+        while (true) {
+            bool isDone = compiler.PeriodicUpdate();
+            if(isDone) { break; }
         }
         
         
@@ -78,6 +53,5 @@ int main() {
         std::cerr << error << std::endl;
     }
 
-//     drive straight: speed = -0.65, distance = SECOND_RC_ENCODER
     return 0;
 }
