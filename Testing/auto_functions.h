@@ -13,6 +13,7 @@
 
 bool DeployChokehold();
 bool DriveStraight_2(float speed, int distance);
+bool DriveStraight_4(float speed, float distance);
 bool DriveStraight_3(float speed, int distance, bool left);
 
 bool CalibrateElevator();

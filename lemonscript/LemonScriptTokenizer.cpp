@@ -73,7 +73,7 @@ tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
             tempTokenStorage << firstLine << endl;
             
             string nextLine = peekLine(*input);
-            if(!beginsWith(nextLine, "  ") && !beginsWith(nextLine, "ALSO:") && isExecutableLine(nextLine)) {
+            if((!beginsWith(nextLine, "  ") && !beginsWith(nextLine, "ALSO:") && isExecutableLine(nextLine)) || input->eof()) {
                 break;
             }
             
@@ -87,7 +87,7 @@ tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
             tempTokenStorage << firstLine << endl;
             
             string nextLine = peekLine(*input);
-            if(!beginsWith(nextLine, "  ") && isExecutableLine(nextLine)) {
+            if((!beginsWith(nextLine, "  ") && isExecutableLine(nextLine)) || input->eof()) {
                 break;
             }
             
@@ -99,7 +99,7 @@ tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
             tempTokenStorage << firstLine << endl;
             
             string nextLine = peekLine(*input);
-            if(!beginsWith(nextLine, "  ") && !beginsWith(nextLine, "THEN:") && !beginsWith(nextLine, "ELSE IF:") && !beginsWith(nextLine, "ELSE:") && isExecutableLine(nextLine)) {
+            if((!beginsWith(nextLine, "  ") && !beginsWith(nextLine, "THEN:") && !beginsWith(nextLine, "ELSE IF:") && !beginsWith(nextLine, "ELSE:") && isExecutableLine(nextLine)) || input->eof()) {
                 break;
             }
             
