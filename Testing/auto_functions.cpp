@@ -53,6 +53,22 @@ bool DriveStraight_2(float speed, int distance) {
     return false;
 }
 
+bool DriveStraight_4(float speed, float distance) {
+    
+    printf("DriveStraight_4: Driving kinda straight, with speed = %f, distance = %f?\n", speed, distance);
+    
+    
+    // Simulate driving here
+    currentDistance += 10; // in.
+    
+    if(currentDistance > distance) {
+        currentDistance = 0;
+        return true;
+    }
+    
+    return false;
+}
+
 bool CalibrateElevator() {
     printf("Calibrating elevator...\n");
     

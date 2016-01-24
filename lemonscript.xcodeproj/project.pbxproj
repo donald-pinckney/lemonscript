@@ -12,6 +12,7 @@
 		501480681C2C08B400153984 /* AvailableCppCommandDeclaration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501480661C2C08B400153984 /* AvailableCppCommandDeclaration.cpp */; };
 		5014806B1C2C0AA600153984 /* LemonScriptState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501480691C2C0AA600153984 /* LemonScriptState.cpp */; };
 		5014806D1C2C17D400153984 /* mainLemonScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014806C1C2C17D400153984 /* mainLemonScript.cpp */; };
+		50267ECD1C5566BF00B0EB28 /* twoBall2016.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50267ECC1C5566B300B0EB28 /* twoBall2016.auto */; };
 		507B18101C4B0D58001BA48D /* SimultaneousCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B180E1C4B0D58001BA48D /* SimultaneousCommand.cpp */; };
 		507B18131C4B0F62001BA48D /* ParsingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B18111C4B0F62001BA48D /* ParsingUtils.cpp */; };
 		507B18161C4B4A47001BA48D /* CompleteAnyCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B18141C4B4A47001BA48D /* CompleteAnyCommand.cpp */; };
@@ -33,6 +34,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				50267ECD1C5566BF00B0EB28 /* twoBall2016.auto in CopyFiles */,
 				50C5A5FC1C2BFC0000028D0B /* deploy chokehold.auto in CopyFiles */,
 				508F60B01C34B0DC008ED63E /* CVR3Tote.auto in CopyFiles */,
 				50C5A5FE1C2BFC0400028D0B /* sequence.auto in CopyFiles */,
@@ -60,6 +62,7 @@
 		501480691C2C0AA600153984 /* LemonScriptState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LemonScriptState.cpp; sourceTree = "<group>"; };
 		5014806A1C2C0AA600153984 /* LemonScriptState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemonScriptState.h; sourceTree = "<group>"; };
 		5014806C1C2C17D400153984 /* mainLemonScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mainLemonScript.cpp; sourceTree = "<group>"; };
+		50267ECC1C5566B300B0EB28 /* twoBall2016.auto */ = {isa = PBXFileReference; lastKnownFileType = text; path = twoBall2016.auto; sourceTree = "<group>"; };
 		503D6F021C4C30810007AC4C /* Command.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
 		50694F401C27D46600826B64 /* FiniteStateMachine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FiniteStateMachine; sourceTree = BUILT_PRODUCTS_DIR; };
 		507B180E1C4B0D58001BA48D /* SimultaneousCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimultaneousCommand.cpp; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				5014806C1C2C17D400153984 /* mainLemonScript.cpp */,
+				50267ECC1C5566B300B0EB28 /* twoBall2016.auto */,
 				50C5A5F91C2BFBBD00028D0B /* deploy chokehold.auto */,
 				508F60AF1C34B0CB008ED63E /* CVR3Tote.auto */,
 				50C5A5FB1C2BFBE900028D0B /* sequence.auto */,
