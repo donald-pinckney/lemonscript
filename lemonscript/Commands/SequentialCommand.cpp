@@ -14,6 +14,12 @@
 #include "CompleteAnyCommand.h"
 #include "CompleteAllCommand.h"
 
+#include <stdio.h>
+
+void printTok(const std::string &tok, TokenType tk, int lineNum) {
+    printf("===== TOKEN =====\nToken type = %d, lineNum = %d, tok = \n%s\n\n", tk, lineNum, tok.c_str());
+}
+
 lemonscript::SequentialCommand::SequentialCommand(int l, const LemonScriptState &state, const std::string &sequenceString) : Command(l, state) {
     LemonScriptTokenizer tokenizer(sequenceString);
     
@@ -27,6 +33,8 @@ lemonscript::SequentialCommand::SequentialCommand(int l, const LemonScriptState 
         if(type == NOT_A_TOKEN) {
             break;
         }
+        
+        printTok(token, type, lineNum);
         
         Command *command;
         if(type == CppToken) {
