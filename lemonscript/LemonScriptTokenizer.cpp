@@ -16,13 +16,15 @@ using namespace std;
 using namespace ParsingUtils;
 
 
-
+bool isEof(std::istream *i) {
+  return i->eof() || i->tellg() == -1;
+}
 
 tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
     
     string firstLine;
     getline(*input, firstLine);
-    if(input->eof() && firstLine.length() == 0) {
+    if(isEof(input) && firstLine.length() == 0) {
         return make_tuple("", NOT_A_TOKEN, -1);
     }
     
@@ -30,7 +32,7 @@ tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
     
     while(isExecutableLine(firstLine) == false) {
         getline(*input, firstLine);
-        if(input->eof() && firstLine.length() == 0) {
+        if(isEof(input) && firstLine.length() == 0) {
             return make_tuple("", NOT_A_TOKEN, -1);
         }
         
@@ -71,12 +73,13 @@ tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
     } else if(type == WhileAlsoToken) {
         while(true) {
             tempTokenStorage << firstLine << endl;
-            
+        
+
             string nextLine = peekLine(*input);
-            if((!beginsWith(nextLine, "  ") && !beginsWith(nextLine, "ALSO:") && isExecutableLine(nextLine)) || input->eof()) {
+            if((!beginsWith(nextLine, "  ") && !beginsWith(nextLine, "ALSO:") && isExecutableLine(nextLine)) || isEof(input)) {
                 break;
             }
-            
+
             getline(*input, firstLine);
             currentLine++;
             
@@ -87,7 +90,7 @@ tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
             tempTokenStorage << firstLine << endl;
             
             string nextLine = peekLine(*input);
-            if((!beginsWith(nextLine, "  ") && isExecutableLine(nextLine)) || input->eof()) {
+            if((!beginsWith(nextLine, "  ") && isExecutableLine(nextLine)) || isEof(input)) {
                 break;
             }
             
@@ -99,7 +102,7 @@ tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
             tempTokenStorage << firstLine << endl;
             
             string nextLine = peekLine(*input);
-            if((!beginsWith(nextLine, "  ") && !beginsWith(nextLine, "THEN:") && !beginsWith(nextLine, "ELSE IF:") && !beginsWith(nextLine, "ELSE:") && isExecutableLine(nextLine)) || input->eof()) {
+            if((!beginsWith(nextLine, "  ") && !beginsWith(nextLine, "THEN:") && !beginsWith(nextLine, "ELSE IF:") && !beginsWith(nextLine, "ELSE:") && isExecutableLine(nextLine)) || isEof(input)) {
                 break;
             }
             

@@ -21,7 +21,7 @@ std::string ParsingUtils::removeCommentFromLine(const std::string &line) {
 // From: http://stackoverflow.com/questions/10268872/c-fstream-function-that-reads-a-line-without-extracting
 std::string ParsingUtils::peekLine(std::istream &is) {
     size_t len = is.tellg();
-    
+
     std::string line;
     
     // Read line
