@@ -24,6 +24,8 @@
 		50C5A5FC1C2BFC0000028D0B /* deploy chokehold.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5A5F91C2BFBBD00028D0B /* deploy chokehold.auto */; };
 		50C5A5FE1C2BFC0400028D0B /* sequence.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5A5FB1C2BFBE900028D0B /* sequence.auto */; };
 		50C5A6011C2BFC4300028D0B /* auto_functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C5A5FF1C2BFC4300028D0B /* auto_functions.cpp */; };
+		50E535641C5D7EBC004F786D /* test.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50E535631C5D7EB5004F786D /* test.auto */; };
+		50E535651C5D7EBE004F786D /* test_pointturn.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50E535621C5D7EB5004F786D /* test_pointturn.auto */; };
 		50F173C31C4B4C1100C870D9 /* CompleteAllCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50F173C11C4B4C1100C870D9 /* CompleteAllCommand.cpp */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +38,8 @@
 			files = (
 				50267ECD1C5566BF00B0EB28 /* twoBall2016.auto in CopyFiles */,
 				50C5A5FC1C2BFC0000028D0B /* deploy chokehold.auto in CopyFiles */,
+				50E535651C5D7EBE004F786D /* test_pointturn.auto in CopyFiles */,
+				50E535641C5D7EBC004F786D /* test.auto in CopyFiles */,
 				508F60B01C34B0DC008ED63E /* CVR3Tote.auto in CopyFiles */,
 				50C5A5FE1C2BFC0400028D0B /* sequence.auto in CopyFiles */,
 			);
@@ -85,6 +89,8 @@
 		50C5A5FB1C2BFBE900028D0B /* sequence.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sequence.auto; sourceTree = "<group>"; };
 		50C5A5FF1C2BFC4300028D0B /* auto_functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = auto_functions.cpp; sourceTree = "<group>"; };
 		50C5A6001C2BFC4300028D0B /* auto_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = auto_functions.h; sourceTree = "<group>"; };
+		50E535621C5D7EB5004F786D /* test_pointturn.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_pointturn.auto; sourceTree = "<group>"; };
+		50E535631C5D7EB5004F786D /* test.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.auto; sourceTree = "<group>"; };
 		50F173C11C4B4C1100C870D9 /* CompleteAllCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompleteAllCommand.cpp; sourceTree = "<group>"; };
 		50F173C21C4B4C1100C870D9 /* CompleteAllCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteAllCommand.h; sourceTree = "<group>"; };
 		50F2AB611C2D4647008CA663 /* CppCommand_GENERATED.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CppCommand_GENERATED.h; sourceTree = "<group>"; };
@@ -111,6 +117,8 @@
 		503D6F011C4C2FE90007AC4C /* Testing */ = {
 			isa = PBXGroup;
 			children = (
+				50E535621C5D7EB5004F786D /* test_pointturn.auto */,
+				50E535631C5D7EB5004F786D /* test.auto */,
 				5014806C1C2C17D400153984 /* mainLemonScript.cpp */,
 				50267ECC1C5566B300B0EB28 /* twoBall2016.auto */,
 				50C5A5F91C2BFBBD00028D0B /* deploy chokehold.auto */,

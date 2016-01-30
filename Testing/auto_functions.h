@@ -21,4 +21,7 @@ bool StopElevator();
 bool StopDriving();
 bool RaiseWings();
 
+bool PointTurn(float x, float y, bool highgear);
+bool Wait(float t);
+
 #endif /* auto_functions_h */

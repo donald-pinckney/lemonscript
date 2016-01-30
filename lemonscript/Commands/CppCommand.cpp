@@ -51,8 +51,9 @@ bool isArgumentChar(char c) {
 }
 
 string camelCase(const string &s) {
-    char *resultTemp = new char[s.length()];
-    bzero(resultTemp, sizeof(char) * s.length());
+    // s = "cat"
+    char *resultTemp = new char[s.length() + 1];
+    bzero(resultTemp, sizeof(char) * (s.length() + 1));
     
     int resultIndex = 0;
     bool insideWord = false;
