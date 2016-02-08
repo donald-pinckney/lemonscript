@@ -15,24 +15,25 @@
 #include <map>
 
 #include "AvailableCppCommandDeclaration.h"
+#include "LemonScriptSymbolTableStack.h"
 
 #include "lemonscript.h"
 
 class lemonscript::LemonScriptState {
     
-    // Will contain things such as variable bindings, etc.
-    std::map<std::string, void *> variableAddresses;
-    std::map<std::string, DataType> variableTypes;
-
+    LemonScriptSymbolTableStack symbolStack;
     std::map<std::string, std::vector<const AvailableCppCommandDeclaration *> > availableCppCommands;
-    
     
 public:
     
     void *userData = NULL;
     
     // Declaration functions
+    void declareGlobalVariable(int line, const std::string &name, DataType type, void *pointerToValue);
     void declareVariable(int line, const std::string &name, DataType type, void *pointerToValue);
+    void pushScope();
+    void popScope();
+    
     void declareAvailableCppCommand(const AvailableCppCommandDeclaration *decl);
     
     // Lookup functions

@@ -9,7 +9,7 @@
 #include "CompleteAnyCommand.h"
 #include "ParsingUtils.h"
 
-lemonscript::CompleteAnyCommand::CompleteAnyCommand(int l, const LemonScriptState &s, const std::string &commandString) : Command(l, s) {
+lemonscript::CompleteAnyCommand::CompleteAnyCommand(int l, LemonScriptState &s, const std::string &commandString) : Command(l, s) {
     const std::string anyDelim = "COMPLETE ANY:\n";
     size_t anyLoc = commandString.find(anyDelim);
     size_t endOfAnyLoc = anyLoc + anyDelim.length();

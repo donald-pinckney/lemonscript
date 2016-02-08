@@ -17,10 +17,12 @@ namespace lemonscript {
     class WhileAlsoCommand;
     class CompleteAnyCommand;
     class CompleteAllCommand;
+    class SetCommand;
     class AvailableCppCommandDeclaration;
     class LemonScriptState;
     class LemonScriptTokenizer;
     class LemonScriptCompiler;
+    class Expression;
 }
 
 

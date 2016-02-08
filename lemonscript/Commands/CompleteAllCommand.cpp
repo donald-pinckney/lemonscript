@@ -10,7 +10,7 @@
 
 #include "ParsingUtils.h"
 
-lemonscript::CompleteAllCommand::CompleteAllCommand(int l, const LemonScriptState &s, const std::string &commandString) : Command(l, s) {
+lemonscript::CompleteAllCommand::CompleteAllCommand(int l, LemonScriptState &s, const std::string &commandString) : Command(l, s) {
     const std::string allDelim = "COMPLETE ALL:\n";
     size_t allLoc = commandString.find(allDelim);
     size_t endOfAllLoc = allLoc + allDelim.length();

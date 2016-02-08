@@ -13,6 +13,7 @@
 #include "WhileAlsoCommand.h"
 #include "CompleteAnyCommand.h"
 #include "CompleteAllCommand.h"
+#include "SetCommand.h"
 
 #include <stdio.h>
 
@@ -20,7 +21,7 @@ void printTok(const std::string &tok, TokenType tk, int lineNum) {
     printf("===== TOKEN =====\nToken type = %d, lineNum = %d, tok = \n%s\n\n", tk, lineNum, tok.c_str());
 }
 
-lemonscript::SequentialCommand::SequentialCommand(int l, const LemonScriptState &state, const std::string &sequenceString) : Command(l, state) {
+lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState &state, const std::string &sequenceString) : Command(l, state) {
     LemonScriptTokenizer tokenizer(sequenceString);
     
     
@@ -45,6 +46,8 @@ lemonscript::SequentialCommand::SequentialCommand(int l, const LemonScriptState 
             command = new CompleteAnyCommand(l, state, token);
         } else if(type == CompleteAllToken) {
             command = new CompleteAllCommand(l, state, token);
+        } else if(type == SetToken) {
+            command = new SetCommand(l, &state, token);
         }
         
         sequence.push_back(command);

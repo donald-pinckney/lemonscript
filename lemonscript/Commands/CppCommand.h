@@ -21,10 +21,10 @@ class lemonscript::CppCommand : public Command {
     const AvailableCppCommandDeclaration *declaration = NULL;
     
     std::vector<bool> isArgumentLiteral;
-    std::vector<void *> parameterValues; // parallel to `parameters` in declaration (left to right order). If a parameter isConstant, then this contains the constant value directly.  If a parameter is a variable, then this contains a pointer to the variable.
+    std::vector<void *> parameterValues; // parallel to `parameters` in declaration (left to right order). If a parameter isConstant, then this contains the constant value directly.  If a parameter is an expression, then this contains a pointer to the expression
     
 public:
-    CppCommand(int l, const LemonScriptState &s, const std::string &commandString);
+    CppCommand(int l, LemonScriptState &s, const std::string &commandString);
     
     bool Update();
     

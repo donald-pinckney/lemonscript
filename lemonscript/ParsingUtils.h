@@ -24,6 +24,8 @@ namespace ParsingUtils {
     
     std::string readWholeStream(std::istream &in);
     std::string decreaseIndent(const std::string &s);
+    
+    std::string trimWhitespace(const std::string &s);
 
 }
 

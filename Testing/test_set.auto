@@ -1,0 +1,5 @@
+SET x = 5
+SET y = 6
+SET t = 0.3
+
+wait: seconds = t

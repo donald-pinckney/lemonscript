@@ -7,6 +7,7 @@
 //
 
 #include "CppCommand.h"
+#include "Expression.h"
 
 #include <strings.h>
 #include <algorithm>
@@ -79,7 +80,7 @@ string camelCase(const string &s) {
     return string(resultTemp);
 }
 
-lemonscript::CppCommand::CppCommand(int l, const LemonScriptState &state, const std::string &commandStringInput) : Command(l, state) {
+lemonscript::CppCommand::CppCommand(int l, LemonScriptState &state, const std::string &commandStringInput) : Command(l, state) {
     std::string commandString = ParsingUtils::removeCommentFromLine(commandStringInput);
     
     string functionName;
@@ -154,18 +155,13 @@ lemonscript::CppCommand::CppCommand(int l, const LemonScriptState &state, const 
                         
                     }
                     
-                    // otherwise it must be a variable!
-                    void *address = state.addressOfVariable(argumentString);
-                    if(address == NULL) {
-                        throw "Line " + to_string(l) + ":\nUse of undeclared variable: " + argumentString;
-                        return;
-                    }
-
-                    DataType type = state.typeOfVariable(argumentString);
+                    // otherwise it must be an expression!
+                    Expression *expr = new lemonscript::Expression(argumentString, &state);
+                    DataType type = expr->getType();
 
                     parameterTypes.push_back(type);
-                    arguments.push_back(address);
-                    dependentVariables.push_back(address);
+                    arguments.push_back(expr);
+//                    dependentVariables.push_back(address);
                     isArgumentLiteral.push_back(false);
                 }
             }

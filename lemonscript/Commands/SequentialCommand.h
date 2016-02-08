@@ -21,7 +21,7 @@ class lemonscript::SequentialCommand : public Command {
     std::vector<Command *> sequence;
     int currentIndex = 0;
 public:
-    SequentialCommand(int l, const LemonScriptState &s, const std::string &sequenceString);
+    SequentialCommand(int l, LemonScriptState &s, const std::string &sequenceString);
 
     bool Update();
 };

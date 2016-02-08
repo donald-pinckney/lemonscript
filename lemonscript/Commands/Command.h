@@ -22,12 +22,12 @@ class lemonscript::Command {
 protected:
     const LemonScriptState &savedState;
     
-    Command(int l, const LemonScriptState &s) : savedState(s), lineNumber(l) { };
+    Command(int l, LemonScriptState &s) : savedState(s), lineNumber(l) { };
     
     
 public:
     int lineNumber;
-    std::vector<void *> dependentVariables; // Subclasses are responsible for initializing this variable!
+//    std::vector<void *> dependentVariables; // Subclasses are responsible for initializing this variable!
     
     
     virtual bool Update() = 0;

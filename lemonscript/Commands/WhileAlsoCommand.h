@@ -24,7 +24,7 @@ class lemonscript::WhileAlsoCommand : public Command {
     
     
 public:
-    WhileAlsoCommand(int l, const LemonScriptState &s, const std::string &commandString);
+    WhileAlsoCommand(int l, LemonScriptState &s, const std::string &commandString);
     
     bool Update();
     

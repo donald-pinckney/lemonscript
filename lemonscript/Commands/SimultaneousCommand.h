@@ -30,7 +30,7 @@ class lemonscript::SimultaneousCommand : Command {
     
 public:
     
-    SimultaneousCommand(int l, const LemonScriptState &s, const std::string &sequenceString);
+    SimultaneousCommand(int l, LemonScriptState &s, const std::string &sequenceString);
     
     bool Update();
     bool Update(bool hard);

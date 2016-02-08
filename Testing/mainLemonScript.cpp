@@ -27,7 +27,7 @@ int main() {
     
     try {
         int val = 1125;
-        state.declareVariable(1, "SECOND_RC_ENCODER", INT, &val);
+        state.declareGlobalVariable(1, "SECOND_RC_ENCODER", INT, &val);
                 
         
         lemonscript::AvailableCppCommandDeclaration *driveStraight3 = new lemonscript::AvailableCppCommandDeclaration((void *)DriveStraight_3, "DriveStraight", {FLOAT, INT, BOOLEAN});
@@ -43,7 +43,7 @@ int main() {
 
         std::vector<const lemonscript::AvailableCppCommandDeclaration *> commands = {driveStraight3, driveStraight2, driveStraight4, deployChokehold, calibrateElevator, stopElevator, stopDriving, raiseWings, pointTurn, wait};
         
-        std::ifstream ifs("test_pointturn.auto");
+        std::ifstream ifs("test_set.auto");
         lemonscript::LemonScriptCompiler compiler(ifs, commands, &state);
         
         while (true) {

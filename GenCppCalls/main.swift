@@ -69,22 +69,27 @@ for numParams in 0...5 {
             body += "\telse if(vector<DataType>{\(COMMAList)} == params) {\n"
         }
         body += "\t\t\(typeName) tempFunc = (\(typeName))func;\n"
-        body += "\t\tretVal = tempFunc(data,\n"
-        
-        var pCount = 0
-        for p in params {
-            let name = p.cppName()
+        for i in 0..<params.count {
+            let name = params[i].cppName()
             
-            if(pCount == params.count - 1) {
-                body += "\t\t\tisArgumentLiteral[\(pCount)] ? *((\(name) *)&parameterValues[\(pCount)]) : *((\(name) *)parameterValues[\(pCount)])\n"
-            } else {
-                body += "\t\t\tisArgumentLiteral[\(pCount)] ? *((\(name) *)&parameterValues[\(pCount)]) : *((\(name) *)parameterValues[\(pCount)]),\n"
-            }
-            
-            pCount += 1
+            body += "\t\t\(name) p\(i);\n"
+            body += "\t\tif(isArgumentLiteral[\(i)]) {\n\t\t\tp\(i) = *((\(name) *)&parameterValues[\(i)]);\n\t\t} else {\n\t\t\t((Expression *)parameterValues[\(i)])->getValue(&p\(i));\n\t\t}\n"
         }
         
-        body += "\t\t\t);\n\t}\n\n"
+        body += "\t\tretVal = tempFunc(data, "
+        
+        for i in 0..<params.count {
+            
+            if i == params.count - 1 {
+                body += "p\(i)"
+//                body += "\t\t\tisArgumentLiteral[\(pCount)] ? *((\(name) *)&parameterValues[\(pCount)]) : *((\(name) *)parameterValues[\(pCount)])\n"
+            } else {
+                body += "p\(i), "
+//                body += "\t\t\tisArgumentLiteral[\(pCount)] ? *((\(name) *)&parameterValues[\(pCount)]) : *((\(name) *)parameterValues[\(pCount)]),\n"
+            }
+        }
+        
+        body += ");\n\t}\n\n"
         
         
         // Next parameter combination

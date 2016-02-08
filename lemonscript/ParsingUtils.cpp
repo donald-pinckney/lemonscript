@@ -85,3 +85,10 @@ std::string ParsingUtils::decreaseIndent(const std::string &s) {
     
     return result.substr(1);
 }
+
+std::string ParsingUtils::trimWhitespace(const std::string &s) {
+    size_t firstNotSpace = s.find_first_not_of(" ");
+    size_t lastNotSpace = s.find_last_not_of(" ");
+    return s.substr(firstNotSpace, lastNotSpace - firstNotSpace + 1);
+    
+}
