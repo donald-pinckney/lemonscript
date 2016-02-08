@@ -365,15 +365,16 @@ typedef bool(*f_bool_bool_bool_bool_int)(void *,bool, bool, bool, bool, int);
 typedef bool(*f_bool_bool_bool_bool_float)(void *,bool, bool, bool, bool, float);
 typedef bool(*f_bool_bool_bool_bool_bool)(void *,bool, bool, bool, bool, bool);
 
+std::ofstream cppLog("lemonscript_cpp_calls.log");
 bool lemonscript::CppCommand::Update() {
 	void *data = savedState.userData;void *func = declaration->func;
 	vector<DataType> params = declaration->parameters;
 	bool retVal;
+	cppLog << "Calling C function: " << declaration->functionName << std::endl;
 
 	if(vector<DataType>{} == params) {
 		f_ tempFunc = (f_)func;
-		retVal = tempFunc(data
-			);
+		retVal = tempFunc(data);
 	}
 
 	else if(vector<DataType>{INT} == params) {
@@ -1934,7 +1935,7 @@ bool lemonscript::CppCommand::Update() {
 		retVal = tempFunc(data,
 			isArgumentLiteral[0] ? *((int *)&parameterValues[0]) : *((int *)parameterValues[0]),
 			isArgumentLiteral[1] ? *((float *)&parameterValues[1]) : *((float *)parameterValues[1]),
-				isArgumentLiteral[2] ? *((float *)&parameterValues[2]) : *((float *)parameterValues[2]),
+			isArgumentLiteral[2] ? *((float *)&parameterValues[2]) : *((float *)parameterValues[2]),
 			isArgumentLiteral[3] ? *((int *)&parameterValues[3]) : *((int *)parameterValues[3]),
 			isArgumentLiteral[4] ? *((float *)&parameterValues[4]) : *((float *)parameterValues[4])
 			);
@@ -3731,7 +3732,7 @@ bool lemonscript::CppCommand::Update() {
 			isArgumentLiteral[3] ? *((int *)&parameterValues[3]) : *((int *)parameterValues[3]),
 			isArgumentLiteral[4] ? *((bool *)&parameterValues[4]) : *((bool *)parameterValues[4])
 			);
-		}
+	}
 
 	else if(vector<DataType>{BOOLEAN, FLOAT, FLOAT, FLOAT, INT} == params) {
 		f_bool_float_float_float_int tempFunc = (f_bool_float_float_float_int)func;

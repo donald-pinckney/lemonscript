@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <stdlib.h>
 #include <iostream>
+#include <fstream>
 #include <sstream>
 
 #include "ParsingUtils.h"
