@@ -56,7 +56,7 @@ bool lemonscript::SequentialCommand::Update() {
     bool isDone = currentCommand->Update();
     
     // If the last command just finished, then we are done
-    if(isDone && currentIndex == sequence.size() - 1) {
+    if(isDone && static_cast<size_t>(currentIndex) == sequence.size() - 1) {
         return true;
     } else if(isDone) {
         // If a command other than the last finished, go to next command
