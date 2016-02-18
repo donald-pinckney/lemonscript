@@ -1,6 +1,6 @@
-SET y = 6.2
-SET x = 5.9
-SET t = 0.3 + x
+DEF y = 6.2
+DEF x = 5.9
+DEF t = 0.3 + x
 
 SET x = 5.2
 
@@ -8,3 +8,4 @@ test bool:t == y, other bool: x == y
 test bool: t == x, other bool:x == y
 test bool: t == x, x == y
 test bool:t == x,x == y
+wait: time: 1.2

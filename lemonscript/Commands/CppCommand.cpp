@@ -115,7 +115,7 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
             if(c == ':') { // Then we want to eat up the prefix to the argument
                 while (true) {
                     char d = *it;
-                    if(d == ',') {
+                    if(d == ',' || it + 1 == argumentsString.rend()) {
                         newEndOfArgIt = it + 1;
                         break;
                     }
@@ -124,8 +124,12 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
             }
             
             if(c == ':' || c == ',' || it + 1 == argumentsString.rend()) { // Then we reached the prefix before the argument expression
-                if(it + 1 == argumentsString.rend()) {
-                    ++startOfArgIt;
+                if(it == argumentsString.rend()) {
+                    //break;
+                }
+                
+                if(startOfArgIt + 1 == argumentsString.rend()) {
+                    startOfArgIt = argumentsString.rend();
                 }
                 
                 if(c == ',') {
