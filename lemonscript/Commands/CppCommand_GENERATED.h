@@ -1,5 +1,6 @@
 #ifndef CppCommand_GENERATED_h
 #define CppCommand_GENERATED_h
+
 typedef bool(*f_)(void *);
 typedef bool(*f_int)(void *,int);
 typedef bool(*f_float)(void *,float);
@@ -366,7 +367,7 @@ typedef bool(*f_bool_bool_bool_bool_float)(void *,bool, bool, bool, bool, float)
 typedef bool(*f_bool_bool_bool_bool_bool)(void *,bool, bool, bool, bool, bool);
 
 bool lemonscript::CppCommand::Update() {
-	void *data = savedState.userData;void *func = declaration->func;
+	void *data = savedState->userData;void *func = declaration->func;
 	vector<DataType> params = declaration->parameters;
 	bool retVal;
 

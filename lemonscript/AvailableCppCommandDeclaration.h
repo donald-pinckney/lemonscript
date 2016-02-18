@@ -21,6 +21,8 @@ typedef enum {
     BOOLEAN
 } DataType;
 
+std::string dataTypeDescription(DataType t);
+
 
 class lemonscript::AvailableCppCommandDeclaration {
 

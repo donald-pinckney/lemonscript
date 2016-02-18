@@ -18,11 +18,11 @@ namespace lemonscript {
     class CompleteAnyCommand;
     class CompleteAllCommand;
     class SetCommand;
+    class DefCommand;
     class AvailableCppCommandDeclaration;
     class LemonScriptState;
     class LemonScriptTokenizer;
     class LemonScriptCompiler;
-    class Expression;
 }
 
 

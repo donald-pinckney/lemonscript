@@ -12,17 +12,18 @@
 #include <stdio.h>
 
 #include "SimultaneousCommand.h"
+#include "LemonScriptSymbolTableStack.h"
 
 #include "lemonscript.h"
 
 class lemonscript::CompleteAnyCommand : public Command {
     
-    
     SimultaneousCommand *anyCommands = NULL;
     
+    LemonScriptSymbolTableStack anyScope;
     
 public:
-    CompleteAnyCommand(int l, LemonScriptState &s, const std::string &commandString);
+    CompleteAnyCommand(int l, LemonScriptState *s, const std::string &commandString);
     
     bool Update();
     

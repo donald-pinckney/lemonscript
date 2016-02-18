@@ -18,6 +18,7 @@
 typedef enum {
     CppToken,
     SetToken,
+    DefToken,
     NotToken,
     WhileAlsoToken,
     CompleteAnyToken,

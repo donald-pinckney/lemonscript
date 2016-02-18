@@ -31,8 +31,16 @@ public:
     // Declaration functions
     void declareGlobalVariable(int line, const std::string &name, DataType type, void *pointerToValue);
     void declareVariable(int line, const std::string &name, DataType type, void *pointerToValue);
+    
+    // Symbol stack methods
     void pushScope();
     void popScope();
+    
+    // Please use these 2 methods sparingly...
+    LemonScriptSymbolTableStack getScope(); // Warning, don't modify the returned stack.
+    void restoreScope(const LemonScriptSymbolTableStack &scope);
+    
+    
     
     void declareAvailableCppCommand(const AvailableCppCommandDeclaration *decl);
     

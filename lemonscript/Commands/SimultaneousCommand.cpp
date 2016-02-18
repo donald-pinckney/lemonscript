@@ -13,8 +13,10 @@
 #include "WhileAlsoCommand.h"
 #include "CompleteAnyCommand.h"
 #include "CompleteAllCommand.h"
+#include "SetCommand.h"
+#include "DefCommand.h"
 
-lemonscript::SimultaneousCommand::SimultaneousCommand(int l, LemonScriptState &state, const std::string &sequenceString) : Command(l, state) {
+lemonscript::SimultaneousCommand::SimultaneousCommand(int l, LemonScriptState *state, const std::string &sequenceString) : Command(l, state) {
     LemonScriptTokenizer tokenizer(sequenceString);
     
     
@@ -37,7 +39,14 @@ lemonscript::SimultaneousCommand::SimultaneousCommand(int l, LemonScriptState &s
             command = new CompleteAnyCommand(l, state, token);
         } else if(type == CompleteAllToken) {
             command = new CompleteAllCommand(l, state, token);
+        } else if(type == CompleteAllToken) {
+            command = new CompleteAllCommand(lineNum, state, token);
+        } else if(type == SetToken) {
+            command = new SetCommand(lineNum, state, token);
+        } else if(type == DefToken) {
+            command = new DefCommand(lineNum, state, token);
         }
+        
         
         commands.push_back(command);
     }
@@ -50,14 +59,14 @@ bool lemonscript::SimultaneousCommand::Update() {
     return Update(false);
 }
 
-bool lemonscript::SimultaneousCommand::Update(bool hard) {
+bool lemonscript::SimultaneousCommand::Update(bool forceUpdates) {
     
     size_t len = commands.size();
     bool allDone = true;
     bool anyDone = false;
     for (size_t i = 0; i < len; i++) {
         bool alreadyDone = doneCommands[i];
-        if(alreadyDone && !hard) {
+        if(alreadyDone && !forceUpdates) {
             anyDone = true;
             continue;
         }

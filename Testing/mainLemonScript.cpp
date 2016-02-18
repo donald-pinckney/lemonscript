@@ -40,10 +40,12 @@ int main() {
         lemonscript::AvailableCppCommandDeclaration *raiseWings = new lemonscript::AvailableCppCommandDeclaration((void *)RaiseWings, "RaiseWings", {});
         lemonscript::AvailableCppCommandDeclaration *pointTurn = new lemonscript::AvailableCppCommandDeclaration((void *)RaiseWings, "PointTurn", {FLOAT, FLOAT, BOOLEAN});
         lemonscript::AvailableCppCommandDeclaration *wait = new lemonscript::AvailableCppCommandDeclaration((void *)Wait, "Wait", {FLOAT});
+        lemonscript::AvailableCppCommandDeclaration *testBool = new lemonscript::AvailableCppCommandDeclaration((void *)TestBool, "TestBool", {BOOLEAN, BOOLEAN});
 
-        std::vector<const lemonscript::AvailableCppCommandDeclaration *> commands = {driveStraight3, driveStraight2, driveStraight4, deployChokehold, calibrateElevator, stopElevator, stopDriving, raiseWings, pointTurn, wait};
         
-        std::ifstream ifs("test_set.auto");
+        std::vector<const lemonscript::AvailableCppCommandDeclaration *> commands = {driveStraight3, driveStraight2, driveStraight4, deployChokehold, calibrateElevator, stopElevator, stopDriving, raiseWings, pointTurn, wait, testBool};
+        
+        std::ifstream ifs("test_scope.auto");
         lemonscript::LemonScriptCompiler compiler(ifs, commands, &state);
         
         while (true) {

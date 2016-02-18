@@ -11,6 +11,7 @@
 
 // Declaration function
 void LemonScriptSymbolTableStack::declareVariable(int line, const std::string &name, DataType type, void *pointerToValue) {
+    int s = stack.size();
     stack[stack.size() - 1].declareVariable(line, name, type, pointerToValue);
 }
 void LemonScriptSymbolTableStack::declareGlobalVariable(int line, const std::string &name, DataType type, void *pointerToValue) {
@@ -28,6 +29,7 @@ void LemonScriptSymbolTableStack::popScope() {
 // Lookup functions
 // Returns NULL if variableName is not in the symbol table
 void * LemonScriptSymbolTableStack::addressOfVariable(const std::string &variableName) const {
+    int s = stack.size();
     for (auto it = stack.crbegin(); it != stack.crend(); it++) {
         void *address = it->addressOfVariable(variableName);
         if(address != NULL) {

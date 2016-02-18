@@ -13,18 +13,21 @@
 
 #include "SimultaneousCommand.h"
 #include "SequentialCommand.h"
+#include "LemonScriptSymbolTableStack.h"
 
 #include "lemonscript.h"
 
 class lemonscript::WhileAlsoCommand : public Command {
     
     SequentialCommand *whileCondition = NULL;
-    
     SimultaneousCommand *alsoCommands = NULL;
+    
+    LemonScriptSymbolTableStack whileScope;
+    LemonScriptSymbolTableStack alsoScope;
     
     
 public:
-    WhileAlsoCommand(int l, LemonScriptState &s, const std::string &commandString);
+    WhileAlsoCommand(int l, LemonScriptState *s, const std::string &commandString);
     
     bool Update();
     

@@ -1,13 +1,15 @@
 //
-//  SetCommand.hpp
+//  DefCommand.hpp
 //  lemonscript
 //
-//  Created by Donald Pinckney on 2/6/16.
+//  Created by Donald Pinckney on 2/17/16.
 //  Copyright © 2016 Donald Pinckney. All rights reserved.
 //
 
-#ifndef SetCommand_hpp
-#define SetCommand_hpp
+#ifndef DefCommand_hpp
+#define DefCommand_hpp
+
+#include <stdio.h>
 
 #include <stdio.h>
 #include "Command.h"
@@ -17,7 +19,7 @@
 #include "AvailableCppCommandDeclaration.h"
 #include "LemonScriptState.h"
 
-class lemonscript::SetCommand : public lemonscript::Command {
+class lemonscript::DefCommand : public lemonscript::Command {
     
     lemonscript_expressions::Expression *rhsExpression;
     DataType type;
@@ -26,11 +28,10 @@ class lemonscript::SetCommand : public lemonscript::Command {
     
     
 public:
-    SetCommand(int l, LemonScriptState *s, const std::string &commandString);
+    DefCommand(int l, LemonScriptState *s, const std::string &commandString);
     
     bool Update();
     
 };
 
-
-#endif /* SetCommand_hpp */
+#endif /* DefCommand_hpp */

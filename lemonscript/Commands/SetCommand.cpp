@@ -12,7 +12,8 @@
 #include "SetCommand.h"
 #include "ParsingUtils.h"
 
-lemonscript::SetCommand::SetCommand(int l, LemonScriptState *s, const std::string &commandString) : Command(l, *s) {
+
+lemonscript::SetCommand::SetCommand(int l, LemonScriptState *s, const std::string &commandString) : Command(l, s) {
     state = s;
     
     size_t equalsPos = commandString.find("=");
@@ -29,17 +30,24 @@ lemonscript::SetCommand::SetCommand(int l, LemonScriptState *s, const std::strin
     std::string lhs = ParsingUtils::trimWhitespace(commandString.substr(startLhsPos,  equalsPos - startLhsPos));
     std::string rhs = ParsingUtils::trimWhitespace(commandString.substr(equalsPos + 1));
     
-    std::cout << lhs << std::endl;
-    std::cout << rhs << std::endl;
-    
-    rhsExpression = new Expression(rhs, s);
+    rhsExpression = new lemonscript_expressions::Expression(rhs, s, l);
     type = rhsExpression->getType();
     
     int zero;
     bzero(&zero, sizeof(int));
     
-    state->declareVariable(l, lhs, rhsExpression->getType(), &zero);
-    variableAddress = state->addressOfVariable(lhs);
+    
+    void *currentAddress = state->addressOfVariable(lhs);
+    if(currentAddress == NULL) {
+        throw "Line " + std::to_string(l) + ":\nUndeclared variable: " + lhs;
+    } else {
+        DataType existingType = state->typeOfVariable(lhs);
+        if(existingType != type) {
+            throw "Line " + std::to_string(l) + ":\nType error: can not assign type " + dataTypeDescription(type) + " to variable " + lhs + " of type " + dataTypeDescription(existingType);
+        }
+        
+        variableAddress = currentAddress;
+    }
 }
 
 bool lemonscript::SetCommand::Update() {

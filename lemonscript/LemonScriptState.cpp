@@ -28,6 +28,14 @@ void lemonscript::LemonScriptState::popScope() {
     symbolStack.popScope();
 }
 
+LemonScriptSymbolTableStack lemonscript::LemonScriptState::getScope() {
+    return symbolStack;
+}
+
+void lemonscript::LemonScriptState::restoreScope(const LemonScriptSymbolTableStack &scope) {
+    symbolStack = scope;
+}
+
 
 void lemonscript::LemonScriptState::declareAvailableCppCommand(const AvailableCppCommandDeclaration *decl) {
     std::string name = decl->functionName;

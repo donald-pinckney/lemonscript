@@ -20,9 +20,9 @@
 class lemonscript::Command {
 
 protected:
-    const LemonScriptState &savedState;
+    LemonScriptState *savedState;
     
-    Command(int l, LemonScriptState &s) : savedState(s), lineNumber(l) { };
+    Command(int l, LemonScriptState *s) : savedState(s), lineNumber(l) { };
     
     
 public:

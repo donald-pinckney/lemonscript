@@ -7,3 +7,10 @@
 //
 
 #include "AvailableCppCommandDeclaration.h"
+
+std::string dataTypeDescription(DataType t) {
+    if(t == INT) return "INT";
+    if(t == FLOAT) return "FLOAT";
+    if(t == BOOLEAN) return "BOOLEAN";
+    return "ERROR_TYPE";
+}

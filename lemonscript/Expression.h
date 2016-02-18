@@ -16,16 +16,28 @@
 
 #include "AvailableCppCommandDeclaration.h"
 #include "LemonScriptState.h"
+#include "ExpressionTree.h"
 
-class lemonscript::Expression {
+namespace lemonscript_expressions {
+
+class Expression {
+    
+    
     bool isConst;
     DataType t;
+    void *constValue;
+    
+    ExpressionTree *tree;
     
 public:
-    Expression(const std::string &str, const lemonscript::LemonScriptState *state);
+    Expression(const std::string &str, const lemonscript::LemonScriptState *state, int lineNum);
+    ~Expression();
+    
     bool isConstant();
     DataType getType();
     void getValue(void *p);
 };
+    
+}
 
 #endif /* Expression_hpp */

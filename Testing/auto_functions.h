@@ -11,17 +11,19 @@
 
 #include <stdio.h>
 
-bool DeployChokehold();
-bool DriveStraight_2(float speed, int distance);
-bool DriveStraight_4(float speed, float distance);
-bool DriveStraight_3(float speed, int distance, bool left);
+bool DeployChokehold(void *data);
+bool DriveStraight_2(void *data, float speed, int distance);
+bool DriveStraight_4(void *data, float speed, float distance);
+bool DriveStraight_3(void *data, float speed, int distance, bool left);
 
-bool CalibrateElevator();
-bool StopElevator();
-bool StopDriving();
-bool RaiseWings();
+bool CalibrateElevator(void *data);
+bool StopElevator(void *data);
+bool StopDriving(void *data);
+bool RaiseWings(void *data);
 
-bool PointTurn(float x, float y, bool highgear);
-bool Wait(float t);
+bool TestBool(void *data, bool willPrintMe, bool otherBool);
+
+bool PointTurn(void *data, float x, float y, bool highgear);
+bool Wait(void *data, float t);
 
 #endif /* auto_functions_h */
