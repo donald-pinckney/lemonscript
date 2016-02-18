@@ -7,14 +7,15 @@
 //
 
 #include "CompleteAnyCommand.h"
+
 #include "ParsingUtils.h"
 
-lemonscript::CompleteAnyCommand::CompleteAnyCommand(int l, const LemonScriptState &s, const std::string &commandString) : Command(l, s) {
+lemonscript::CompleteAnyCommand::CompleteAnyCommand(int l, LemonScriptState *s, const std::string &commandString) : Command(l, s) {
     const std::string anyDelim = "COMPLETE ANY:\n";
     size_t anyLoc = commandString.find(anyDelim);
     size_t endOfAnyLoc = anyLoc + anyDelim.length();
     
-    // Get the while and also bodies
+    // Get the any body
     std::string anyBody = commandString.substr(endOfAnyLoc);
     
     // Un-indent them before parsing
@@ -22,13 +23,22 @@ lemonscript::CompleteAnyCommand::CompleteAnyCommand(int l, const LemonScriptStat
     
     // Parse the bodies
 #warning TODO: Fix line number parameter.
+    
+    s->pushScope();
     anyCommands = new SimultaneousCommand(l, s, anyBody);
+    anyScope = s->getScope();
+    s->popScope();
 }
 
 
 bool lemonscript::CompleteAnyCommand::Update() {
     
+    LemonScriptSymbolTableStack currentScope = savedState->getScope();
+    
+    savedState->restoreScope(anyScope);
     anyCommands->Update();
+    
+    savedState->restoreScope(currentScope);
     
     return anyCommands->getState() == SimultaneousCommmandState::AnyComplete || anyCommands->getState() == SimultaneousCommmandState::AllComplete;
 }

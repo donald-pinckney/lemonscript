@@ -7,17 +7,20 @@
 //
 
 #include "CppCommand.h"
+#include "Expression.h"
 
 #include <strings.h>
-#include <algorithm>
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 #include "ParsingUtils.h"
 
 using namespace std;
+
+using namespace lemonscript_expressions;
 
 void printParamTypes(const vector<DataType> &types, ostream &stream) {
     
@@ -80,7 +83,11 @@ string camelCase(const string &s) {
     return string(resultTemp);
 }
 
-lemonscript::CppCommand::CppCommand(int l, const LemonScriptState &state, const std::string &commandStringInput) : Command(l, state) {
+
+
+inline bool IsSpace (char c) { return c == ' '; }
+
+lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::string &commandStringInput) : Command(l, state) {
     std::string commandString = ParsingUtils::removeCommentFromLine(commandStringInput);
     
     string functionName;
@@ -94,82 +101,82 @@ lemonscript::CppCommand::CppCommand(int l, const LemonScriptState &state, const 
     
     if(colonIndex != string::npos) { // There are arguments
         string argumentsString = commandString.substr(colonIndex + 1);
-        bool insideArgument = false;
-        bool skipToComma = false;
-        auto endIt = argumentsString.rbegin();
+        
+        // Remove whitespace in the string, make the parsing a bit easier
+        argumentsString.erase(std::remove_if(argumentsString.begin(), argumentsString.end(), IsSpace), argumentsString.end());
+        
+        auto endOfArgIt = argumentsString.rbegin();
+
         for (auto it = argumentsString.rbegin(); it != argumentsString.rend(); ++it) {
+            
             char c = *it;
-            if(skipToComma && (c != ',')) {
-                continue;
-            } else if (skipToComma && (c == ',')) {
-                skipToComma = false;
-                continue;
-            }
             
-            if((insideArgument == false) && isArgumentChar(c)) { // end of a new argument
-                endIt = it;
-                insideArgument = true;
-            }
-            
-            if(insideArgument && (isArgumentChar(c) == false)) { // start of argument
-                auto startIt = it;
-                string argumentString(endIt, startIt);
-                reverse(argumentString.begin(), argumentString.end());
-                
-                skipToComma = true;
-                insideArgument = false;
-                
-                if(argumentString == "false") {
-                    parameterTypes.push_back(BOOLEAN);
-                    arguments.push_back((void *)0);
-                    isArgumentLiteral.push_back(true);
-                } else if(argumentString == "true") {
-                    parameterTypes.push_back(BOOLEAN);
-                    arguments.push_back((void *)1);
-                    isArgumentLiteral.push_back(true);
-                } else {
-                    // try to parse argument as an int
-                    try {
-                        if(argumentString.find(".") != string::npos) {
-                            throw invalid_argument("ITS A FLOAT!");
-                        }
-                        int argVal = stoi(argumentString);
-                        parameterTypes.push_back(INT);
-                        arguments.push_back(reinterpret_cast<void *>(argVal));
-                        isArgumentLiteral.push_back(true);
-                        continue;
-                    } catch (invalid_argument &err) {
-                        
+            auto startOfArgIt = it;
+            auto newEndOfArgIt = it;
+            if(c == ':') { // Then we want to eat up the prefix to the argument
+                while (true) {
+                    char d = *it;
+                    if(d == ',' || it + 1 == argumentsString.rend()) {
+                        newEndOfArgIt = it + 1;
+                        break;
                     }
-                    
-                    
-                    // try to parse argument as a float
-                    try {
-                        float argVal = stof(argumentString);
-                        int tempArgVal = *((int *)&argVal);
-                        parameterTypes.push_back(FLOAT);
-                        arguments.push_back(reinterpret_cast<void *>(tempArgVal));
-                        isArgumentLiteral.push_back(true);
-                        continue;
-                    } catch (invalid_argument &err) {
-                        
-                    }
-                    
-                    // otherwise it must be a variable!
-                    void *address = state.addressOfVariable(argumentString);
-                    if(address == NULL) {
-                        throw "Line " + to_string(l) + ":\nUse of undeclared variable: " + argumentString;
-                        return;
-                    }
-
-                    DataType type = state.typeOfVariable(argumentString);
-
-                    parameterTypes.push_back(type);
-                    arguments.push_back(address);
-                    dependentVariables.push_back(address);
-                    isArgumentLiteral.push_back(false);
+                    ++it;
                 }
             }
+            
+            if(c == ':' || c == ',' || it + 1 == argumentsString.rend()) { // Then we reached the prefix before the argument expression
+                if(it == argumentsString.rend()) {
+                    //break;
+                }
+                
+                if(startOfArgIt + 1 == argumentsString.rend()) {
+                    startOfArgIt = argumentsString.rend();
+                }
+                
+                if(c == ',') {
+                    ++newEndOfArgIt;
+                }
+                
+                string argumentString(endOfArgIt, startOfArgIt);
+                reverse(argumentString.begin(), argumentString.end());
+                
+                cout << argumentString << endl;
+                
+                endOfArgIt = newEndOfArgIt;
+                
+                
+                lemonscript_expressions::Expression *expr = new lemonscript_expressions::Expression(argumentString, state, l);
+                DataType type = expr->getType();
+                
+                parameterTypes.push_back(type);
+
+                
+                if(expr->isConstant()) {
+                    if(type == INT) {
+                        int val;
+                        expr->getValue(&val);
+                        arguments.push_back(reinterpret_cast<void *>(val));
+                    } else if(type == FLOAT) {
+                        float val;
+                        expr->getValue(&val);
+                        int tempArgVal = *((int *)&val);
+                        arguments.push_back(reinterpret_cast<void *>(tempArgVal));
+                    } else {
+                        bool val;
+                        expr->getValue(&val);
+                        arguments.push_back((void *)val);
+                    }
+                    
+                    
+                    isArgumentLiteral.push_back(true);
+                } else {
+                    isArgumentLiteral.push_back(false);
+                    arguments.push_back(expr);
+
+                }
+            }
+            
+            
         }
         
         
@@ -184,7 +191,7 @@ lemonscript::CppCommand::CppCommand(int l, const LemonScriptState &state, const 
     
     parameterValues = arguments;
 
-    const AvailableCppCommandDeclaration *decl = state.lookupCommandDeclaration(functionName, parameterTypes);
+    const AvailableCppCommandDeclaration *decl = state->lookupCommandDeclaration(functionName, parameterTypes);
 
     if(decl == NULL) {
         ostringstream tempStream;

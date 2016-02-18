@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		500BE3961C66A35300DA8A98 /* LemonScriptSymbolTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 500BE3941C66A35300DA8A98 /* LemonScriptSymbolTable.cpp */; };
+		500BE3991C66A48F00DA8A98 /* LemonScriptSymbolTableStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 500BE3971C66A48F00DA8A98 /* LemonScriptSymbolTableStack.cpp */; };
+		500BE39C1C66CD6D00DA8A98 /* SetCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 500BE39A1C66CD6D00DA8A98 /* SetCommand.cpp */; };
+		500BE39E1C66D6E500DA8A98 /* test_set.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 500BE39D1C66D6D600DA8A98 /* test_set.auto */; };
+		500BE3A11C66FD8800DA8A98 /* Expression.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 500BE39F1C66FD8800DA8A98 /* Expression.cpp */; };
 		5012E6C21C4AE9BA00675B88 /* SequentialCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5012E6C01C4AE9BA00675B88 /* SequentialCommand.cpp */; };
 		501480651C2C01A800153984 /* CppCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501480631C2C01A800153984 /* CppCommand.cpp */; };
 		501480681C2C08B400153984 /* AvailableCppCommandDeclaration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501480661C2C08B400153984 /* AvailableCppCommandDeclaration.cpp */; };
 		5014806B1C2C0AA600153984 /* LemonScriptState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501480691C2C0AA600153984 /* LemonScriptState.cpp */; };
 		5014806D1C2C17D400153984 /* mainLemonScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014806C1C2C17D400153984 /* mainLemonScript.cpp */; };
+		501B81E01C75977400F9D42A /* test_scope.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501B81DF1C7596B200F9D42A /* test_scope.auto */; };
+		501B81E31C75987300F9D42A /* DefCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501B81E11C75987300F9D42A /* DefCommand.cpp */; };
 		50267ECD1C5566BF00B0EB28 /* twoBall2016.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50267ECC1C5566B300B0EB28 /* twoBall2016.auto */; };
 		507B18101C4B0D58001BA48D /* SimultaneousCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B180E1C4B0D58001BA48D /* SimultaneousCommand.cpp */; };
 		507B18131C4B0F62001BA48D /* ParsingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B18111C4B0F62001BA48D /* ParsingUtils.cpp */; };
@@ -20,6 +27,8 @@
 		508F60AE1C3493D4008ED63E /* LemonScriptTokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508F60AC1C3493D4008ED63E /* LemonScriptTokenizer.cpp */; };
 		508F60B01C34B0DC008ED63E /* CVR3Tote.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 508F60AF1C34B0CB008ED63E /* CVR3Tote.auto */; };
 		508F60B31C34BB4C008ED63E /* LemonScriptCompiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508F60B11C34BB4C008ED63E /* LemonScriptCompiler.cpp */; };
+		50A41B581C714CB900A312DC /* StringHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A41B541C714CB900A312DC /* StringHelp.cpp */; };
+		50A41B591C714CB900A312DC /* ExpressionTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A41B561C714CB900A312DC /* ExpressionTree.cpp */; };
 		50ACCCAE1C2D39F200964487 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACCCAD1C2D39F200964487 /* main.swift */; };
 		50C5A5FC1C2BFC0000028D0B /* deploy chokehold.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5A5F91C2BFBBD00028D0B /* deploy chokehold.auto */; };
 		50C5A5FE1C2BFC0400028D0B /* sequence.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5A5FB1C2BFBE900028D0B /* sequence.auto */; };
@@ -36,12 +45,14 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				500BE39E1C66D6E500DA8A98 /* test_set.auto in CopyFiles */,
 				50267ECD1C5566BF00B0EB28 /* twoBall2016.auto in CopyFiles */,
 				50C5A5FC1C2BFC0000028D0B /* deploy chokehold.auto in CopyFiles */,
 				50E535651C5D7EBE004F786D /* test_pointturn.auto in CopyFiles */,
 				50E535641C5D7EBC004F786D /* test.auto in CopyFiles */,
 				508F60B01C34B0DC008ED63E /* CVR3Tote.auto in CopyFiles */,
 				50C5A5FE1C2BFC0400028D0B /* sequence.auto in CopyFiles */,
+				501B81E01C75977400F9D42A /* test_scope.auto in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +68,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		500BE3941C66A35300DA8A98 /* LemonScriptSymbolTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LemonScriptSymbolTable.cpp; sourceTree = "<group>"; };
+		500BE3951C66A35300DA8A98 /* LemonScriptSymbolTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemonScriptSymbolTable.h; sourceTree = "<group>"; };
+		500BE3971C66A48F00DA8A98 /* LemonScriptSymbolTableStack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LemonScriptSymbolTableStack.cpp; sourceTree = "<group>"; };
+		500BE3981C66A48F00DA8A98 /* LemonScriptSymbolTableStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemonScriptSymbolTableStack.h; sourceTree = "<group>"; };
+		500BE39A1C66CD6D00DA8A98 /* SetCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SetCommand.cpp; sourceTree = "<group>"; };
+		500BE39B1C66CD6D00DA8A98 /* SetCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCommand.h; sourceTree = "<group>"; };
+		500BE39D1C66D6D600DA8A98 /* test_set.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_set.auto; sourceTree = "<group>"; };
+		500BE39F1C66FD8800DA8A98 /* Expression.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Expression.cpp; sourceTree = "<group>"; };
+		500BE3A01C66FD8800DA8A98 /* Expression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expression.h; sourceTree = "<group>"; };
 		5012E6C01C4AE9BA00675B88 /* SequentialCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SequentialCommand.cpp; sourceTree = "<group>"; };
 		5012E6C11C4AE9BA00675B88 /* SequentialCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SequentialCommand.h; sourceTree = "<group>"; };
 		501480631C2C01A800153984 /* CppCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CppCommand.cpp; sourceTree = "<group>"; };
@@ -66,6 +86,9 @@
 		501480691C2C0AA600153984 /* LemonScriptState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LemonScriptState.cpp; sourceTree = "<group>"; };
 		5014806A1C2C0AA600153984 /* LemonScriptState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemonScriptState.h; sourceTree = "<group>"; };
 		5014806C1C2C17D400153984 /* mainLemonScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mainLemonScript.cpp; sourceTree = "<group>"; };
+		501B81DF1C7596B200F9D42A /* test_scope.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_scope.auto; sourceTree = "<group>"; };
+		501B81E11C75987300F9D42A /* DefCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DefCommand.cpp; sourceTree = "<group>"; };
+		501B81E21C75987300F9D42A /* DefCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefCommand.h; sourceTree = "<group>"; };
 		50267ECC1C5566B300B0EB28 /* twoBall2016.auto */ = {isa = PBXFileReference; lastKnownFileType = text; path = twoBall2016.auto; sourceTree = "<group>"; };
 		503D6F021C4C30810007AC4C /* Command.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
 		50694F401C27D46600826B64 /* FiniteStateMachine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FiniteStateMachine; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +105,12 @@
 		508F60AF1C34B0CB008ED63E /* CVR3Tote.auto */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text; path = CVR3Tote.auto; sourceTree = "<group>"; tabWidth = 2; };
 		508F60B11C34BB4C008ED63E /* LemonScriptCompiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LemonScriptCompiler.cpp; sourceTree = "<group>"; };
 		508F60B21C34BB4C008ED63E /* LemonScriptCompiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemonScriptCompiler.h; sourceTree = "<group>"; };
+		50A41B521C714CB900A312DC /* ASTNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASTNode.h; sourceTree = "<group>"; };
+		50A41B531C714CB900A312DC /* Operator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Operator.h; sourceTree = "<group>"; };
+		50A41B541C714CB900A312DC /* StringHelp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringHelp.cpp; sourceTree = "<group>"; };
+		50A41B551C714CB900A312DC /* StringHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelp.h; sourceTree = "<group>"; };
+		50A41B561C714CB900A312DC /* ExpressionTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExpressionTree.cpp; sourceTree = "<group>"; };
+		50A41B571C714CB900A312DC /* ExpressionTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressionTree.h; sourceTree = "<group>"; };
 		50ACCCAB1C2D39F200964487 /* GenCppCalls */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GenCppCalls; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ACCCAD1C2D39F200964487 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		50C0CE581C4C56CC00C4C333 /* lemonscript.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lemonscript.h; sourceTree = "<group>"; };
@@ -124,6 +153,8 @@
 				50C5A5F91C2BFBBD00028D0B /* deploy chokehold.auto */,
 				508F60AF1C34B0CB008ED63E /* CVR3Tote.auto */,
 				50C5A5FB1C2BFBE900028D0B /* sequence.auto */,
+				500BE39D1C66D6D600DA8A98 /* test_set.auto */,
+				501B81DF1C7596B200F9D42A /* test_scope.auto */,
 				50C5A6001C2BFC4300028D0B /* auto_functions.h */,
 				50C5A5FF1C2BFC4300028D0B /* auto_functions.cpp */,
 			);
@@ -157,16 +188,36 @@
 				50F173C41C4B4D3500C870D9 /* Commands */,
 				501480671C2C08B400153984 /* AvailableCppCommandDeclaration.h */,
 				501480661C2C08B400153984 /* AvailableCppCommandDeclaration.cpp */,
-				5014806A1C2C0AA600153984 /* LemonScriptState.h */,
-				501480691C2C0AA600153984 /* LemonScriptState.cpp */,
 				508F60AD1C3493D4008ED63E /* LemonScriptTokenizer.h */,
 				508F60AC1C3493D4008ED63E /* LemonScriptTokenizer.cpp */,
 				508F60B21C34BB4C008ED63E /* LemonScriptCompiler.h */,
 				508F60B11C34BB4C008ED63E /* LemonScriptCompiler.cpp */,
 				507B18121C4B0F62001BA48D /* ParsingUtils.h */,
 				507B18111C4B0F62001BA48D /* ParsingUtils.cpp */,
+				5014806A1C2C0AA600153984 /* LemonScriptState.h */,
+				501480691C2C0AA600153984 /* LemonScriptState.cpp */,
+				500BE3981C66A48F00DA8A98 /* LemonScriptSymbolTableStack.h */,
+				500BE3971C66A48F00DA8A98 /* LemonScriptSymbolTableStack.cpp */,
+				500BE3951C66A35300DA8A98 /* LemonScriptSymbolTable.h */,
+				500BE3941C66A35300DA8A98 /* LemonScriptSymbolTable.cpp */,
+				50A41B511C714CAF00A312DC /* Expressions */,
 			);
 			path = lemonscript;
+			sourceTree = "<group>";
+		};
+		50A41B511C714CAF00A312DC /* Expressions */ = {
+			isa = PBXGroup;
+			children = (
+				500BE3A01C66FD8800DA8A98 /* Expression.h */,
+				500BE39F1C66FD8800DA8A98 /* Expression.cpp */,
+				50A41B571C714CB900A312DC /* ExpressionTree.h */,
+				50A41B561C714CB900A312DC /* ExpressionTree.cpp */,
+				50A41B521C714CB900A312DC /* ASTNode.h */,
+				50A41B531C714CB900A312DC /* Operator.h */,
+				50A41B551C714CB900A312DC /* StringHelp.h */,
+				50A41B541C714CB900A312DC /* StringHelp.cpp */,
+			);
+			name = Expressions;
 			sourceTree = "<group>";
 		};
 		50ACCCAC1C2D39F200964487 /* GenCppCalls */ = {
@@ -194,6 +245,10 @@
 				507B18141C4B4A47001BA48D /* CompleteAnyCommand.cpp */,
 				50F173C21C4B4C1100C870D9 /* CompleteAllCommand.h */,
 				50F173C11C4B4C1100C870D9 /* CompleteAllCommand.cpp */,
+				500BE39B1C66CD6D00DA8A98 /* SetCommand.h */,
+				500BE39A1C66CD6D00DA8A98 /* SetCommand.cpp */,
+				501B81E21C75987300F9D42A /* DefCommand.h */,
+				501B81E11C75987300F9D42A /* DefCommand.cpp */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -279,11 +334,18 @@
 				5012E6C21C4AE9BA00675B88 /* SequentialCommand.cpp in Sources */,
 				507B18131C4B0F62001BA48D /* ParsingUtils.cpp in Sources */,
 				50F173C31C4B4C1100C870D9 /* CompleteAllCommand.cpp in Sources */,
+				500BE3991C66A48F00DA8A98 /* LemonScriptSymbolTableStack.cpp in Sources */,
+				500BE3961C66A35300DA8A98 /* LemonScriptSymbolTable.cpp in Sources */,
+				501B81E31C75987300F9D42A /* DefCommand.cpp in Sources */,
+				50A41B591C714CB900A312DC /* ExpressionTree.cpp in Sources */,
 				50C5A6011C2BFC4300028D0B /* auto_functions.cpp in Sources */,
+				500BE3A11C66FD8800DA8A98 /* Expression.cpp in Sources */,
 				5014806B1C2C0AA600153984 /* LemonScriptState.cpp in Sources */,
 				508F60B31C34BB4C008ED63E /* LemonScriptCompiler.cpp in Sources */,
+				50A41B581C714CB900A312DC /* StringHelp.cpp in Sources */,
 				501480651C2C01A800153984 /* CppCommand.cpp in Sources */,
 				507B18161C4B4A47001BA48D /* CompleteAnyCommand.cpp in Sources */,
+				500BE39C1C66CD6D00DA8A98 /* SetCommand.cpp in Sources */,
 				508F60AE1C3493D4008ED63E /* LemonScriptTokenizer.cpp in Sources */,
 				5014806D1C2C17D400153984 /* mainLemonScript.cpp in Sources */,
 				508F60AB1C3492E2008ED63E /* WhileAlsoCommand.cpp in Sources */,

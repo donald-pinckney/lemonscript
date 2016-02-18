@@ -1,9 +1,9 @@
-point turn: angle = 180.0, speed = 200.5, highgear = true
-point turn: angle = -180.0, speed = 200.5, highgear = false
+point turn: angle: 180.0, speed: 200.5, highgear: true
+point turn: angle: -180.0, speed: 200.5, highgear: false
 
 // Waiting
-wait: seconds = 5.0
+wait: seconds: 5.0
 
-point turn: angle = 90.0, speed = 200.5, highgear = false
-point turn: angle = -90.0, speed = 200.5, highgear = true
+point turn: angle: 90.0, speed: 200.5, highgear: false
+point turn: angle: -90.0, speed: 200.5, highgear: true
 

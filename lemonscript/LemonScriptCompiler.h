@@ -37,7 +37,7 @@ public:
         }
         
         // THIS DOES ALL THE PARSING / COMPILATION
-        rootSequence = new SequentialCommand(1, *state, ParsingUtils::readWholeStream(toParse));
+        rootSequence = new SequentialCommand(1, state, ParsingUtils::readWholeStream(toParse));
     }
     
     bool PeriodicUpdate() {

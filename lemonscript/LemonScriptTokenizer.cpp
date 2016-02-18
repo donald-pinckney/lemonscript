@@ -48,8 +48,10 @@ tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
     if(beginsWith(firstLine, "WHILE:")) {
         isScoping = true;
         type = WhileAlsoToken;
-    } else if(beginsWith(firstLine, "LET ")) {
-        type = LetToken;
+    } else if(beginsWith(firstLine, "SET ")) {
+        type = SetToken;
+    } else if(beginsWith(firstLine, "DEF ")) {
+        type = DefToken;
     } else if(beginsWith(firstLine, "COMPLETE ALL:")) {
         isScoping = true;
         type = CompleteAllToken;
