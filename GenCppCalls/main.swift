@@ -61,13 +61,16 @@ for numParams in 0...5 {
 
         let typeName = "f_" + underscoreList
 
-        typedefs += "typedef bool(*\(typeName))(void *,\(commaList));\n"
         
         if numParams == 0 {
+            typedefs += "typedef bool(*\(typeName))(void *);\n"
             body += "\tif(vector<DataType>{\(COMMAList)} == params) {\n"
         } else {
+            typedefs += "typedef bool(*\(typeName))(void *,\(commaList));\n"
             body += "\telse if(vector<DataType>{\(COMMAList)} == params) {\n"
         }
+        
+        
         body += "\t\t\(typeName) tempFunc = (\(typeName))func;\n"
         for i in 0..<params.count {
             let name = params[i].cppName()
@@ -76,7 +79,11 @@ for numParams in 0...5 {
             body += "\t\tif(isArgumentLiteral[\(i)]) {\n\t\t\tp\(i) = *((\(name) *)&parameterValues[\(i)]);\n\t\t} else {\n\t\t\t((Expression *)parameterValues[\(i)])->getValue(&p\(i));\n\t\t}\n"
         }
         
-        body += "\t\tretVal = tempFunc(data, "
+        if numParams == 0 {
+            body += "\t\tretVal = tempFunc(data"
+        } else {
+            body += "\t\tretVal = tempFunc(data, "
+        }
         
         for i in 0..<params.count {
             
@@ -93,7 +100,7 @@ for numParams in 0...5 {
         
         
         // Next parameter combination
-        for incrementIndex in ReverseCollection(0..<numParams) {
+        for incrementIndex in (0..<numParams).reverse() {
             if let next = params[incrementIndex].successor() {
                 params[incrementIndex] = next
                 break
@@ -125,7 +132,7 @@ for numParams in 0...5 {
 
 print("#ifndef CppCommand_GENERATED_h\n#define CppCommand_GENERATED_h")
 print(typedefs)
-print("std::ofstream cppLog(\"lemonscript_cpp_calls.log\");\nbool CppCommand::Update() {\n\tvoid *data = savedState.userData;void *func = declaration->func;\n\tvector<DataType> params = declaration->parameters;\n\tbool retVal;\n\tcppLog << \"Calling C function: \" << declaration->functionName << std::endl;\n")
+print("std::ofstream cppLog(\"lemonscript_cpp_calls.log\");\nbool lemonscript::CppCommand::Update() {\n\tvoid *data = savedState->userData;void *func = declaration->func;\n\tvector<DataType> params = declaration->parameters;\n\tbool retVal;\n\tcppLog << \"Calling C function: \" << declaration->functionName << std::endl;\n")
 print(body)
 print("\telse {\n\t\tthrow \"Too many arguments!\";\n\t}\n\treturn retVal;\n}")
 print("#endif /* CppCommand_GENERATED_h */")

@@ -1,6 +1,5 @@
 #ifndef CppCommand_GENERATED_h
 #define CppCommand_GENERATED_h
-
 typedef bool(*f_)(void *);
 typedef bool(*f_int)(void *,int);
 typedef bool(*f_float)(void *,float);
@@ -2880,7 +2879,7 @@ bool lemonscript::CppCommand::Update() {
 			p1 = *((int *)&parameterValues[1]);
 		} else {
 			((Expression *)parameterValues[1])->getValue(&p1);
-			}
+		}
 		float p2;
 		if(isArgumentLiteral[2]) {
 			p2 = *((float *)&parameterValues[2]);
@@ -4831,13 +4830,37 @@ bool lemonscript::CppCommand::Update() {
 
 	else if(vector<DataType>{INT, FLOAT, FLOAT, INT, FLOAT} == params) {
 		f_int_float_float_int_float tempFunc = (f_int_float_float_int_float)func;
-		retVal = tempFunc(data,
-			isArgumentLiteral[0] ? *((int *)&parameterValues[0]) : *((int *)parameterValues[0]),
-			isArgumentLiteral[1] ? *((float *)&parameterValues[1]) : *((float *)parameterValues[1]),
-			isArgumentLiteral[2] ? *((float *)&parameterValues[2]) : *((float *)parameterValues[2]),
-			isArgumentLiteral[3] ? *((int *)&parameterValues[3]) : *((int *)parameterValues[3]),
-			isArgumentLiteral[4] ? *((float *)&parameterValues[4]) : *((float *)parameterValues[4])
-			);
+		int p0;
+		if(isArgumentLiteral[0]) {
+			p0 = *((int *)&parameterValues[0]);
+		} else {
+			((Expression *)parameterValues[0])->getValue(&p0);
+		}
+		float p1;
+		if(isArgumentLiteral[1]) {
+			p1 = *((float *)&parameterValues[1]);
+		} else {
+			((Expression *)parameterValues[1])->getValue(&p1);
+		}
+		float p2;
+		if(isArgumentLiteral[2]) {
+			p2 = *((float *)&parameterValues[2]);
+		} else {
+			((Expression *)parameterValues[2])->getValue(&p2);
+		}
+		int p3;
+		if(isArgumentLiteral[3]) {
+			p3 = *((int *)&parameterValues[3]);
+		} else {
+			((Expression *)parameterValues[3])->getValue(&p3);
+		}
+		float p4;
+		if(isArgumentLiteral[4]) {
+			p4 = *((float *)&parameterValues[4]);
+		} else {
+			((Expression *)parameterValues[4])->getValue(&p4);
+		}
+		retVal = tempFunc(data, p0, p1, p2, p3, p4);
 	}
 
 	else if(vector<DataType>{INT, FLOAT, FLOAT, INT, BOOLEAN} == params) {
@@ -5982,7 +6005,7 @@ bool lemonscript::CppCommand::Update() {
 		}
 		bool p3;
 		if(isArgumentLiteral[3]) {
-				p3 = *((bool *)&parameterValues[3]);
+			p3 = *((bool *)&parameterValues[3]);
 		} else {
 			((Expression *)parameterValues[3])->getValue(&p3);
 		}
@@ -9082,7 +9105,7 @@ bool lemonscript::CppCommand::Update() {
 			p0 = *((float *)&parameterValues[0]);
 		} else {
 			((Expression *)parameterValues[0])->getValue(&p0);
-			}
+		}
 		bool p1;
 		if(isArgumentLiteral[1]) {
 			p1 = *((bool *)&parameterValues[1]);
@@ -10512,13 +10535,37 @@ bool lemonscript::CppCommand::Update() {
 
 	else if(vector<DataType>{BOOLEAN, FLOAT, FLOAT, INT, BOOLEAN} == params) {
 		f_bool_float_float_int_bool tempFunc = (f_bool_float_float_int_bool)func;
-		retVal = tempFunc(data,
-			isArgumentLiteral[0] ? *((bool *)&parameterValues[0]) : *((bool *)parameterValues[0]),
-			isArgumentLiteral[1] ? *((float *)&parameterValues[1]) : *((float *)parameterValues[1]),
-			isArgumentLiteral[2] ? *((float *)&parameterValues[2]) : *((float *)parameterValues[2]),
-			isArgumentLiteral[3] ? *((int *)&parameterValues[3]) : *((int *)parameterValues[3]),
-			isArgumentLiteral[4] ? *((bool *)&parameterValues[4]) : *((bool *)parameterValues[4])
-			);
+		bool p0;
+		if(isArgumentLiteral[0]) {
+			p0 = *((bool *)&parameterValues[0]);
+		} else {
+			((Expression *)parameterValues[0])->getValue(&p0);
+		}
+		float p1;
+		if(isArgumentLiteral[1]) {
+			p1 = *((float *)&parameterValues[1]);
+		} else {
+			((Expression *)parameterValues[1])->getValue(&p1);
+		}
+		float p2;
+		if(isArgumentLiteral[2]) {
+			p2 = *((float *)&parameterValues[2]);
+		} else {
+			((Expression *)parameterValues[2])->getValue(&p2);
+		}
+		int p3;
+		if(isArgumentLiteral[3]) {
+			p3 = *((int *)&parameterValues[3]);
+		} else {
+			((Expression *)parameterValues[3])->getValue(&p3);
+		}
+		bool p4;
+		if(isArgumentLiteral[4]) {
+			p4 = *((bool *)&parameterValues[4]);
+		} else {
+			((Expression *)parameterValues[4])->getValue(&p4);
+		}
+		retVal = tempFunc(data, p0, p1, p2, p3, p4);
 	}
 
 	else if(vector<DataType>{BOOLEAN, FLOAT, FLOAT, FLOAT, INT} == params) {
