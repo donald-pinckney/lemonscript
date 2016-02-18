@@ -24,6 +24,7 @@ public:
     SequentialCommand(int l, LemonScriptState *s, const std::string &sequenceString);
 
     bool Update();
+    int getSequenceCount() { return sequence.size(); }
 };
 
 #endif /* SequentialCommand_hpp */

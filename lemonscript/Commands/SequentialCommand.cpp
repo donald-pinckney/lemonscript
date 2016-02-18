@@ -58,6 +58,10 @@ lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state
 }
 
 bool lemonscript::SequentialCommand::Update() {
+    if(sequence.size() == 0) {
+        return true;
+    }
+    
     Command *currentCommand = sequence[currentIndex];
     bool isDone = currentCommand->Update();
     

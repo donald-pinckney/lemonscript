@@ -19,6 +19,7 @@
 		5014806D1C2C17D400153984 /* mainLemonScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014806C1C2C17D400153984 /* mainLemonScript.cpp */; };
 		501B81E01C75977400F9D42A /* test_scope.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501B81DF1C7596B200F9D42A /* test_scope.auto */; };
 		501B81E31C75987300F9D42A /* DefCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501B81E11C75987300F9D42A /* DefCommand.cpp */; };
+		501B81E51C75C3DC00F9D42A /* test_empty.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501B81E41C75C3C700F9D42A /* test_empty.auto */; };
 		50267ECD1C5566BF00B0EB28 /* twoBall2016.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50267ECC1C5566B300B0EB28 /* twoBall2016.auto */; };
 		507B18101C4B0D58001BA48D /* SimultaneousCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B180E1C4B0D58001BA48D /* SimultaneousCommand.cpp */; };
 		507B18131C4B0F62001BA48D /* ParsingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B18111C4B0F62001BA48D /* ParsingUtils.cpp */; };
@@ -45,6 +46,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				501B81E51C75C3DC00F9D42A /* test_empty.auto in CopyFiles */,
 				500BE39E1C66D6E500DA8A98 /* test_set.auto in CopyFiles */,
 				50267ECD1C5566BF00B0EB28 /* twoBall2016.auto in CopyFiles */,
 				50C5A5FC1C2BFC0000028D0B /* deploy chokehold.auto in CopyFiles */,
@@ -89,6 +91,7 @@
 		501B81DF1C7596B200F9D42A /* test_scope.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_scope.auto; sourceTree = "<group>"; };
 		501B81E11C75987300F9D42A /* DefCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DefCommand.cpp; sourceTree = "<group>"; };
 		501B81E21C75987300F9D42A /* DefCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefCommand.h; sourceTree = "<group>"; };
+		501B81E41C75C3C700F9D42A /* test_empty.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_empty.auto; sourceTree = "<group>"; };
 		50267ECC1C5566B300B0EB28 /* twoBall2016.auto */ = {isa = PBXFileReference; lastKnownFileType = text; path = twoBall2016.auto; sourceTree = "<group>"; };
 		503D6F021C4C30810007AC4C /* Command.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
 		50694F401C27D46600826B64 /* FiniteStateMachine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FiniteStateMachine; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +160,7 @@
 				501B81DF1C7596B200F9D42A /* test_scope.auto */,
 				50C5A6001C2BFC4300028D0B /* auto_functions.h */,
 				50C5A5FF1C2BFC4300028D0B /* auto_functions.cpp */,
+				501B81E41C75C3C700F9D42A /* test_empty.auto */,
 			);
 			name = Testing;
 			path = ../Testing;

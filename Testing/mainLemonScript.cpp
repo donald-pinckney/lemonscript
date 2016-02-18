@@ -45,7 +45,7 @@ int main() {
         
         std::vector<const lemonscript::AvailableCppCommandDeclaration *> commands = {driveStraight3, driveStraight2, driveStraight4, deployChokehold, calibrateElevator, stopElevator, stopDriving, raiseWings, pointTurn, wait, testBool};
         
-        std::ifstream ifs("test_scope.auto");
+        std::ifstream ifs("test_empty.auto");
         lemonscript::LemonScriptCompiler compiler(ifs, commands, &state);
         
         while (true) {
