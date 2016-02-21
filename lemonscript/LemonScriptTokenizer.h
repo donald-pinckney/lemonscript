@@ -37,8 +37,9 @@ public:
     LemonScriptTokenizer(const std::string &toParse) {
         input = new std::istringstream(toParse);
     }
-    LemonScriptTokenizer(std::istream *toParse) {
-        input = toParse;
+    
+    ~LemonScriptTokenizer() {
+        delete input;
     }
 
     std::tuple<std::string, TokenType, int> nextToken();

@@ -57,6 +57,12 @@ lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state
     }
 }
 
+lemonscript::SequentialCommand::~SequentialCommand() {
+    for (auto it = sequence.begin(); it != sequence.end(); ++it) {
+        delete *it;
+    }
+}
+
 bool lemonscript::SequentialCommand::Update() {
     if(sequence.size() == 0) {
         return true;

@@ -24,6 +24,7 @@ class lemonscript::CompleteAnyCommand : public Command {
     
 public:
     CompleteAnyCommand(int l, LemonScriptState *s, const std::string &commandString);
+    virtual ~CompleteAnyCommand();
     
     bool Update();
     

@@ -41,6 +41,10 @@ lemonscript::DefCommand::DefCommand(int l, LemonScriptState *s, const std::strin
     variableAddress = state->addressOfVariable(lhs);
 }
 
+lemonscript::DefCommand::~DefCommand() {
+    delete rhsExpression;
+}
+
 bool lemonscript::DefCommand::Update() {
     rhsExpression->getValue(variableAddress);
     return true;

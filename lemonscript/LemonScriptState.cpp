@@ -11,6 +11,9 @@
 
 #include "LemonScriptState.h"
 
+lemonscript::LemonScriptState::~LemonScriptState() {
+    LemonScriptSymbolTable::freeVariables();
+}
 
 void lemonscript::LemonScriptState::declareGlobalVariable(int line, const std::string &name, DataType type, void *pointerToValue) {
     symbolStack.declareGlobalVariable(line, name, type, pointerToValue);

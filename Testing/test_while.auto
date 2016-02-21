@@ -1,0 +1,5 @@
+WHILE:
+  wait: 10
+ALSO:
+  //wait: 4
+  //wait: 3

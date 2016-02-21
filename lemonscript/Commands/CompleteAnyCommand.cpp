@@ -30,6 +30,9 @@ lemonscript::CompleteAnyCommand::CompleteAnyCommand(int l, LemonScriptState *s, 
     s->popScope();
 }
 
+lemonscript::CompleteAnyCommand::~CompleteAnyCommand() {
+    delete anyCommands;
+}
 
 bool lemonscript::CompleteAnyCommand::Update() {
     

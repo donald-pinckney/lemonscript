@@ -54,6 +54,11 @@ lemonscript::SimultaneousCommand::SimultaneousCommand(int l, LemonScriptState *s
     doneCommands = std::vector<bool>(commands.size(), false);
 }
 
+lemonscript::SimultaneousCommand::~SimultaneousCommand() {
+    for (auto it = commands.begin(); it != commands.end(); ++it) {
+        delete *it;
+    }
+}
 
 bool lemonscript::SimultaneousCommand::Update() {
     return Update(false);

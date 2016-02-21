@@ -29,6 +29,7 @@ class lemonscript::DefCommand : public lemonscript::Command {
     
 public:
     DefCommand(int l, LemonScriptState *s, const std::string &commandString);
+    virtual ~DefCommand();
     
     bool Update();
     

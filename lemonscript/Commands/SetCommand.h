@@ -27,6 +27,7 @@ class lemonscript::SetCommand : public lemonscript::Command {
     
 public:
     SetCommand(int l, LemonScriptState *s, const std::string &commandString);
+    virtual ~SetCommand();
     
     bool Update();
     

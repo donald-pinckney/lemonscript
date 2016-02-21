@@ -30,6 +30,10 @@ lemonscript::CompleteAllCommand::CompleteAllCommand(int l, LemonScriptState *s, 
     s->popScope();
 }
 
+lemonscript::CompleteAllCommand::~CompleteAllCommand() {
+    delete allCommands;
+}
+
 bool lemonscript::CompleteAllCommand::Update() {
     
     LemonScriptSymbolTableStack currentScope = savedState->getScope();

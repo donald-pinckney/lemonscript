@@ -50,6 +50,10 @@ lemonscript::SetCommand::SetCommand(int l, LemonScriptState *s, const std::strin
     }
 }
 
+lemonscript::SetCommand::~SetCommand() {
+    delete rhsExpression;
+}
+
 bool lemonscript::SetCommand::Update() {
     rhsExpression->getValue(variableAddress);
     return true;

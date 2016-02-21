@@ -20,6 +20,8 @@ class LemonScriptSymbolTable {
     std::map<std::string, void *> variableAddresses;
     std::map<std::string, DataType> variableTypes;
     
+    static std::vector<void *> variableAddressHeap;
+    
 public:
     // Declaration function
     void declareVariable(int line, const std::string &name, DataType type, void *pointerToValue);
@@ -31,6 +33,8 @@ public:
     
     // Undefined what is returned if variableName does not exist
     DataType typeOfVariable(const std::string &variableName) const;
+    
+    static void freeVariables();
 };
 
 #endif /* LemonScriptSymbolTable_hpp */

@@ -169,18 +169,16 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
                     
                     
                     isArgumentLiteral.push_back(true);
+                    
+                    delete expr;
                 } else {
                     isArgumentLiteral.push_back(false);
                     arguments.push_back(expr);
-
                 }
             }
             
             
         }
-        
-        
-
         
     }
     
@@ -202,7 +200,15 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
     
     declaration = decl;
     
-    
+}
+
+lemonscript::CppCommand::~CppCommand() {
+    for (int i = 0; i < parameterValues.size(); i++) {
+        if(isArgumentLiteral[i] == false) {
+            lemonscript_expressions::Expression *expr = (lemonscript_expressions::Expression *)parameterValues[i];
+            delete expr;
+        }
+    }
 }
 
 

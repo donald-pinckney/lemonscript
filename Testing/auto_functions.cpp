@@ -102,39 +102,15 @@ bool TestBool(void *data, bool willPrintMe, bool otherBool) {
 }
 
 
-double startTime = -1;
-bool Wait(void *data, float t) {
-    printf("Wait: %f\n", t);
-
-    if(startTime < 0) {
-        time_t timer;
-        struct tm y2k = {0};
-        
-        y2k.tm_hour = 0;   y2k.tm_min = 0; y2k.tm_sec = 0;
-        y2k.tm_year = 100; y2k.tm_mon = 0; y2k.tm_mday = 1;
-        
-        time(&timer);  /* get current time; same as: timer = time(NULL)  */
-        
-        startTime = difftime(timer,mktime(&y2k));
-        
-        
-    }
+int startIt = 0;
+bool Wait(void *data, int t) {
+    printf("Wait: %d\n", t);
     
-    
-    time_t timer;
-    struct tm y2k = {0};
-    
-    y2k.tm_hour = 0;   y2k.tm_min = 0; y2k.tm_sec = 0;
-    y2k.tm_year = 100; y2k.tm_mon = 0; y2k.tm_mday = 1;
-    
-    time(&timer);  /* get current time; same as: timer = time(NULL)  */
-    
-    double currTime = difftime(timer,mktime(&y2k));
-    
-    
-    if(currTime >= startTime + t) {
-        startTime = -1;
+    if(startIt >= t) {
+        startIt = 0;
         return true;
     }
+    startIt++;
+    
     return false;
 }

@@ -31,6 +31,7 @@ class lemonscript::SimultaneousCommand : Command {
 public:
     
     SimultaneousCommand(int l, LemonScriptState *s, const std::string &sequenceString);
+    virtual ~SimultaneousCommand();
     
     bool Update();
     bool Update(bool forceUpdates);

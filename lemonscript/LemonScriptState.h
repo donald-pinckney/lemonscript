@@ -25,6 +25,7 @@ class lemonscript::LemonScriptState {
     std::map<std::string, std::vector<const AvailableCppCommandDeclaration *> > availableCppCommands;
     
 public:
+    ~LemonScriptState();
     
     void *userData = NULL;
     

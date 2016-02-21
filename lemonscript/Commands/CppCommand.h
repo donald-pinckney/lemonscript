@@ -25,6 +25,7 @@ class lemonscript::CppCommand : public Command {
     
 public:
     CppCommand(int l, LemonScriptState *s, const std::string &commandString);
+    virtual ~CppCommand();
     
     bool Update();
     

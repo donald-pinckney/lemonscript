@@ -9,6 +9,9 @@
 #include "LemonScriptSymbolTable.h"
 
 #include <stdlib.h>
+#include <iostream>
+
+std::vector<void *> LemonScriptSymbolTable::variableAddressHeap;
 
 void LemonScriptSymbolTable::declareVariable(int line, const std::string &name, DataType type, void *pointerToValue) {
     if(variableAddresses.find(name) != variableAddresses.end()) {
@@ -38,6 +41,8 @@ void LemonScriptSymbolTable::declareVariable(int line, const std::string &name, 
     
     variableAddresses[name] = address;
     variableTypes[name] = type;
+    
+    variableAddressHeap.push_back(address);
 }
 
 
@@ -58,5 +63,14 @@ DataType LemonScriptSymbolTable::typeOfVariable(const std::string &variableName)
     } else {
         return INT;
     }
+}
 
+void LemonScriptSymbolTable::freeVariables() {
+    
+    for (int i = 0; i < variableAddressHeap.size(); i++) {
+        void *varAddress = variableAddressHeap[i];
+        free(varAddress);
+    }
+    
+    variableAddressHeap.clear();
 }

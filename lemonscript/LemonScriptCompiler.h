@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <sstream>
 #include <vector>
+#include <iostream>
 
 #include "LemonScriptTokenizer.h"
 #include "AvailableCppCommandDeclaration.h"
@@ -23,21 +24,24 @@
 
 class lemonscript::LemonScriptCompiler {
     
-    LemonScriptState *state;
+    LemonScriptState state;
     SequentialCommand *rootSequence;
     bool isDone = false;
     
 public:
     
-    LemonScriptCompiler(std::istream &toParse, const std::vector<const AvailableCppCommandDeclaration *> commands, LemonScriptState *stateParam) : state(stateParam) {
+    LemonScriptCompiler(std::istream &toParse, const std::vector<const AvailableCppCommandDeclaration *> commands, const LemonScriptState &stateParam) : state(stateParam) {
+        
+        toParse.clear();
+        toParse.seekg(0, std::ios::beg);
         
         // Declare available commands
         for (auto it = commands.begin(); it != commands.end(); ++it) {
-            state->declareAvailableCppCommand(*it);
+            state.declareAvailableCppCommand(*it);
         }
         
         // THIS DOES ALL THE PARSING / COMPILATION
-        rootSequence = new SequentialCommand(1, state, ParsingUtils::readWholeStream(toParse));
+        rootSequence = new SequentialCommand(1, &state, ParsingUtils::readWholeStream(toParse));
         
         if(rootSequence->getSequenceCount() == 0) {
             printf("Warning: empty file provided to Lemon Script\n");
@@ -49,6 +53,10 @@ public:
             isDone = rootSequence->Update();
         }
         return isDone;
+    }
+  
+    ~LemonScriptCompiler() {
+        delete rootSequence;
     }
 };
 

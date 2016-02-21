@@ -39,9 +39,14 @@ lemonscript::WhileAlsoCommand::WhileAlsoCommand(int l, LemonScriptState *s, cons
     
     
     s->pushScope();
-    alsoCommands = new SimultaneousCommand(l, s, alsoBody);
+    alsoCommands = new SequentialCommand(l, s, alsoBody);
     alsoScope = s->getScope();
     s->popScope();
+}
+
+lemonscript::WhileAlsoCommand::~WhileAlsoCommand() {
+    delete whileCondition;
+    delete alsoCommands;
 }
 
 
@@ -53,7 +58,7 @@ bool lemonscript::WhileAlsoCommand::Update() {
     bool conditionDone = whileCondition->Update();
     
     savedState->restoreScope(alsoScope);
-    alsoCommands->Update(true);
+    alsoCommands->Update();
     
     savedState->restoreScope(currentScope);
     

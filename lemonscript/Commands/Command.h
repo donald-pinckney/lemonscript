@@ -19,19 +19,15 @@
 
 class lemonscript::Command {
 
-protected:
+public:
     LemonScriptState *savedState;
     
     Command(int l, LemonScriptState *s) : savedState(s), lineNumber(l) { };
+    virtual ~Command() { }
     
-    
-public:
     int lineNumber;
-//    std::vector<void *> dependentVariables; // Subclasses are responsible for initializing this variable!
-    
     
     virtual bool Update() = 0;
-
 };
 
 #endif /* Command_hpp */

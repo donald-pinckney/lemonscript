@@ -22,7 +22,6 @@ namespace lemonscript_expressions {
 
 class Expression {
     
-    
     bool isConst;
     DataType t;
     void *constValue;

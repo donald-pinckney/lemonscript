@@ -25,10 +25,7 @@ int main() {
     lemonscript::LemonScriptState state;
     
     
-    try {
-        int val = 1125;
-        state.declareGlobalVariable(1, "SECOND_RC_ENCODER", INT, &val);
-                
+    try {        
         
         lemonscript::AvailableCppCommandDeclaration *driveStraight3 = new lemonscript::AvailableCppCommandDeclaration((void *)DriveStraight_3, "DriveStraight", {FLOAT, INT, BOOLEAN});
         lemonscript::AvailableCppCommandDeclaration *driveStraight2 = new lemonscript::AvailableCppCommandDeclaration((void *)DriveStraight_2, "DriveStraight", {FLOAT, INT});
@@ -39,20 +36,31 @@ int main() {
         lemonscript::AvailableCppCommandDeclaration *stopDriving = new lemonscript::AvailableCppCommandDeclaration((void *)StopDriving, "StopDriving", {});
         lemonscript::AvailableCppCommandDeclaration *raiseWings = new lemonscript::AvailableCppCommandDeclaration((void *)RaiseWings, "RaiseWings", {});
         lemonscript::AvailableCppCommandDeclaration *pointTurn = new lemonscript::AvailableCppCommandDeclaration((void *)RaiseWings, "PointTurn", {FLOAT, FLOAT, BOOLEAN});
-        lemonscript::AvailableCppCommandDeclaration *wait = new lemonscript::AvailableCppCommandDeclaration((void *)Wait, "Wait", {FLOAT});
+        lemonscript::AvailableCppCommandDeclaration *wait = new lemonscript::AvailableCppCommandDeclaration((void *)Wait, "Wait", {INT});
         lemonscript::AvailableCppCommandDeclaration *testBool = new lemonscript::AvailableCppCommandDeclaration((void *)TestBool, "TestBool", {BOOLEAN, BOOLEAN});
 
         
         std::vector<const lemonscript::AvailableCppCommandDeclaration *> commands = {driveStraight3, driveStraight2, driveStraight4, deployChokehold, calibrateElevator, stopElevator, stopDriving, raiseWings, pointTurn, wait, testBool};
         
-        std::ifstream ifs("test_empty.auto");
-        lemonscript::LemonScriptCompiler compiler(ifs, commands, &state);
+        std::ifstream ifs("test_while.auto");
+        lemonscript::LemonScriptCompiler *compiler = new lemonscript::LemonScriptCompiler(ifs, commands, state);
         
         while (true) {
-            bool isDone = compiler.PeriodicUpdate();
+            bool isDone = compiler->PeriodicUpdate();
             if(isDone) { break; }
         }
         
+        delete compiler;
+        
+        
+        compiler = new lemonscript::LemonScriptCompiler(ifs, commands, state);
+        
+        while (true) {
+            bool isDone = compiler->PeriodicUpdate();
+            if(isDone) { break; }
+        }
+        
+        delete compiler;
         
     } catch (std::string error) {
         std::cerr << error << std::endl;

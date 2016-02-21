@@ -22,9 +22,10 @@ class lemonscript::SequentialCommand : public Command {
     int currentIndex = 0;
 public:
     SequentialCommand(int l, LemonScriptState *s, const std::string &sequenceString);
+    virtual ~SequentialCommand();
 
     bool Update();
-    int getSequenceCount() { return sequence.size(); }
+    size_t getSequenceCount() { return sequence.size(); }
 };
 
 #endif /* SequentialCommand_hpp */
