@@ -44,6 +44,7 @@ public:
     
     
     void declareAvailableCppCommand(const AvailableCppCommandDeclaration *decl);
+    void declareAvailableCppCommands(const std::vector<const AvailableCppCommandDeclaration *> decls);
     
     // Lookup functions
     void *addressOfVariable(const std::string &variableName) const;
@@ -52,7 +53,6 @@ public:
     DataType typeOfVariable(const std::string &variableName) const;
     
     const AvailableCppCommandDeclaration *lookupCommandDeclaration(const std::string &name, const std::vector<DataType> &parameterTypes) const;
-    
 };
 
 #endif /* LemonScriptState_hpp */

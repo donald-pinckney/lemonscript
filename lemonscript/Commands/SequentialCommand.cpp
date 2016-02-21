@@ -15,6 +15,7 @@
 #include "CompleteAllCommand.h"
 #include "SetCommand.h"
 #include "DefCommand.h"
+#include "ImportCommand.h"
 
 #include <stdio.h>
 
@@ -51,6 +52,8 @@ lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state
             command = new SetCommand(lineNum, state, token);
         } else if(type == DefToken) {
             command = new DefCommand(lineNum, state, token);
+        } else if(type == ImportToken) {
+            command = new ImportCommand(lineNum, state, token);
         }
         
         sequence.push_back(command);

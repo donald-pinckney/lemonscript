@@ -1,0 +1,9 @@
+IMPORT constants.auto
+
+SET x = 5.2
+
+test bool:t == y, other bool: x == y
+test bool: t == x, other bool:x == y
+test bool: t == x, x == y
+test bool:t == x,x == y
+wait: time: 4

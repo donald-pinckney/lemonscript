@@ -37,7 +37,7 @@ public:
     void *addressOfVariable(const std::string &variableName) const;
     
     // Undefined what is returned if variableName does not exist
-    DataType typeOfVariable(const std::string &variableName) const;
+    DataType typeOfVariable(const std::string &variableName) const;    
 };
 
 #endif /* LemonScriptSymbolTableStack_hpp */

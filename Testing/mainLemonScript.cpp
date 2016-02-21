@@ -22,7 +22,6 @@
 
 int main() {
         
-    lemonscript::LemonScriptState state;
     
     
     try {        
@@ -42,8 +41,11 @@ int main() {
         
         std::vector<const lemonscript::AvailableCppCommandDeclaration *> commands = {driveStraight3, driveStraight2, driveStraight4, deployChokehold, calibrateElevator, stopElevator, stopDriving, raiseWings, pointTurn, wait, testBool};
         
-        std::ifstream ifs("test_while.auto");
-        lemonscript::LemonScriptCompiler *compiler = new lemonscript::LemonScriptCompiler(ifs, commands, state);
+        lemonscript::LemonScriptState *state = new lemonscript::LemonScriptState();
+        state->declareAvailableCppCommands(commands);
+        
+        std::string fileName = "test_import.auto";
+        lemonscript::LemonScriptCompiler *compiler = new lemonscript::LemonScriptCompiler(fileName, state);
         
         while (true) {
             bool isDone = compiler->PeriodicUpdate();
@@ -51,9 +53,12 @@ int main() {
         }
         
         delete compiler;
+        delete state;
         
+        state = new lemonscript::LemonScriptState();
+        state->declareAvailableCppCommands(commands);
         
-        compiler = new lemonscript::LemonScriptCompiler(ifs, commands, state);
+        compiler = new lemonscript::LemonScriptCompiler(fileName, state);
         
         while (true) {
             bool isDone = compiler->PeriodicUpdate();
@@ -61,6 +66,7 @@ int main() {
         }
         
         delete compiler;
+        delete state;
         
     } catch (std::string error) {
         std::cerr << error << std::endl;

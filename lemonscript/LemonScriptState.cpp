@@ -52,6 +52,13 @@ void lemonscript::LemonScriptState::declareAvailableCppCommand(const AvailableCp
     commands.push_back(decl);
 }
 
+void lemonscript::LemonScriptState::declareAvailableCppCommands(const std::vector<const AvailableCppCommandDeclaration *> decls) {
+    // Declare available commands
+    for (auto it = decls.begin(); it != decls.end(); ++it) {
+        declareAvailableCppCommand(*it);
+    }
+}
+
 void * lemonscript::LemonScriptState::addressOfVariable(const std::string &variableName) const {
     return symbolStack.addressOfVariable(variableName);
 }
