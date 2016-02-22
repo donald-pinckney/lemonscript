@@ -95,7 +95,7 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
     
     size_t colonIndex = commandString.find(":");
     functionName = commandString.substr(0, colonIndex);
-    functionName = camelCase(functionName);
+    functionName = ParsingUtils::trimWhitespace(functionName);
     
     vector<DataType> parameterTypes;
     
@@ -139,9 +139,7 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
                 
                 string argumentString(endOfArgIt, startOfArgIt);
                 reverse(argumentString.begin(), argumentString.end());
-                
-                cout << argumentString << endl;
-                
+                                
                 endOfArgIt = newEndOfArgIt;
                 
                 

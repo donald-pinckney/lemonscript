@@ -4,4 +4,4 @@ RUN constants.auto
 
 SET y = 8
 
-wait: y
+Wait: y
