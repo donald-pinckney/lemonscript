@@ -20,6 +20,7 @@ typedef enum {
     SetToken,
     DefToken,
     ImportToken,
+    RunToken,
     NotToken,
     WhileAlsoToken,
     CompleteAnyToken,

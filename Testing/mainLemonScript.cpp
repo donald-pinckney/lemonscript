@@ -44,7 +44,7 @@ int main() {
         lemonscript::LemonScriptState *state = new lemonscript::LemonScriptState();
         state->declareAvailableCppCommands(commands);
         
-        std::string fileName = "test_import.auto";
+        std::string fileName = "test_run.auto";
         lemonscript::LemonScriptCompiler *compiler = new lemonscript::LemonScriptCompiler(fileName, state);
         
         while (true) {
@@ -55,18 +55,18 @@ int main() {
         delete compiler;
         delete state;
         
-        state = new lemonscript::LemonScriptState();
-        state->declareAvailableCppCommands(commands);
-        
-        compiler = new lemonscript::LemonScriptCompiler(fileName, state);
-        
-        while (true) {
-            bool isDone = compiler->PeriodicUpdate();
-            if(isDone) { break; }
-        }
-        
-        delete compiler;
-        delete state;
+//        state = new lemonscript::LemonScriptState();
+//        state->declareAvailableCppCommands(commands);
+//        
+//        compiler = new lemonscript::LemonScriptCompiler(fileName, state);
+//        
+//        while (true) {
+//            bool isDone = compiler->PeriodicUpdate();
+//            if(isDone) { break; }
+//        }
+//        
+//        delete compiler;
+//        delete state;
         
     } catch (std::string error) {
         std::cerr << error << std::endl;

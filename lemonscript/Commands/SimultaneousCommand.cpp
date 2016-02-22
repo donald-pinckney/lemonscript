@@ -16,6 +16,7 @@
 #include "SetCommand.h"
 #include "DefCommand.h"
 #include "ImportCommand.h"
+#include "RunCommand.h"
 
 lemonscript::SimultaneousCommand::SimultaneousCommand(int l, LemonScriptState *state, const std::string &sequenceString) : Command(l, state) {
     LemonScriptTokenizer tokenizer(sequenceString);
@@ -48,6 +49,8 @@ lemonscript::SimultaneousCommand::SimultaneousCommand(int l, LemonScriptState *s
             command = new DefCommand(lineNum, state, token);
         } else if(type == ImportToken) {
             command = new ImportCommand(lineNum, state, token);
+        } else if(type == RunToken) {
+            command = new RunCommand(lineNum, state, token);
         }
         
         

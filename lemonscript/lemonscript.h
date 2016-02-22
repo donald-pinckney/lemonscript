@@ -20,6 +20,7 @@ namespace lemonscript {
     class SetCommand;
     class DefCommand;
     class ImportCommand;
+    class RunCommand;
     class AvailableCppCommandDeclaration;
     class LemonScriptState;
     class LemonScriptTokenizer;

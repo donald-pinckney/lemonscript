@@ -1,0 +1,7 @@
+DEF y = 9
+
+RUN constants.auto
+
+SET y = 8
+
+wait: y
