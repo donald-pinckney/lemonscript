@@ -12,6 +12,8 @@
 #include <string.h>
 #include <iostream>
 
+using lemonscript::DataType;
+
 std::vector<void *> LemonScriptSymbolTable::variableAddressHeap;
 
 void LemonScriptSymbolTable::declareVariable(int line, const std::string &name, DataType type, void *pointerToValue) {
@@ -21,17 +23,17 @@ void LemonScriptSymbolTable::declareVariable(int line, const std::string &name, 
     
     void *address;
     switch (type) {
-        case INT:
+        case DataType::INT:
             address = malloc(sizeof(int));
             memcpy(address, pointerToValue, sizeof(int));
             break;
             
-        case FLOAT:
+        case DataType::FLOAT:
             address = malloc(sizeof(float));
             memcpy(address, pointerToValue, sizeof(float));
             break;
             
-        case BOOLEAN:
+        case DataType::BOOLEAN:
             address = malloc(sizeof(bool));
             memcpy(address, pointerToValue, sizeof(bool));
             break;
@@ -62,7 +64,7 @@ DataType LemonScriptSymbolTable::typeOfVariable(const std::string &variableName)
     if(it != variableTypes.end()) {
         return it->second;
     } else {
-        return INT;
+        return DataType::INT;
     }
 }
 

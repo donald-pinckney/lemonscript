@@ -21,21 +21,22 @@
 using namespace std;
 
 using namespace lemonscript_expressions;
+using lemonscript::DataType;
 
 void printParamTypes(const vector<DataType> &types, ostream &stream) {
     
     for (auto it = types.rbegin(); it != types.rend(); ++it) {
         string text;
         switch (*it) {
-            case INT:
+            case DataType::INT:
                 text = "int";
                 break;
                 
-            case FLOAT:
+            case DataType::FLOAT:
                 text = "float";
                 break;
                 
-            case BOOLEAN:
+            case DataType::BOOLEAN:
                 text = "bool";
                 break;
                 
@@ -150,11 +151,11 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
 
                 
                 if(expr->isConstant()) {
-                    if(type == INT) {
+                    if(type == DataType::INT) {
                         int val;
                         expr->getValue(&val);
                         arguments.push_back(reinterpret_cast<void *>(val));
-                    } else if(type == FLOAT) {
+                    } else if(type == DataType::FLOAT) {
                         float val;
                         expr->getValue(&val);
                         int tempArgVal = *((int *)&val);

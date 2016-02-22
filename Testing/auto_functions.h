@@ -24,6 +24,8 @@ bool RaiseWings(void *data);
 bool TestBool(void *data, bool willPrintMe, bool otherBool);
 
 bool PointTurn(void *data, float x, float y, bool highgear);
+bool PointTurn2(void *data, float angle);
 bool Wait(void *data, int t);
+bool Wait5(void *data);
 
 #endif /* auto_functions_h */

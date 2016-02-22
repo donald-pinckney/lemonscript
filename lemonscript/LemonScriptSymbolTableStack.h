@@ -25,8 +25,8 @@ public:
     LemonScriptSymbolTableStack() : stack(1, LemonScriptSymbolTable()) { }
     
     // Declaration function
-    void declareVariable(int line, const std::string &name, DataType type, void *pointerToValue);
-    void declareGlobalVariable(int line, const std::string &name, DataType type, void *pointerToValue);
+    void declareVariable(int line, const std::string &name, lemonscript::DataType type, void *pointerToValue);
+    void declareGlobalVariable(int line, const std::string &name, lemonscript::DataType type, void *pointerToValue);
     
     // Stack manipulations
     void pushScope();
@@ -37,7 +37,7 @@ public:
     void *addressOfVariable(const std::string &variableName) const;
     
     // Undefined what is returned if variableName does not exist
-    DataType typeOfVariable(const std::string &variableName) const;    
+    lemonscript::DataType typeOfVariable(const std::string &variableName) const;    
 };
 
 #endif /* LemonScriptSymbolTableStack_hpp */

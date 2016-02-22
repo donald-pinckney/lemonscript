@@ -63,7 +63,7 @@ void * lemonscript::LemonScriptState::addressOfVariable(const std::string &varia
     return symbolStack.addressOfVariable(variableName);
 }
 
-DataType lemonscript::LemonScriptState::typeOfVariable(const std::string &variableName) const {
+lemonscript::DataType lemonscript::LemonScriptState::typeOfVariable(const std::string &variableName) const {
     return symbolStack.typeOfVariable(variableName);
 }
 

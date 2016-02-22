@@ -15,13 +15,12 @@
 
 #include "lemonscript.h"
 
-typedef enum {
-    INT,
-    FLOAT,
-    BOOLEAN
-} DataType;
+namespace lemonscript {
+    enum class DataType {INT, FLOAT, BOOLEAN};
+}
 
-std::string dataTypeDescription(DataType t);
+
+std::string dataTypeDescription(lemonscript::DataType t);
 
 
 class lemonscript::AvailableCppCommandDeclaration {

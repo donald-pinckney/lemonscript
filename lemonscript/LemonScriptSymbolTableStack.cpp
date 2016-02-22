@@ -10,10 +10,10 @@
 
 
 // Declaration function
-void LemonScriptSymbolTableStack::declareVariable(int line, const std::string &name, DataType type, void *pointerToValue) {
+void LemonScriptSymbolTableStack::declareVariable(int line, const std::string &name, lemonscript::DataType type, void *pointerToValue) {
     stack[stack.size() - 1].declareVariable(line, name, type, pointerToValue);
 }
-void LemonScriptSymbolTableStack::declareGlobalVariable(int line, const std::string &name, DataType type, void *pointerToValue) {
+void LemonScriptSymbolTableStack::declareGlobalVariable(int line, const std::string &name, lemonscript::DataType type, void *pointerToValue) {
     stack[0].declareVariable(line, name, type, pointerToValue);
 }
 
@@ -38,12 +38,12 @@ void * LemonScriptSymbolTableStack::addressOfVariable(const std::string &variabl
 }
 
 // Undefined what is returned if variableName does not exist
-DataType LemonScriptSymbolTableStack::typeOfVariable(const std::string &variableName) const {
+lemonscript::DataType LemonScriptSymbolTableStack::typeOfVariable(const std::string &variableName) const {
     for (auto it = stack.crbegin(); it != stack.crend(); it++) {
         void *address = it->addressOfVariable(variableName);
         if(address != NULL) {
             return it->typeOfVariable(variableName);
         }
     }
-    return INT;
+    return lemonscript::DataType::INT;
 }

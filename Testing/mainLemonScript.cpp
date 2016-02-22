@@ -20,26 +20,32 @@
 
 #include "ParsingUtils.h"
 
+using namespace lemonscript;
+
 int main() {
         
     
     
     try {        
         
-        lemonscript::AvailableCppCommandDeclaration *driveStraight3 = new lemonscript::AvailableCppCommandDeclaration((void *)DriveStraight_3, "DriveStraight", {FLOAT, INT, BOOLEAN});
-        lemonscript::AvailableCppCommandDeclaration *driveStraight2 = new lemonscript::AvailableCppCommandDeclaration((void *)DriveStraight_2, "DriveStraight", {FLOAT, INT});
-        lemonscript::AvailableCppCommandDeclaration *driveStraight4 = new lemonscript::AvailableCppCommandDeclaration((void *)DriveStraight_4, "DriveStraight", {FLOAT, FLOAT});
+        lemonscript::AvailableCppCommandDeclaration *driveStraight3 = new lemonscript::AvailableCppCommandDeclaration((void *)DriveStraight_3, "DriveStraight", {DataType::FLOAT, DataType::INT, DataType::BOOLEAN});
+        lemonscript::AvailableCppCommandDeclaration *driveStraight2 = new lemonscript::AvailableCppCommandDeclaration((void *)DriveStraight_2, "DriveStraight", {DataType::FLOAT, DataType::INT});
+        lemonscript::AvailableCppCommandDeclaration *driveStraight4 = new lemonscript::AvailableCppCommandDeclaration((void *)DriveStraight_4, "DriveStraight", {DataType::FLOAT, DataType::FLOAT});
         lemonscript::AvailableCppCommandDeclaration *deployChokehold = new lemonscript::AvailableCppCommandDeclaration((void *)DeployChokehold, "DeployChokehold", {});
         lemonscript::AvailableCppCommandDeclaration *calibrateElevator = new lemonscript::AvailableCppCommandDeclaration((void *)CalibrateElevator, "CalibrateElevator", {});
         lemonscript::AvailableCppCommandDeclaration *stopElevator = new lemonscript::AvailableCppCommandDeclaration((void *)StopElevator, "StopElevator", {});
         lemonscript::AvailableCppCommandDeclaration *stopDriving = new lemonscript::AvailableCppCommandDeclaration((void *)StopDriving, "StopDriving", {});
         lemonscript::AvailableCppCommandDeclaration *raiseWings = new lemonscript::AvailableCppCommandDeclaration((void *)RaiseWings, "RaiseWings", {});
-        lemonscript::AvailableCppCommandDeclaration *pointTurn = new lemonscript::AvailableCppCommandDeclaration((void *)RaiseWings, "PointTurn", {FLOAT, FLOAT, BOOLEAN});
-        lemonscript::AvailableCppCommandDeclaration *wait = new lemonscript::AvailableCppCommandDeclaration((void *)Wait, "Wait", {INT});
-        lemonscript::AvailableCppCommandDeclaration *testBool = new lemonscript::AvailableCppCommandDeclaration((void *)TestBool, "TestBool", {BOOLEAN, BOOLEAN});
+        lemonscript::AvailableCppCommandDeclaration *pointTurn = new lemonscript::AvailableCppCommandDeclaration((void *)PointTurn, "PointTurn", {DataType::FLOAT, DataType::FLOAT, DataType::BOOLEAN});
+        lemonscript::AvailableCppCommandDeclaration *pointTurn2 = new lemonscript::AvailableCppCommandDeclaration((void *)PointTurn2, "PointTurn", {DataType::FLOAT});
+
+        lemonscript::AvailableCppCommandDeclaration *wait = new lemonscript::AvailableCppCommandDeclaration((void *)Wait, "Wait", {DataType::INT});
+        lemonscript::AvailableCppCommandDeclaration *wait5 = new lemonscript::AvailableCppCommandDeclaration((void *)Wait5, "Wait5", {});
+
+        lemonscript::AvailableCppCommandDeclaration *testBool = new lemonscript::AvailableCppCommandDeclaration((void *)TestBool, "TestBool", {DataType::BOOLEAN, DataType::BOOLEAN});
 
         
-        std::vector<const lemonscript::AvailableCppCommandDeclaration *> commands = {driveStraight3, driveStraight2, driveStraight4, deployChokehold, calibrateElevator, stopElevator, stopDriving, raiseWings, pointTurn, wait, testBool};
+        std::vector<const lemonscript::AvailableCppCommandDeclaration *> commands = {driveStraight3, driveStraight2, driveStraight4, deployChokehold, calibrateElevator, stopElevator, stopDriving, raiseWings, pointTurn, pointTurn2, wait, wait5, testBool};
         
         lemonscript::LemonScriptState *state = new lemonscript::LemonScriptState();
         state->declareAvailableCppCommands(commands);

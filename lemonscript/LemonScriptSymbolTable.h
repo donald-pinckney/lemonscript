@@ -18,13 +18,13 @@ class LemonScriptSymbolTable {
     
     // Will contain things such as variable bindings, etc.
     std::map<std::string, void *> variableAddresses;
-    std::map<std::string, DataType> variableTypes;
+    std::map<std::string, lemonscript::DataType> variableTypes;
     
     static std::vector<void *> variableAddressHeap;
     
 public:
     // Declaration function
-    void declareVariable(int line, const std::string &name, DataType type, void *pointerToValue);
+    void declareVariable(int line, const std::string &name, lemonscript::DataType type, void *pointerToValue);
 
     
     // Lookup functions
@@ -32,7 +32,7 @@ public:
     void *addressOfVariable(const std::string &variableName) const;
     
     // Undefined what is returned if variableName does not exist
-    DataType typeOfVariable(const std::string &variableName) const;
+    lemonscript::DataType typeOfVariable(const std::string &variableName) const;
     
     static void freeVariables();
 };

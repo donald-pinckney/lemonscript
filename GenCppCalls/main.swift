@@ -30,7 +30,7 @@ enum DataType : Int {
     }
     
     func meUpperName() -> String {
-        return "\(self)".uppercaseString
+        return "DataType::" + "\(self)".uppercaseString
     }
 }
 

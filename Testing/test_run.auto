@@ -1,7 +1,9 @@
-DEF y = 9
+//DEF y = 9
 
-RUN constants.auto
+//RUN constants.auto
 
-SET y = 8
+//SET y = 8
 
-Wait: y
+PointTurn: -(55.5)
+//Wait: y
+//Wait5

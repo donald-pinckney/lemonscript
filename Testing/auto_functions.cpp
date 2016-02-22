@@ -96,6 +96,11 @@ bool PointTurn(void *data, float x, float y, bool highgear) {
     return true;
 }
 
+bool PointTurn2(void *data, float angle) {
+    printf("%f\n", angle);
+    return true;
+}
+
 bool TestBool(void *data, bool willPrintMe, bool otherBool) {
     printf("willPrintMe = %d, %d\n", willPrintMe, otherBool);
     return true;
@@ -113,4 +118,8 @@ bool Wait(void *data, int t) {
     startIt++;
     
     return false;
+}
+
+bool Wait5(void *data) {
+    return Wait(data, 5);
 }

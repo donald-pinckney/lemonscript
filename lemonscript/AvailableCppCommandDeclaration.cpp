@@ -8,9 +8,11 @@
 
 #include "AvailableCppCommandDeclaration.h"
 
+using lemonscript::DataType;
+
 std::string dataTypeDescription(DataType t) {
-    if(t == INT) return "INT";
-    if(t == FLOAT) return "FLOAT";
-    if(t == BOOLEAN) return "BOOLEAN";
+    if(t == DataType::INT) return "INT";
+    if(t == DataType::FLOAT) return "FLOAT";
+    if(t == DataType::BOOLEAN) return "BOOLEAN";
     return "ERROR_TYPE";
 }
