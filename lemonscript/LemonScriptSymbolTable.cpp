@@ -9,6 +9,7 @@
 #include "LemonScriptSymbolTable.h"
 
 #include <stdlib.h>
+#include <string.h>
 #include <iostream>
 
 std::vector<void *> LemonScriptSymbolTable::variableAddressHeap;
