@@ -12,8 +12,6 @@
 #include <stdio.h>
 #include <string>
 
-using namespace std;
-
 
 namespace lemonscript_expressions {
 
@@ -33,10 +31,10 @@ class StringResult {
 public:
     int start;
     int end;
-    string original;
-    string substring;
+    std::string original;
+    std::string substring;
     int len;
-    StringResult(const string &o, int s, int e) : start(s), end(e), original(o), substring(original.substr(s, e - s)), len(e - s) { }
+    StringResult(const std::string &o, int s, int e) : start(s), end(e), original(o), substring(original.substr(s, e - s)), len(e - s) { }
 };
 
 class ParenResult {
@@ -64,9 +62,9 @@ T identity_c(const T &s) {
 }
 
 
-string substring(const string &s, const StringRange &r);
-ParenResult firstParenMatch(string s);
-string replaceAll(const string &str, const string &from, const string &to);
+std::string substring(const std::string &s, const StringRange &r);
+ParenResult firstParenMatch(std::string s);
+std::string replaceAll(const std::string &str, const std::string &from, const std::string &to);
 
 }
 

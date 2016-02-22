@@ -9,6 +9,7 @@
 #include "StringHelp.h"
 
 using namespace lemonscript_expressions;
+using namespace std;
 
 ParenResult lemonscript_expressions::firstParenMatch(string s) {
     int i = 0;

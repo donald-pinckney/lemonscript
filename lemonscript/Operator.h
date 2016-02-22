@@ -14,34 +14,32 @@
 #include <vector>
 #include <functional>
 
-using namespace std;
-
 namespace lemonscript_expressions {
 
 
 template <typename T>
 class Operator {
 public:
-    string pattern;
+    std::string pattern;
     int numArgs;
     bool associatesLeft;
-    function<T (vector<T>)> f;
+    std::function<T (std::vector<T>)> f;
     
-    Operator(const string &pa, int n, bool left, const function<T (vector<T>)> &func) :
+    Operator(const std::string &pa, int n, bool left, const std::function<T (std::vector<T>)> &func) :
     pattern(pa), numArgs(n), associatesLeft(left), f(func) { }
     
     
     // Not necessarily legit, but works for our simple operators
-    vector<string> arguments(const string &s) const {
-        function<string (string)> reverseFunc = associatesLeft ? reverse_c<string> : identity_c<string>;
-        string removed = reverseFunc(s);
+    std::vector<std::string> arguments(const std::string &s) const {
+        std::function<std::string (std::string)> reverseFunc = associatesLeft ? reverse_c<std::string> : identity_c<std::string>;
+        std::string removed = reverseFunc(s);
         
-        string separator = reverseFunc(replaceAll(replaceAll(pattern, ".*", ""), "\\", ""));
-        vector<string> parts;
+        std::string separator = reverseFunc(replaceAll(replaceAll(pattern, ".*", ""), "\\", ""));
+        std::vector<std::string> parts;
         bool didFindAnyParts = false;
         
-        string::size_type foundIndex = string::npos;
-        while((foundIndex = removed.find(separator)) != string::npos && parts.size() < numArgs - 1) {
+        std::string::size_type foundIndex = std::string::npos;
+        while((foundIndex = removed.find(separator)) != std::string::npos && parts.size() < numArgs - 1) {
             StringRange range(0, int(foundIndex));
             parts.push_back(reverseFunc(substring(removed, range)));
             removed.erase(range.start, range.len + separator.size());
@@ -49,7 +47,7 @@ public:
             didFindAnyParts = true;
         }
         
-        string ending = reverseFunc(removed);
+        std::string ending = reverseFunc(removed);
         if(!didFindAnyParts) {
             ending.erase(0, separator.size());
         } else {

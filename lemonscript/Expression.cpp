@@ -9,6 +9,7 @@
 #include "Expression.h"
 
 using namespace lemonscript_expressions;
+using namespace std;
 
 int currentParseLine;
 ExpressionDesc parseAtomType(string atomString, const lemonscript::LemonScriptState *state) {

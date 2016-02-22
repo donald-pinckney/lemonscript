@@ -15,11 +15,10 @@
 #include <math.h>
 #include <algorithm>
 #include <stdlib.h>
+#include <string>
 
 #include "ASTNode.h"
 #include "AvailableCppCommandDeclaration.h"
-
-using namespace std;
 
 namespace lemonscript_expressions {
 
@@ -35,16 +34,16 @@ struct ExpressionDesc {
 
 class ExpressionTree {
     ASTNode<ExpressionDesc> *descriptionTree;
-    function<ExpressionDesc(string)> descriptionSubstitutions;
+    std::function<ExpressionDesc(std::string)> descriptionSubstitutions;
 
-    static vector<void *> evaluationHeap;
+    static std::vector<void *> evaluationHeap;
 
-    string sentenceText;
+    std::string sentenceText;
     
     
 public:
     
-    ExpressionTree(const string &s, function<ExpressionDesc(string)> descSubs);
+    ExpressionTree(const std::string &s, std::function<ExpressionDesc(std::string)> descSubs);
     
     ExpressionDesc evaluate() const;
     
