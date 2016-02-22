@@ -12,6 +12,7 @@
 #include "StringHelp.h"
 #include <string>
 #include <vector>
+#include <functional>
 
 using namespace std;
 
