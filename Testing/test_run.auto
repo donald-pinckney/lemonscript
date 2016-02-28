@@ -4,6 +4,6 @@
 
 //SET y = 8
 
-PointTurn: -(55.5)
+PointTurn: -55.5
 //Wait: y
 //Wait5

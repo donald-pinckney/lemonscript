@@ -142,40 +142,50 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
                 reverse(argumentString.begin(), argumentString.end());
                                 
                 endOfArgIt = newEndOfArgIt;
+              
                 
                 
-                lemonscript_expressions::Expression *expr = new lemonscript_expressions::Expression(argumentString, state, l);
-                DataType type = expr->getType();
-                
-                parameterTypes.push_back(type);
-
-                
-                if(expr->isConstant()) {
-                    if(type == DataType::INT) {
-                        int val;
-                        expr->getValue(&val);
-                        arguments.push_back(reinterpret_cast<void *>(val));
-                    } else if(type == DataType::FLOAT) {
-                        float val;
-                        expr->getValue(&val);
-                        int tempArgVal = *((int *)&val);
-                        arguments.push_back(reinterpret_cast<void *>(tempArgVal));
-                    } else {
-                        bool val;
-                        expr->getValue(&val);
-                        arguments.push_back((void *)val);
+                if(argumentString == "false") {
+                    parameterTypes.push_back(DataType::BOOLEAN);
+                    arguments.push_back((void *)0);
+                    isArgumentLiteral.push_back(true);
+                } else if(argumentString == "true") {
+                    parameterTypes.push_back(DataType::BOOLEAN);
+                    arguments.push_back((void *)1);
+                    isArgumentLiteral.push_back(true);
+                } else {
+                    // try to parse argument as an int
+                    try {
+                        if(argumentString.find(".") != string::npos) {
+                            throw invalid_argument("ITS A FLOAT!");
+                        }
+                        int argVal = stoi(argumentString);
+                        parameterTypes.push_back(DataType::INT);
+                        arguments.push_back(reinterpret_cast<void *>(argVal));
+                        isArgumentLiteral.push_back(true);
+                        continue;
+                    } catch (invalid_argument &err) {
+                        
                     }
                     
                     
-                    isArgumentLiteral.push_back(true);
+                    // try to parse argument as a float
+                    try {
+                        float argVal = stof(argumentString);
+                        int tempArgVal = *((int *)&argVal);
+                        parameterTypes.push_back(DataType::FLOAT);
+                        arguments.push_back(reinterpret_cast<void *>(tempArgVal));
+                        isArgumentLiteral.push_back(true);
+                        continue;
+                    } catch (invalid_argument &err) {
+                        
+                    }
                     
-                    delete expr;
-                } else {
-                    isArgumentLiteral.push_back(false);
-                    arguments.push_back(expr);
+                    throw "Expressions unsupported in stable-v0.1";
+                    
                 }
+              
             }
-            
             
         }
         
