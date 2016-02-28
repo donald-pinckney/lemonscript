@@ -13,13 +13,12 @@
 #include <string>
 
 #include "lemonscript.h"
+#include "expressions.h"
 
 #include "AvailableCppCommandDeclaration.h"
 #include "LemonScriptState.h"
 
-namespace lemonscript_expressions {
-
-class Expression {
+class lemonscript_expressions::Expression {
     
     bool isConst;
     lemonscript::DataType t;
@@ -35,7 +34,6 @@ public:
     lemonscript::DataType getType();
     void getValue(void *p);
 };
-    
-}
+
 
 #endif /* Expression_hpp */

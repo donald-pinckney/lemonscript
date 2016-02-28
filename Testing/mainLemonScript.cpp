@@ -20,9 +20,32 @@
 
 #include "ParsingUtils.h"
 
+#include "ExpressionParser.h"
+
 using namespace lemonscript;
+using namespace lemonscript_expressions;
 
 int main() {
+    
+    
+    
+    try {
+//        ExpressionParser scan("-xy + (yz-r5%3==9   -2)");
+        ExpressionParser scan("-x + y + z - w");
+
+//        ExpressionParser scan("x-");
+    } catch (std::string err) {
+        std::cerr << err << std::endl;
+    }
+//    while (true) {
+//        Token tok = scan.scan();
+//        std::cout << tok << std::endl;
+//        if(tok.kind == TK::END_OF_FILE) {
+//            break;
+//        }
+//    }
+    
+    return 0;
         
     
     

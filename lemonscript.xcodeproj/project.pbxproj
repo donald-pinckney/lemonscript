@@ -27,6 +27,8 @@
 		5041E6421C7A81A300C07988 /* constants.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5041E6401C7A80A000C07988 /* constants.auto */; };
 		5041E6451C7A869400C07988 /* RunCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5041E6431C7A869400C07988 /* RunCommand.cpp */; };
 		5041E6471C7A89E000C07988 /* test_run.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5041E6461C7A898E00C07988 /* test_run.auto */; };
+		5041E64A1C7B072500C07988 /* ExpressionScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5041E6481C7B072500C07988 /* ExpressionScanner.cpp */; };
+		5041E64D1C7B973600C07988 /* ExpressionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5041E64B1C7B973600C07988 /* ExpressionParser.cpp */; };
 		507B18101C4B0D58001BA48D /* SimultaneousCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B180E1C4B0D58001BA48D /* SimultaneousCommand.cpp */; };
 		507B18131C4B0F62001BA48D /* ParsingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B18111C4B0F62001BA48D /* ParsingUtils.cpp */; };
 		507B18161C4B4A47001BA48D /* CompleteAnyCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B18141C4B4A47001BA48D /* CompleteAnyCommand.cpp */; };
@@ -34,7 +36,6 @@
 		508F60AE1C3493D4008ED63E /* LemonScriptTokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508F60AC1C3493D4008ED63E /* LemonScriptTokenizer.cpp */; };
 		508F60B01C34B0DC008ED63E /* CVR3Tote.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 508F60AF1C34B0CB008ED63E /* CVR3Tote.auto */; };
 		508F60B31C34BB4C008ED63E /* LemonScriptCompiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508F60B11C34BB4C008ED63E /* LemonScriptCompiler.cpp */; };
-		50A41B581C714CB900A312DC /* StringHelp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50A41B541C714CB900A312DC /* StringHelp.cpp */; };
 		50ACCCAE1C2D39F200964487 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACCCAD1C2D39F200964487 /* main.swift */; };
 		50C5A5FC1C2BFC0000028D0B /* deploy chokehold.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5A5F91C2BFBBD00028D0B /* deploy chokehold.auto */; };
 		50C5A5FE1C2BFC0400028D0B /* sequence.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5A5FB1C2BFBE900028D0B /* sequence.auto */; };
@@ -111,6 +112,11 @@
 		5041E6431C7A869400C07988 /* RunCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RunCommand.cpp; sourceTree = "<group>"; };
 		5041E6441C7A869400C07988 /* RunCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunCommand.h; sourceTree = "<group>"; };
 		5041E6461C7A898E00C07988 /* test_run.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_run.auto; sourceTree = "<group>"; };
+		5041E6481C7B072500C07988 /* ExpressionScanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExpressionScanner.cpp; sourceTree = "<group>"; };
+		5041E6491C7B072500C07988 /* ExpressionScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressionScanner.h; sourceTree = "<group>"; };
+		5041E64B1C7B973600C07988 /* ExpressionParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExpressionParser.cpp; sourceTree = "<group>"; };
+		5041E64C1C7B973600C07988 /* ExpressionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressionParser.h; sourceTree = "<group>"; };
+		5041E64E1C7B978800C07988 /* expressions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = expressions.h; sourceTree = "<group>"; };
 		50694F401C27D46600826B64 /* FiniteStateMachine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FiniteStateMachine; sourceTree = BUILT_PRODUCTS_DIR; };
 		507B180E1C4B0D58001BA48D /* SimultaneousCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimultaneousCommand.cpp; sourceTree = "<group>"; };
 		507B180F1C4B0D58001BA48D /* SimultaneousCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimultaneousCommand.h; sourceTree = "<group>"; };
@@ -125,10 +131,6 @@
 		508F60AF1C34B0CB008ED63E /* CVR3Tote.auto */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text; path = CVR3Tote.auto; sourceTree = "<group>"; tabWidth = 2; };
 		508F60B11C34BB4C008ED63E /* LemonScriptCompiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LemonScriptCompiler.cpp; sourceTree = "<group>"; };
 		508F60B21C34BB4C008ED63E /* LemonScriptCompiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemonScriptCompiler.h; sourceTree = "<group>"; };
-		50A41B521C714CB900A312DC /* ASTNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASTNode.h; sourceTree = "<group>"; };
-		50A41B531C714CB900A312DC /* Operator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Operator.h; sourceTree = "<group>"; };
-		50A41B541C714CB900A312DC /* StringHelp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringHelp.cpp; sourceTree = "<group>"; };
-		50A41B551C714CB900A312DC /* StringHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringHelp.h; sourceTree = "<group>"; };
 		50ACCCAB1C2D39F200964487 /* GenCppCalls */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GenCppCalls; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ACCCAD1C2D39F200964487 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		50C0CE581C4C56CC00C4C333 /* lemonscript.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lemonscript.h; sourceTree = "<group>"; };
@@ -231,12 +233,13 @@
 		50A41B511C714CAF00A312DC /* Expressions */ = {
 			isa = PBXGroup;
 			children = (
+				5041E64E1C7B978800C07988 /* expressions.h */,
 				500BE3A01C66FD8800DA8A98 /* Expression.h */,
 				500BE39F1C66FD8800DA8A98 /* Expression.cpp */,
-				50A41B521C714CB900A312DC /* ASTNode.h */,
-				50A41B531C714CB900A312DC /* Operator.h */,
-				50A41B551C714CB900A312DC /* StringHelp.h */,
-				50A41B541C714CB900A312DC /* StringHelp.cpp */,
+				5041E6491C7B072500C07988 /* ExpressionScanner.h */,
+				5041E6481C7B072500C07988 /* ExpressionScanner.cpp */,
+				5041E64C1C7B973600C07988 /* ExpressionParser.h */,
+				5041E64B1C7B973600C07988 /* ExpressionParser.cpp */,
 			);
 			name = Expressions;
 			sourceTree = "<group>";
@@ -360,6 +363,8 @@
 				507B18131C4B0F62001BA48D /* ParsingUtils.cpp in Sources */,
 				50F173C31C4B4C1100C870D9 /* CompleteAllCommand.cpp in Sources */,
 				500BE3991C66A48F00DA8A98 /* LemonScriptSymbolTableStack.cpp in Sources */,
+				5041E64D1C7B973600C07988 /* ExpressionParser.cpp in Sources */,
+				5041E64A1C7B072500C07988 /* ExpressionScanner.cpp in Sources */,
 				500BE3961C66A35300DA8A98 /* LemonScriptSymbolTable.cpp in Sources */,
 				501B81E31C75987300F9D42A /* DefCommand.cpp in Sources */,
 				50C5A6011C2BFC4300028D0B /* auto_functions.cpp in Sources */,
@@ -367,7 +372,6 @@
 				500BE3A11C66FD8800DA8A98 /* Expression.cpp in Sources */,
 				5014806B1C2C0AA600153984 /* LemonScriptState.cpp in Sources */,
 				508F60B31C34BB4C008ED63E /* LemonScriptCompiler.cpp in Sources */,
-				50A41B581C714CB900A312DC /* StringHelp.cpp in Sources */,
 				501480651C2C01A800153984 /* CppCommand.cpp in Sources */,
 				507B18161C4B4A47001BA48D /* CompleteAnyCommand.cpp in Sources */,
 				500BE39C1C66CD6D00DA8A98 /* SetCommand.cpp in Sources */,
