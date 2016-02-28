@@ -22,7 +22,7 @@ lemonscript::CompleteAllCommand::CompleteAllCommand(int l, LemonScriptState *s, 
     allBody = ParsingUtils::decreaseIndent(allBody);
     
     // Parse the bodies
-#warning TODO: Fix line number parameter.
+//#warning TODO: Fix line number parameter.
     
     s->pushScope();
     allCommands = new SimultaneousCommand(l, s, allBody);

@@ -30,7 +30,7 @@ lemonscript::WhileAlsoCommand::WhileAlsoCommand(int l, LemonScriptState *s, cons
     alsoBody = ParsingUtils::decreaseIndent(alsoBody);
     
     // Parse the bodies
-#warning TODO: Fix line number parameters.
+//#warning TODO: Fix line number parameters.
     
     s->pushScope();
     whileCondition = new SequentialCommand(l, s, whileBody);
