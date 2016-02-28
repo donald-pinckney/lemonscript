@@ -8,6 +8,8 @@
 
 #include "Expression.h"
 
+#include <string.h>
+
 using namespace lemonscript_expressions;
 using lemonscript::DataType;
 using namespace std;
