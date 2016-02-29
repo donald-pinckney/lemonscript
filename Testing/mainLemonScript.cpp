@@ -50,7 +50,7 @@ int main() {
         lemonscript::LemonScriptState *state = new lemonscript::LemonScriptState();
         state->declareAvailableCppCommands(commands);
         
-        std::string fileName = "test_run.auto";
+        std::string fileName = "test_while.auto";
         lemonscript::LemonScriptCompiler *compiler = new lemonscript::LemonScriptCompiler(fileName, state);
         
         while (true) {

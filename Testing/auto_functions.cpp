@@ -103,7 +103,7 @@ bool PointTurn2(void *data, float angle) {
 
 bool TestBool(void *data, bool willPrintMe, bool otherBool) {
     printf("willPrintMe = %d, %d\n", willPrintMe, otherBool);
-    return true;
+    return false;
 }
 
 

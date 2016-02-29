@@ -1,5 +1,4 @@
 WHILE:
-  wait: 10
+  TestBool: true, true
 ALSO:
-  //wait: 4
-  //wait: 3
+  Wait: 10
