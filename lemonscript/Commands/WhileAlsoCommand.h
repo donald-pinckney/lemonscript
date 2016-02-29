@@ -24,6 +24,7 @@ class lemonscript::WhileAlsoCommand : public Command {
     LemonScriptSymbolTableStack whileScope;
     LemonScriptSymbolTableStack alsoScope;
     
+    bool isAlsoDone = false;
     
 public:
     WhileAlsoCommand(int l, LemonScriptState *s, const std::string &commandString);

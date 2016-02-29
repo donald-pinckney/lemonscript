@@ -57,8 +57,10 @@ bool lemonscript::WhileAlsoCommand::Update() {
     savedState->restoreScope(whileScope);
     bool conditionDone = whileCondition->Update();
     
-    savedState->restoreScope(alsoScope);
-    alsoCommands->Update();
+    if(!isAlsoDone) {
+        savedState->restoreScope(alsoScope);
+        isAlsoDone = alsoCommands->Update();
+    }
     
     savedState->restoreScope(currentScope);
     
