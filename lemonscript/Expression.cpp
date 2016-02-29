@@ -15,7 +15,6 @@ using namespace std;
 
 Expression::Expression(const std::string &str, const lemonscript::LemonScriptState *state, int lineNum) {
     
-    
 }
 
 Expression::~Expression() {

@@ -12,10 +12,14 @@
 #include <stdio.h>
 #include <string>
 #include <set>
+#include <vector>
 
 #include "expressions.h"
 
 #include "ExpressionScanner.h"
+
+#include "ExpressionListItem.h"
+#include "PrefixExpression.h"
 
 enum class lemonscript_expressions::NonTerminal {
     expression,
@@ -35,8 +39,6 @@ enum class lemonscript_expressions::NonTerminal {
     literal,
     boolean_literal,
     numeric_literal,
-    integer_literal,
-    floating_point_literal,
     decimal_fraction,
     decimal_literal,
     alpha,
@@ -47,49 +49,50 @@ class lemonscript_expressions::ExpressionParser {
     ExpressionScanner scanner;
     Token tok;
     void scan();
-    void parse_error(const std::string &s);
+    inline void parse_error(const std::string &s);
     std::string mustbe(TK tk);
     bool is(TK tk);
     bool inFirstSet(NonTerminal nt);
     std::set<TK> firstSet(NonTerminal nt);
     
-    void expression();
-    void parenthesized_expression();
+    PrefixExpression expression();
+    std::vector<ExpressionListItem> parenthesized_expression();
     
-    void prefix_expression();
+    PrefixExpression prefix_expression();
     
-    void binary_expression();
-    void binary_expressions();
+    std::vector<ExpressionListItem> binary_expression();
+    std::vector<ExpressionListItem> binary_expressions();
     
-    void postfix_expression();
-    void function_call_expression();
+    std::vector<ExpressionListItem> postfix_expression();
     
-    void primary_expression();
+    std::vector<ExpressionListItem> primary_expression();
     
-    void prefix_operator();
-    void binary_operator();
-    void postfix_operator();
+    OperatorType prefix_operator();
+    OperatorType binary_operator();
     
-    void _operator();
-    void operator_character();
+    OperatorType _operator();
+    std::string operator_character();
     
-    void identifier();
-    void identifier_character();
+    Atom identifier();
+    std::string identifier_character();
     
-    void literal();
-    void boolean_literal();
-    void numeric_literal();
+    Atom literal();
+    Atom boolean_literal();
+    Atom numeric_literal();
     
-    void integer_literal();
-    void floating_point_literal();
-    void decimal_fraction();
-    void decimal_literal();
+    std::string decimal_fraction();
+    std::string decimal_literal();
     
-    void alpha();
-    void digit();
+    std::string alpha();
+    std::string digit();
+    
+    
+    PrefixExpression prefixExpression;
     
 public:
     ExpressionParser(const std::string &toParse);
+    
+    PrefixExpression getRootPrefixExpression() { return prefixExpression; };
 };
 
 #endif /* ExpressionParser_hpp */

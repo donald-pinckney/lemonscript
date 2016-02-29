@@ -31,7 +31,8 @@ int main() {
     
     try {
 //        ExpressionParser scan("-xy + (yz-r5%3==9   -2)");
-        ExpressionParser scan("-x + y + z - w");
+        ExpressionParser scan("-y - (x - z) - a - b - c - d - e");
+        std::cout << scan.getRootPrefixExpression() << std::endl;
 
 //        ExpressionParser scan("x-");
     } catch (std::string err) {

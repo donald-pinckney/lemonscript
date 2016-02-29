@@ -9,10 +9,13 @@
 #include "ExpressionParser.h"
 
 using namespace lemonscript_expressions;
+using namespace lemonscript;
 using namespace std;
 
+#define parse_error(s) throw (s)
+
 ExpressionParser::ExpressionParser(const string &toParse) : scanner(toParse), tok(scanner.scan()) {
-    expression();
+    prefixExpression = expression();
     
     if(tok.kind != TK::END_OF_FILE) {
         parse_error("Junk after end of expression");
@@ -21,218 +24,333 @@ ExpressionParser::ExpressionParser(const string &toParse) : scanner(toParse), to
 
 
 //  expression = prefix_expression [binary_expressions];
-void ExpressionParser::expression() {
-    prefix_expression();
+PrefixExpression ExpressionParser::expression() {
+    PrefixExpression pre = prefix_expression();
     
+    ExpressionListItem preItem;
+    preItem.isOperator = false;
+    preItem.setPrefixExpression(pre);
+    
+    vector<ExpressionListItem> binaryExps;
     if(inFirstSet(NonTerminal::binary_expressions)) {
-        binary_expressions();
+        binaryExps = binary_expressions();
     }
+    
+    PrefixExpression ret;
+    ret.op = OperatorType::identity();
+    ret.expressionList = {preItem};
+    ret.expressionList.insert(ret.expressionList.end(), binaryExps.begin(), binaryExps.end());
+    
+    return ret;
 }
 
-//  parenthesized_expression = "(" expression {"," expression} ")";
-void ExpressionParser::parenthesized_expression() {
+// //  parenthesized_expression = "(" expression {"," expression} ")";
+//  parenthesized_expression = "(" expression ")";
+vector<ExpressionListItem> ExpressionParser::parenthesized_expression() {
     mustbe(TK::LPAREN);
     
-    expression();
+    PrefixExpression pre = expression();
     
-    while (is(TK::COMMA)) {
-        mustbe(TK::COMMA);
-        expression();
-    }
+    // Disabled comma separated expressions for now
+//    while (is(TK::COMMA)) {
+//        mustbe(TK::COMMA);
+//        expression();
+//    }
     
     mustbe(TK::RPAREN);
+    
+    return pre.expressionList;
 }
 
+
 //  prefix_expression = [prefix_operator] postfix_expression;
-void ExpressionParser::prefix_expression() {
+PrefixExpression ExpressionParser::prefix_expression() {
+    OperatorType op = OperatorType::identity();
+    
     if(inFirstSet(NonTerminal::prefix_operator)) {
-        prefix_operator();
+        op = prefix_operator();
     }
-    postfix_expression();
+    
+    PrefixExpression ret;
+    ret.expressionList = postfix_expression();
+    ret.op = op;
+    
+    return ret;
 }
 
 //  binary_expression = binary_operator prefix_expression;
-void ExpressionParser::binary_expression() {
-    binary_operator();
-    prefix_expression();
+vector<ExpressionListItem> ExpressionParser::binary_expression() {
+    OperatorType op = binary_operator();
+    PrefixExpression pre = prefix_expression();
+    
+    ExpressionListItem opItem;
+    opItem.isOperator = true;
+    opItem.setOperatorType(op);
+    
+    ExpressionListItem preItem;
+    preItem.isOperator = false;
+    preItem.setPrefixExpression(pre);
+    
+    return {opItem, preItem};
 }
 
 //  binary_expressions = binary_expression [binary_expressions];
-void ExpressionParser::binary_expressions() {
-    binary_expression();
+vector<ExpressionListItem> ExpressionParser::binary_expressions() {
+    vector<ExpressionListItem> items;
+    
+    vector<ExpressionListItem> tempItems = binary_expression();
+    items.insert(items.end(), tempItems.begin(), tempItems.end());
+    
     
     if(inFirstSet(NonTerminal::binary_expressions)) {
-        binary_expressions();
+        tempItems = binary_expressions();
+        
+        items.insert(items.end(), tempItems.begin(), tempItems.end());
     }
+    
+    return items;
 }
 
 
 //  postfix_expression = primary_expression
-void ExpressionParser::postfix_expression() {
-    primary_expression();
+vector<ExpressionListItem> ExpressionParser::postfix_expression() {
+    return primary_expression();
 }
 
 //  primary_expression = identifier | literal | parenthesized_expression;
-void ExpressionParser::primary_expression() {
+vector<ExpressionListItem> ExpressionParser::primary_expression() {
     if(inFirstSet(NonTerminal::identifier)) {
-        identifier();
+        Atom a = identifier();
+        PrefixExpression pre;
+        pre.isAtom = true;
+        pre.atom = a;
+        
+        ExpressionListItem preItem;
+        preItem.isOperator = false;
+        preItem.setPrefixExpression(pre);
+        
+        return {preItem};
     } else if(inFirstSet(NonTerminal::literal)) {
-        literal();
+        Atom a = literal();
+        
+        PrefixExpression pre;
+        pre.isAtom = true;
+        pre.atom = a;
+        
+        ExpressionListItem preItem;
+        preItem.isOperator = false;
+        preItem.setPrefixExpression(pre);
+        
+        return {preItem};
     } else if(inFirstSet(NonTerminal::parenthesized_expression)) {
-        parenthesized_expression();
+        return parenthesized_expression();
     } else {
         parse_error("Missing token");
     }
 }
 
 //  prefix_operator = operator;
-void ExpressionParser::prefix_operator() {
-    _operator();
+OperatorType ExpressionParser::prefix_operator() {
+    OperatorType op = _operator();
+    
+    // Filter to unary operators only
+    vector<TypeSpecification> specs(op.specifications.size());
+    auto it = std::copy_if(op.specifications.begin(), op.specifications.end(), specs.begin(), [](TypeSpecification s) {
+        return s.inputTypes.size() == 1;
+    });
+    specs.resize(std::distance(specs.begin(), it));
+    
+    op.specifications = specs;
+    
+    return op;
 }
 
 //  binary_operator = operator;
-void ExpressionParser::binary_operator() {
-    _operator();
-}
-
-//  postfix_operator = operator;
-void ExpressionParser::postfix_operator() {
-    _operator();
+OperatorType ExpressionParser::binary_operator() {
+    OperatorType op = _operator();
+    
+    // Filter to binary operators only
+    vector<TypeSpecification> specs(op.specifications.size());
+    auto it = std::copy_if(op.specifications.begin(), op.specifications.end(), specs.begin(), [](TypeSpecification s) {
+        return s.inputTypes.size() == 2;
+    });
+    specs.resize(std::distance(specs.begin(), it));
+    
+    op.specifications = specs;
+    
+    return op;
 }
 
 //  operator = operator_character {operator_character};
-void ExpressionParser::_operator() {
+OperatorType ExpressionParser::_operator() {
+#warning Implement me properly!
     operator_character();
     while (inFirstSet(NonTerminal::operator_character)) {
         operator_character();
     }
+    
+    
+    TypeSpecification unaryMinus;
+    unaryMinus.inputTypes = {DataType::INT};
+    unaryMinus.returnType = DataType::INT;
+    unaryMinus.func = [] (std::vector<int32_t> xs) {
+        return -xs[0];
+    };
+    
+    TypeSpecification binaryMinus;
+    unaryMinus.inputTypes = {DataType::INT, DataType::INT};
+    unaryMinus.returnType = DataType::INT;
+    unaryMinus.func = [] (std::vector<int32_t> xs) {
+        return xs[0] - xs[1];
+    };
+    
+    OperatorType opType;
+    opType.isIdentityOperator = false;
+    opType.operatorText = "-";
+    opType.specifications = {unaryMinus, binaryMinus};
+    
+    return opType;
 }
 
 //  operator_character = "/" | "*" | "=" | "-" | "+" | "!" | "%" | "<" | ">" | "&" | "|" | "^";
-void ExpressionParser::operator_character() {
+std::string ExpressionParser::operator_character() {
     if (is(TK::FORWARD_SLASH)) {
-        mustbe(TK::FORWARD_SLASH);
+        return mustbe(TK::FORWARD_SLASH);
     } else if (is(TK::ASTERISK)) {
-        mustbe(TK::ASTERISK);
+        return mustbe(TK::ASTERISK);
     } else if (is(TK::EQUALS)) {
-        mustbe(TK::EQUALS);
+        return mustbe(TK::EQUALS);
     } else if (is(TK::MINUS)) {
-        mustbe(TK::MINUS);
+        return mustbe(TK::MINUS);
     } else if (is(TK::PLUS)) {
-        mustbe(TK::PLUS);
+        return mustbe(TK::PLUS);
     } else if (is(TK::EXCLAMATION_MARK)) {
-        mustbe(TK::EXCLAMATION_MARK);
+        return mustbe(TK::EXCLAMATION_MARK);
     } else if (is(TK::PERCENT)) {
-        mustbe(TK::PERCENT);
+        return mustbe(TK::PERCENT);
     } else if (is(TK::LANGLE)) {
-        mustbe(TK::LANGLE);
+        return mustbe(TK::LANGLE);
     } else if (is(TK::RANGLE)) {
-        mustbe(TK::RANGLE);
+        return mustbe(TK::RANGLE);
     } else if (is(TK::AMPERSAND)) {
-        mustbe(TK::AMPERSAND);
+        return mustbe(TK::AMPERSAND);
     } else if (is(TK::PIPE)) {
-        mustbe(TK::PIPE);
+        return mustbe(TK::PIPE);
     } else if (is(TK::CARET)) {
-        mustbe(TK::CARET);
+        return mustbe(TK::CARET);
     } else {
         parse_error("Missing token");
     }
 }
 
 //  identifier = alpha {identifier_character};
-void ExpressionParser::identifier() {
-    alpha();
+Atom ExpressionParser::identifier() {
+    string id = alpha();
     
     while (inFirstSet(NonTerminal::identifier_character)) {
-        identifier_character();
+        id += identifier_character();
     }
+    
+    Atom a;
+    a.isIdentifier = true;
+    a.text = id;
+    
+    return a;
 }
 
 //  identifier_character = alpha | digit;
-void ExpressionParser::identifier_character() {
+std::string ExpressionParser::identifier_character() {
     if(inFirstSet(NonTerminal::alpha)) {
-        alpha();
+        return alpha();
     } else if(inFirstSet(NonTerminal::digit)) {
-        digit();
+        return digit();
     } else {
         parse_error("Missing token");
     }
 }
 
 //  literal = numeric_literal | boolean_literal;
-void ExpressionParser::literal() {
+Atom ExpressionParser::literal() {
     if(inFirstSet(NonTerminal::numeric_literal)) {
-        numeric_literal();
+        return numeric_literal();
     } else if(inFirstSet(NonTerminal::boolean_literal)) {
-        boolean_literal();
+        return boolean_literal();
     } else {
         parse_error("Missing token");
     }
 }
 
 //  boolean_literal = "true" | "false";
-void ExpressionParser::boolean_literal() {
+Atom ExpressionParser::boolean_literal() {
+    string text;
     if(is(TK::BOOLEAN_TRUE)) {
-        mustbe(TK::BOOLEAN_TRUE);
+        text = mustbe(TK::BOOLEAN_TRUE);
     } else if(is(TK::BOOLEAN_FALSE)) {
-        mustbe(TK::BOOLEAN_FALSE);
+        text = mustbe(TK::BOOLEAN_FALSE);
     } else {
         parse_error("Missing token");
     }
+    
+    Atom a;
+    a.isIdentifier = false;
+    a.text = text;
+    a.parsedType = DataType::BOOLEAN;
+    
+    return a;
 }
 
 //  numeric_literal = ["-"] integer_literal | ["-"] floating_point_literal;
-void ExpressionParser::numeric_literal() {
+Atom ExpressionParser::numeric_literal() {
+    
+    string negative = "";
+    
     if(is(TK::MINUS)) {
-        mustbe(TK::MINUS);
+        negative = mustbe(TK::MINUS);
     }
     
-    if(inFirstSet(NonTerminal::integer_literal)) {
-        integer_literal();
-    } else if(inFirstSet(NonTerminal::floating_point_literal)) {
-        floating_point_literal();
-    } else {
-        parse_error("Missing token");
-    }
-}
-
-//  integer_literal = decimal_literal;
-void ExpressionParser::integer_literal() {
-    decimal_literal();
-}
-
-//  floating_point_literal = decimal_literal [decimal_fraction];
-void ExpressionParser::floating_point_literal() {
-    decimal_literal();
-    
+    string decimalString = decimal_literal();
+    Atom a;
+    a.isIdentifier = false;
     if(inFirstSet(NonTerminal::decimal_fraction)) {
-        decimal_fraction();
+        a.text = decimalString + decimal_fraction();
+        a.parsedType = DataType::FLOAT;
+    } else {
+        a.text = decimalString;
+        a.parsedType = DataType::INT;
     }
+    
+    return a;
 }
+
 
 //  decimal_fraction = "." decimal_literal;
-void ExpressionParser::decimal_fraction() {
-    mustbe(TK::PERIOD);
-    decimal_literal();
+std::string ExpressionParser::decimal_fraction() {
+    return mustbe(TK::PERIOD) + decimal_literal();
 }
 
 //  decimal_literal = digit {digit};
-void ExpressionParser::decimal_literal() {
-    digit();
+std::string ExpressionParser::decimal_literal() {
+    string text = digit();
     while (inFirstSet(NonTerminal::digit)) {
-        digit();
+        text += digit();
     }
+    
+    return text;
 }
 
 //  alpha = "a".."z" | "A".."Z";
-void ExpressionParser::alpha() {
-    mustbe(TK::ALPHA);
+std::string ExpressionParser::alpha() {
+    return mustbe(TK::ALPHA);
 }
 
 //  digit = "0".."9";
-void ExpressionParser::digit() {
-    mustbe(TK::DIGIT);
+std::string ExpressionParser::digit() {
+    return mustbe(TK::DIGIT);
 }
+
+
+
+
 
 
 bool ExpressionParser::is(lemonscript_expressions::TK tk) {
@@ -289,11 +407,7 @@ set<TK> ExpressionParser::firstSet(lemonscript_expressions::NonTerminal nt) {
         case NonTerminal::boolean_literal:
             return {TK::BOOLEAN_TRUE, TK::BOOLEAN_FALSE};
         case NonTerminal::numeric_literal:
-            return sunion(sunion({TK::MINUS}, firstSet(NonTerminal::integer_literal)), firstSet(NonTerminal::floating_point_literal));
-        case NonTerminal::integer_literal:
-            return firstSet(NonTerminal::decimal_literal);
-        case NonTerminal::floating_point_literal:
-            return firstSet(NonTerminal::decimal_literal);
+            return sunion({TK::MINUS}, firstSet(NonTerminal::decimal_literal));
         case NonTerminal::decimal_fraction:
             return {TK::PERIOD};
         case NonTerminal::decimal_literal:
@@ -317,10 +431,6 @@ string ExpressionParser::mustbe(TK tk) {
     scan();
     
     return temp;
-}
-
-void ExpressionParser::parse_error(const string &s) {
-    throw s;
 }
 
 

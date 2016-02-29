@@ -15,6 +15,11 @@ namespace lemonscript_expressions {
     class Expression;
     class ExpressionScanner;
     class ExpressionParser;
+    class ExpressionListItem;
+    class OperatorType;
+    class TypeSpecification;
+    class PrefixExpression;
+    class Atom;
     struct Token;
     enum class TK : char;
     enum class NonTerminal;
