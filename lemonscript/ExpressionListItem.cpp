@@ -11,14 +11,20 @@
 using namespace lemonscript_expressions;
 
 void ExpressionListItem::setOperatorType(OperatorType t) {
+//    if(operatorType != NULL) {
+//        delete operatorType;
+//    }
     operatorType = new lemonscript_expressions::OperatorType(t);
 }
 
 void ExpressionListItem::setPrefixExpression(PrefixExpression pre) {
+//    if(prefixExpression != NULL) {
+//        delete prefixExpression;
+//    }
     prefixExpression = new lemonscript_expressions::PrefixExpression(pre);
 }
 
-std::ostream & operator<<(std::ostream &o, lemonscript_expressions::ExpressionListItem item) {
+std::ostream & lemonscript_expressions::operator<<(std::ostream &o, lemonscript_expressions::ExpressionListItem item) {
     if(item.isOperator) {
         o << *(item.operatorType);
     } else {
@@ -27,3 +33,12 @@ std::ostream & operator<<(std::ostream &o, lemonscript_expressions::ExpressionLi
     
     return o;
 }
+
+//ExpressionListItem::~ExpressionListItem() {
+//    if(operatorType != NULL) {
+//        delete operatorType;
+//    }
+//    if(prefixExpression != NULL) {
+//        delete prefixExpression;
+//    }
+//}

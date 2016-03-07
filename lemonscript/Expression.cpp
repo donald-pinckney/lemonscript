@@ -8,46 +8,76 @@
 
 #include "Expression.h"
 
+#include "ExpressionParser.h"
+
 using namespace lemonscript_expressions;
 using lemonscript::DataType;
 using namespace std;
 
 
-Expression::Expression(const std::string &str, const lemonscript::LemonScriptState *state, int lineNum) {
+Expression::Expression(const std::string &str, lemonscript::LemonScriptState *state, int lineNum) {
     
+    ExpressionParser scan(str);
+
+    tree = new ExpressionTree(scan.getRootPrefixExpression(), state);
+    ExpressionTreeRecurseAttributes attribs = tree->compileTree();
+    if (attribs.CANT_MATCH_TYPE) {
+        throw "Can't resolve type tree, line: " + to_string(lineNum);
+    }
+    
+    
+    t = attribs.dataType;
+    isConst = attribs.isConstant;
+    
+    if(attribs.isConstant) {
+        size_t dataSize;
+        if (t == lemonscript::DataType::INT) {
+            dataSize = sizeof(int);
+        } else if(t == lemonscript::DataType::FLOAT) {
+            dataSize = sizeof(float);
+        } else if(t == lemonscript::DataType::BOOLEAN) {
+            dataSize = sizeof(bool);
+        } else {
+            throw "Type expressions not yet supported";
+        }
+        
+        
+        int val = tree->evaluate();
+        bzero(&constValue, sizeof(int));
+        memcpy(&constValue, &val, dataSize);
+    }
 }
 
 Expression::~Expression() {
-    
+    delete tree;
 }
 
-bool Expression::isConstant() {
+bool Expression::isConstant() const {
     return isConst;
 }
 
-DataType Expression::getType() {
+DataType Expression::getType() const {
     return t;
 }
 
-void Expression::getValue(void *p) {
+void Expression::getValue(void *p) const {
     size_t dataSize;
     if (t == lemonscript::DataType::INT) {
         dataSize = sizeof(int);
     } else if(t == lemonscript::DataType::FLOAT) {
         dataSize = sizeof(float);
-    } else {
+    } else if(t == lemonscript::DataType::BOOLEAN) {
         dataSize = sizeof(bool);
+    } else {
+        throw "Type expressions not yet supported";
     }
     
     if(isConst) {
-        memcpy(p, constValue, dataSize);
+        memcpy(p, &constValue, dataSize);
         return;
     }
     
-//    ExpressionDesc desc = tree->evaluate();
-//    t = desc.type;
-//    
-//    memcpy(p, desc.value, dataSize);
-//    
-//    ExpressionTree::freeHeap();
+    int val = tree->evaluate();
+    
+    memcpy(p, &val, dataSize);
 }

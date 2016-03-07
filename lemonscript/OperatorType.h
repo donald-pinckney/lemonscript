@@ -12,6 +12,7 @@
 #include <stdio.h>
 
 #include <vector>
+#include <map>
 #include <functional>
 #include <string>
 
@@ -22,39 +23,25 @@
 struct lemonscript_expressions::TypeSpecification {
     std::vector<lemonscript::DataType> inputTypes;
     lemonscript::DataType returnType;
-    std::function<int32_t (std::vector<int32_t>)> func;
+    std::function<int (std::vector<int>)> func;
 };
 
 class lemonscript_expressions::OperatorType {
     
+    static std::map<std::string, lemonscript_expressions::OperatorType> operatorTypeMemoization;
+    
 public:
     
     bool isIdentityOperator; // True iff (i)T = T and (i)x = x
-    
     std::string operatorText;
-    
+    int precedence = -1; // Ranked 0 to 999, 999 being highest precedence
     std::vector<lemonscript_expressions::TypeSpecification> specifications;
     
-    static OperatorType identity() {
-        std::vector<TypeSpecification> specs;
-        std::vector<lemonscript::DataType> types = {lemonscript::DataType::BOOLEAN, lemonscript::DataType::INT, lemonscript::DataType::FLOAT};
-        for(auto it = types.begin(); it != types.end(); ++it) {
-            lemonscript::DataType t = *it;
-            TypeSpecification spec;
-            spec.inputTypes = {t};
-            spec.returnType = t;
-            spec.func = [] (std::vector<int32_t> xs) { return xs[0]; };
-            specs.push_back(spec);
-        }
-        OperatorType opType;
-        opType.isIdentityOperator = true;
-        opType.specifications = specs;
-        opType.operatorText = "i";
-        
-        return opType;
-    }
+    
+    static OperatorType identity();
+    
+    static OperatorType lookupOperatorType(std::string opString);
 };
 
-std::ostream & operator<<(std::ostream &o, lemonscript_expressions::OperatorType opType);
 
 #endif /* OperatorType_hpp */

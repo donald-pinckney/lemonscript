@@ -10,7 +10,7 @@
 
 using namespace lemonscript;
 
-std::ostream & operator<<(std::ostream &o, lemonscript_expressions::Atom a) {
+std::ostream & lemonscript_expressions::operator<<(std::ostream &o, const lemonscript_expressions::Atom &a) {
     
     o << "[";
     if(a.isIdentifier) {

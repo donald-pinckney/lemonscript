@@ -37,7 +37,7 @@ PrefixExpression ExpressionParser::expression() {
     }
     
     PrefixExpression ret;
-    ret.op = OperatorType::identity();
+    ret.prefixOperator = OperatorType::identity();
     ret.expressionList = {preItem};
     ret.expressionList.insert(ret.expressionList.end(), binaryExps.begin(), binaryExps.end());
     
@@ -73,7 +73,7 @@ PrefixExpression ExpressionParser::prefix_expression() {
     
     PrefixExpression ret;
     ret.expressionList = postfix_expression();
-    ret.op = op;
+    ret.prefixOperator = op;
     
     return ret;
 }
@@ -183,31 +183,12 @@ OperatorType ExpressionParser::binary_operator() {
 
 //  operator = operator_character {operator_character};
 OperatorType ExpressionParser::_operator() {
-#warning Implement me properly!
-    operator_character();
-    while (inFirstSet(NonTerminal::operator_character)) {
-        operator_character();
+    string opString = operator_character();
+    while (inFirstSet(NonTerminal::operator_character) && inFirstSet(NonTerminal::prefix_operator) == false) {
+        opString += operator_character();
     }
     
-    
-    TypeSpecification unaryMinus;
-    unaryMinus.inputTypes = {DataType::INT};
-    unaryMinus.returnType = DataType::INT;
-    unaryMinus.func = [] (std::vector<int32_t> xs) {
-        return -xs[0];
-    };
-    
-    TypeSpecification binaryMinus;
-    unaryMinus.inputTypes = {DataType::INT, DataType::INT};
-    unaryMinus.returnType = DataType::INT;
-    unaryMinus.func = [] (std::vector<int32_t> xs) {
-        return xs[0] - xs[1];
-    };
-    
-    OperatorType opType;
-    opType.isIdentityOperator = false;
-    opType.operatorText = "-";
-    opType.specifications = {unaryMinus, binaryMinus};
+    OperatorType opType = OperatorType::lookupOperatorType(opString);
     
     return opType;
 }
@@ -387,7 +368,7 @@ set<TK> ExpressionParser::firstSet(lemonscript_expressions::NonTerminal nt) {
         case NonTerminal::primary_expression:
             return sunion(sunion(firstSet(NonTerminal::identifier), firstSet(NonTerminal::literal)), firstSet(NonTerminal::parenthesized_expression));
         case NonTerminal::prefix_operator:
-            return firstSet(NonTerminal::_operator);
+            return {TK::MINUS, TK::EXCLAMATION_MARK};
         case NonTerminal::binary_operator:
             return firstSet(NonTerminal::_operator);
         case NonTerminal::postfix_operator:
@@ -432,7 +413,4 @@ string ExpressionParser::mustbe(TK tk) {
     
     return temp;
 }
-
-
-
 

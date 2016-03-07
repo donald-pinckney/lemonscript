@@ -23,7 +23,7 @@ class lemonscript_expressions::PrefixExpression {
     
 public:
     
-    lemonscript_expressions::OperatorType op;
+    lemonscript_expressions::OperatorType prefixOperator;
     
     bool isAtom = false;
     lemonscript_expressions::Atom atom;
@@ -32,6 +32,5 @@ public:
     
 };
 
-std::ostream & operator<<(std::ostream &o, lemonscript_expressions::PrefixExpression pre);
 
 #endif /* PrefixExpression_hpp */

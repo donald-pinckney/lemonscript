@@ -21,6 +21,8 @@ class lemonscript_expressions::ExpressionListItem {
     
 public:
     
+//    ~ExpressionListItem();
+    
     bool isOperator; // Otherwise is prefix expression
     
     
@@ -35,6 +37,5 @@ public:
     void setPrefixExpression(lemonscript_expressions::PrefixExpression pre);
 };
 
-std::ostream & operator<<(std::ostream &o, lemonscript_expressions::ExpressionListItem pre);
 
 #endif /* ExpressionListItem_hpp */

@@ -10,8 +10,8 @@
 
 
 
-std::ostream & operator<<(std::ostream &o, lemonscript_expressions::PrefixExpression pre) {
-    o << pre.op;
+std::ostream & lemonscript_expressions::operator<<(std::ostream &o, lemonscript_expressions::PrefixExpression pre) {
+    o << pre.prefixOperator;
     
     if (pre.isAtom) {
         o << pre.atom;

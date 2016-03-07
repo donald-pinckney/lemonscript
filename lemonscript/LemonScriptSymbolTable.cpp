@@ -38,6 +38,9 @@ void LemonScriptSymbolTable::declareVariable(int line, const std::string &name, 
             memcpy(address, pointerToValue, sizeof(bool));
             break;
             
+        case DataType::TYPE:
+            throw "Line " + std::to_string(line) + ":\nDeclaring type variables not yet supported: " + name;
+            
         default:
             break;
     }

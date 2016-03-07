@@ -36,6 +36,7 @@
 		50869CAC1C83850C0069FB1D /* OperatorType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50869CAA1C83850C0069FB1D /* OperatorType.cpp */; };
 		50869CAF1C83859A0069FB1D /* PrefixExpression.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50869CAD1C83859A0069FB1D /* PrefixExpression.cpp */; };
 		50869CB21C83B8750069FB1D /* Atom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50869CB01C83B8750069FB1D /* Atom.cpp */; };
+		5089598F1C8436A900F30125 /* ExpressionTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5089598D1C8436A900F30125 /* ExpressionTree.cpp */; };
 		508F60AB1C3492E2008ED63E /* WhileAlsoCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508F60A91C3492E2008ED63E /* WhileAlsoCommand.cpp */; };
 		508F60AE1C3493D4008ED63E /* LemonScriptTokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508F60AC1C3493D4008ED63E /* LemonScriptTokenizer.cpp */; };
 		508F60B01C34B0DC008ED63E /* CVR3Tote.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 508F60AF1C34B0CB008ED63E /* CVR3Tote.auto */; };
@@ -136,6 +137,8 @@
 		50869CAE1C83859A0069FB1D /* PrefixExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixExpression.h; sourceTree = "<group>"; };
 		50869CB01C83B8750069FB1D /* Atom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Atom.cpp; sourceTree = "<group>"; };
 		50869CB11C83B8750069FB1D /* Atom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Atom.h; sourceTree = "<group>"; };
+		5089598D1C8436A900F30125 /* ExpressionTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExpressionTree.cpp; sourceTree = "<group>"; };
+		5089598E1C8436A900F30125 /* ExpressionTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressionTree.h; sourceTree = "<group>"; };
 		508F60A91C3492E2008ED63E /* WhileAlsoCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WhileAlsoCommand.cpp; sourceTree = "<group>"; };
 		508F60AA1C3492E2008ED63E /* WhileAlsoCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhileAlsoCommand.h; sourceTree = "<group>"; };
 		508F60AC1C3493D4008ED63E /* LemonScriptTokenizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LemonScriptTokenizer.cpp; sourceTree = "<group>"; };
@@ -260,6 +263,8 @@
 				50869CAD1C83859A0069FB1D /* PrefixExpression.cpp */,
 				50869CB11C83B8750069FB1D /* Atom.h */,
 				50869CB01C83B8750069FB1D /* Atom.cpp */,
+				5089598E1C8436A900F30125 /* ExpressionTree.h */,
+				5089598D1C8436A900F30125 /* ExpressionTree.cpp */,
 			);
 			name = Expressions;
 			sourceTree = "<group>";
@@ -401,6 +406,7 @@
 				500BE39C1C66CD6D00DA8A98 /* SetCommand.cpp in Sources */,
 				508F60AE1C3493D4008ED63E /* LemonScriptTokenizer.cpp in Sources */,
 				5014806D1C2C17D400153984 /* mainLemonScript.cpp in Sources */,
+				5089598F1C8436A900F30125 /* ExpressionTree.cpp in Sources */,
 				508F60AB1C3492E2008ED63E /* WhileAlsoCommand.cpp in Sources */,
 				5041E6451C7A869400C07988 /* RunCommand.cpp in Sources */,
 				501480681C2C08B400153984 /* AvailableCppCommandDeclaration.cpp in Sources */,

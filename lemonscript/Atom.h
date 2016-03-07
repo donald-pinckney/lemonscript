@@ -16,6 +16,8 @@
 
 #include "AvailableCppCommandDeclaration.h"
 
+//std::ostream & operator<<(std::ostream &o, const lemonscript_expressions::Atom &a);
+
 class lemonscript_expressions::Atom {
     
 public:
@@ -24,6 +26,5 @@ public:
     lemonscript::DataType parsedType; // Meaningless if atom is an identifier
 };
 
-std::ostream & operator<<(std::ostream &o, lemonscript_expressions::Atom a);
 
 #endif /* Atom_hpp */

@@ -1,9 +1,5 @@
-//DEF y = 9
 
-//RUN constants.auto
+//DEF x = -7.9
+IMPORT constants.auto
 
-//SET y = 8
-
-PointTurn: -(55.5)
-//Wait: y
-//Wait5
+Print: e

@@ -22,33 +22,12 @@
 
 #include "ExpressionParser.h"
 
+#include "ExpressionTree.h"
+
 using namespace lemonscript;
 using namespace lemonscript_expressions;
 
 int main() {
-    
-    
-    
-    try {
-//        ExpressionParser scan("-xy + (yz-r5%3==9   -2)");
-        ExpressionParser scan("-y - (x - z) - a - b - c - d - e");
-        std::cout << scan.getRootPrefixExpression() << std::endl;
-
-//        ExpressionParser scan("x-");
-    } catch (std::string err) {
-        std::cerr << err << std::endl;
-    }
-//    while (true) {
-//        Token tok = scan.scan();
-//        std::cout << tok << std::endl;
-//        if(tok.kind == TK::END_OF_FILE) {
-//            break;
-//        }
-//    }
-    
-    return 0;
-        
-    
     
     try {        
         
@@ -67,13 +46,19 @@ int main() {
         lemonscript::AvailableCppCommandDeclaration *wait5 = new lemonscript::AvailableCppCommandDeclaration((void *)Wait5, "Wait5", {});
 
         lemonscript::AvailableCppCommandDeclaration *testBool = new lemonscript::AvailableCppCommandDeclaration((void *)TestBool, "TestBool", {DataType::BOOLEAN, DataType::BOOLEAN});
+        lemonscript::AvailableCppCommandDeclaration *printF = new lemonscript::AvailableCppCommandDeclaration((void *)PrintF, "Print", {DataType::FLOAT});
+        lemonscript::AvailableCppCommandDeclaration *printI = new lemonscript::AvailableCppCommandDeclaration((void *)PrintI, "Print", {DataType::INT});
+        lemonscript::AvailableCppCommandDeclaration *printB = new lemonscript::AvailableCppCommandDeclaration((void *)PrintB, "Print", {DataType::BOOLEAN});
+
 
         
-        std::vector<const lemonscript::AvailableCppCommandDeclaration *> commands = {driveStraight3, driveStraight2, driveStraight4, deployChokehold, calibrateElevator, stopElevator, stopDriving, raiseWings, pointTurn, pointTurn2, wait, wait5, testBool};
+        std::vector<const lemonscript::AvailableCppCommandDeclaration *> commands = {driveStraight3, driveStraight2, driveStraight4, deployChokehold, calibrateElevator, stopElevator, stopDriving, raiseWings, pointTurn, pointTurn2, wait, wait5, testBool, printF, printI, printB};
         
         lemonscript::LemonScriptState *state = new lemonscript::LemonScriptState();
         state->declareAvailableCppCommands(commands);
         
+        
+
         std::string fileName = "test_run.auto";
         lemonscript::LemonScriptCompiler *compiler = new lemonscript::LemonScriptCompiler(fileName, state);
         

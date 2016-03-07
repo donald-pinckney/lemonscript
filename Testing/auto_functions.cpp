@@ -123,3 +123,18 @@ bool Wait(void *data, int t) {
 bool Wait5(void *data) {
     return Wait(data, 5);
 }
+
+bool PrintF(void *data, float f) {
+    printf("%g\n", f);
+    return true;
+}
+
+bool PrintI(void *data, int i) {
+    printf("%d\n", i);
+    return true;
+}
+
+bool PrintB(void *data, bool b) {
+    printf("%s\n", b ? "true" : "false");
+    return true;
+}

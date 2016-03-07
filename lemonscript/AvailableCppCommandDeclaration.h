@@ -16,7 +16,11 @@
 #include "lemonscript.h"
 
 namespace lemonscript {
-    enum class DataType {INT, FLOAT, BOOLEAN};
+    enum class DataType {
+        INT, FLOAT, BOOLEAN, TYPE
+    };
+    
+    bool DataTypeIsSubtypeOf(DataType subtype, DataType type);
 }
 
 

@@ -40,6 +40,10 @@ void printParamTypes(const vector<DataType> &types, ostream &stream) {
                 text = "bool";
                 break;
                 
+            case DataType::TYPE:
+                text = "type";
+                break;
+                
             default:
                 break;
         }
@@ -160,10 +164,12 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
                         expr->getValue(&val);
                         int tempArgVal = *((int *)&val);
                         arguments.push_back(reinterpret_cast<void *>(tempArgVal));
-                    } else {
+                    } else if(type == DataType::BOOLEAN) {
                         bool val;
                         expr->getValue(&val);
                         arguments.push_back((void *)val);
+                    } else {
+                        throw "Type expressions not yet supported.";
                     }
                     
                     

@@ -28,4 +28,9 @@ bool PointTurn2(void *data, float angle);
 bool Wait(void *data, int t);
 bool Wait5(void *data);
 
+bool PrintF(void *data, float f);
+bool PrintI(void *data, int i);
+bool PrintB(void *data, bool b);
+
+
 #endif /* auto_functions_h */
