@@ -45,6 +45,8 @@ class lemonscript_expressions::ExpressionTree {
     
 public:
     ExpressionTree(PrefixExpression rootExp, lemonscript::LemonScriptState *s);
+    ~ExpressionTree();
+    
     lemonscript_expressions::ExpressionTreeRecurseAttributes compileTree(lemonscript::DataType neededType);
     lemonscript_expressions::ExpressionTreeRecurseAttributes compileTree();
     

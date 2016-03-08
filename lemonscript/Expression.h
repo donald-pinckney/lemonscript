@@ -22,6 +22,7 @@
 class lemonscript_expressions::Expression {
     
     bool isConst;
+    bool didSupertype;
     lemonscript::DataType t;
     int constValue;
     
@@ -29,8 +30,11 @@ class lemonscript_expressions::Expression {
     
 public:
     Expression(const std::string &str, lemonscript::LemonScriptState *state, int lineNum);
+    Expression(const std::string &str, lemonscript::DataType forceType, lemonscript::LemonScriptState *state, int lineNum);
+
     ~Expression();
     
+    bool neededToSupertype() const;
     bool isConstant() const;
     lemonscript::DataType getType() const;
     void getValue(void *p) const;

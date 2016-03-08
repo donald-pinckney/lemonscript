@@ -28,6 +28,52 @@ bool lemonscript::DataTypeIsSubtypeOf(DataType subtype, DataType type) {
     throw "Unknown type";
 }
 
+int lemonscript::DataTypeIntCastFromTo(DataType from, DataType to, int value) {
+    int retVal;
+    bzero(&retVal, sizeof(int));
+    
+    if(from == to) {
+        return value;
+    } else if(from == DataType::BOOLEAN) {
+        bool boolVal = *(bool *)(&value);
+        
+        if(to == DataType::INT) {
+            int castValue = (int)boolVal;
+            memcpy(&retVal, &castValue, sizeof(int));
+        } else if(to == DataType::FLOAT) {
+            float castValue = (float)boolVal;
+            memcpy(&retVal, &castValue, sizeof(float));
+        }
+        
+    } else if(from == DataType::INT) {
+        int intVal = *(int *)(&value);
+        
+        if(to == DataType::BOOLEAN) {
+            bool castValue = (bool)intVal;
+            memcpy(&retVal, &castValue, sizeof(bool));
+        } else if(to == DataType::FLOAT) {
+            float castValue = (float)intVal;
+            memcpy(&retVal, &castValue, sizeof(float));
+        }
+        
+    } else if(from == DataType::FLOAT) {
+        float floatVal = *(float *)(&value);
+        
+        if(to == DataType::INT) {
+            int castValue = (int)floatVal;
+            memcpy(&retVal, &castValue, sizeof(int));
+        } else if(to == DataType::BOOLEAN) {
+            bool castValue = (bool)floatVal;
+            memcpy(&retVal, &castValue, sizeof(bool));
+        }
+    }
+    
+    return retVal;
+}
+
+
+
+
 std::string dataTypeDescription(DataType t) {
     if(t == DataType::INT) return "INT";
     if(t == DataType::FLOAT) return "FLOAT";

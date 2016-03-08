@@ -187,45 +187,19 @@ ExpressionTreeRecurseAttributes ExpressionTree::compileTree(DataType neededType)
                 if(currentType == DataType::BOOLEAN) {
                     bool boolVal = (atom.text == "true" ? true : false);
                     
-                    if(neededType == DataType::BOOLEAN) {
-                        bool castValue = (bool)boolVal;
-                        memcpy(&parsedValue, &castValue, sizeof(bool));
-                    } else if(neededType == DataType::INT) {
-                        int castValue = (int)boolVal;
-                        memcpy(&parsedValue, &castValue, sizeof(int));
-                    } else if(neededType == DataType::FLOAT) {
-                        float castValue = (float)boolVal;
-                        memcpy(&parsedValue, &castValue, sizeof(float));
-                    }
-                    
+                    parsedValue = DataTypeBuildInt(boolVal);
                 } else if(currentType == DataType::INT) {
                     int intVal = stoi(atom.text);
                     
-                    if(neededType == DataType::BOOLEAN) {
-                        bool castValue = (bool)intVal;
-                        memcpy(&parsedValue, &castValue, sizeof(bool));
-                    } else if(neededType == DataType::INT) {
-                        int castValue = (int)intVal;
-                        memcpy(&parsedValue, &castValue, sizeof(int));
-                    } else if(neededType == DataType::FLOAT) {
-                        float castValue = (float)intVal;
-                        memcpy(&parsedValue, &castValue, sizeof(float));
-                    }
-                    
+                    parsedValue = DataTypeBuildInt(intVal);
                 } else if(currentType == DataType::FLOAT) {
                     float floatVal = stof(atom.text);
                     
-                    if(neededType == DataType::BOOLEAN) {
-                        bool castValue = (bool)floatVal;
-                        memcpy(&parsedValue, &castValue, sizeof(bool));
-                    } else if(neededType == DataType::INT) {
-                        int castValue = (int)floatVal;
-                        memcpy(&parsedValue, &castValue, sizeof(int));
-                    } else if(neededType == DataType::FLOAT) {
-                        float castValue = (float)floatVal;
-                        memcpy(&parsedValue, &castValue, sizeof(float));
-                    }
+                    parsedValue = DataTypeBuildInt(floatVal);
                 }
+                
+                parsedValue = DataTypeIntCastFromTo(currentType, neededType, parsedValue);
+                
                 
                 func = [parsedValue] (vector<int> args) {
                     return parsedValue;
@@ -324,72 +298,37 @@ ExpressionTreeRecurseAttributes ExpressionTree::compileTree(DataType neededType)
             if(neededType == DataType::BOOLEAN && actualReturnType == DataType::FLOAT) {
                 func = [matchedTypeSpec] (vector<int> args) {
                     int retVal = matchedTypeSpec.func(args);
-                    float actualRetVal = *(float *)&retVal;
-                    
-                    bool castRetVal = (bool)actualRetVal;
-                    
-                    int castIntRetVal;
-                    bzero(&castIntRetVal, sizeof(int));
-                    memcpy(&castIntRetVal, &castRetVal, sizeof(bool));
-                    return castIntRetVal;
+                    return DataTypeIntCastFromTo(DataType::FLOAT, DataType::BOOLEAN, retVal);
                 };
             }
             if(neededType == DataType::BOOLEAN && actualReturnType == DataType::INT) {
                 func = [matchedTypeSpec] (vector<int> args) {
                     int retVal = matchedTypeSpec.func(args);
-                    int actualRetVal = *(int *)&retVal;
-                    
-                    bool castRetVal = (bool)actualRetVal;
-                    
-                    int castIntRetVal;
-                    bzero(&castIntRetVal, sizeof(int));
-                    memcpy(&castIntRetVal, &castRetVal, sizeof(bool));
-                    return castIntRetVal;
+                    return DataTypeIntCastFromTo(DataType::INT, DataType::BOOLEAN, retVal);
                 };
             }
             if(neededType == DataType::FLOAT && actualReturnType == DataType::BOOLEAN) {
                 func = [matchedTypeSpec] (vector<int> args) {
                     int retVal = matchedTypeSpec.func(args);
-                    bool actualRetVal = *(bool *)&retVal;
-                    
-                    float castRetVal = (float)actualRetVal;
-                    
-                    int castIntRetVal;
-                    bzero(&castIntRetVal, sizeof(int));
-                    memcpy(&castIntRetVal, &castRetVal, sizeof(float));
-                    return castIntRetVal;
+                    return DataTypeIntCastFromTo(DataType::BOOLEAN, DataType::FLOAT, retVal);
                 };
             }
             if(neededType == DataType::FLOAT && actualReturnType == DataType::INT) {
                 func = [matchedTypeSpec] (vector<int> args) {
                     int retVal = matchedTypeSpec.func(args);
-                    int actualRetVal = *(int *)&retVal;
-                    
-                    float castRetVal = (float)actualRetVal;
-                    
-                    int castIntRetVal;
-                    bzero(&castIntRetVal, sizeof(int));
-                    memcpy(&castIntRetVal, &castRetVal, sizeof(float));
-                    return castIntRetVal;
+                    return DataTypeIntCastFromTo(DataType::INT, DataType::FLOAT, retVal);
                 };
             }
             if(neededType == DataType::INT && actualReturnType == DataType::BOOLEAN) {
                 func = [matchedTypeSpec] (vector<int> args) {
                     int retVal = matchedTypeSpec.func(args);
-                    bool actualRetVal = *(bool *)&retVal;
-                    
-                    int castRetVal = (int)actualRetVal;
-                    
-                    return castRetVal;
+                    return DataTypeIntCastFromTo(DataType::BOOLEAN, DataType::INT, retVal);
                 };
             }
             if(neededType == DataType::INT && actualReturnType == DataType::FLOAT) {
                 func = [matchedTypeSpec] (vector<int> args) {
                     int retVal = matchedTypeSpec.func(args);
-                    float actualRetVal = *(float *)&retVal;
-                    
-                    int castRetVal = (int)actualRetVal;
-                    return castRetVal;
+                    return DataTypeIntCastFromTo(DataType::FLOAT, DataType::INT, retVal);
                 };
             }
         } else {
@@ -445,6 +384,15 @@ void ExpressionTree::print(std::ostream &os, int depth) const {
     }
 }
 
+
+ExpressionTree::~ExpressionTree() {
+    if(leftTree) {
+        delete leftTree;
+    }
+    if(rightTree) {
+        delete rightTree;
+    }
+}
 
 std::ostream & operator<<(std::ostream &os, const lemonscript_expressions::ExpressionTree &tree) {
     tree.print(os, 0);

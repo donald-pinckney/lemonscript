@@ -96,13 +96,11 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
     std::string commandString = ParsingUtils::removeCommentFromLine(commandStringInput);
     
     string functionName;
-    vector<void *> arguments;
+    vector<string> argumentStrings;
     
     size_t colonIndex = commandString.find(":");
     functionName = commandString.substr(0, colonIndex);
     functionName = ParsingUtils::trimWhitespace(functionName);
-    
-    vector<DataType> parameterTypes;
     
     if(colonIndex != string::npos) { // There are arguments
         string argumentsString = commandString.substr(colonIndex + 1);
@@ -147,64 +145,102 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
                                 
                 endOfArgIt = newEndOfArgIt;
                 
-                
-                lemonscript_expressions::Expression *expr = new lemonscript_expressions::Expression(argumentString, state, l);
-                DataType type = expr->getType();
-                
-                parameterTypes.push_back(type);
-
-                
-                if(expr->isConstant()) {
-                    if(type == DataType::INT) {
-                        int val;
-                        expr->getValue(&val);
-                        arguments.push_back(reinterpret_cast<void *>(val));
-                    } else if(type == DataType::FLOAT) {
-                        float val;
-                        expr->getValue(&val);
-                        int tempArgVal = *((int *)&val);
-                        arguments.push_back(reinterpret_cast<void *>(tempArgVal));
-                    } else if(type == DataType::BOOLEAN) {
-                        bool val;
-                        expr->getValue(&val);
-                        arguments.push_back((void *)val);
-                    } else {
-                        throw "Type expressions not yet supported.";
-                    }
-                    
-                    
-                    isArgumentLiteral.push_back(true);
-                    
-                    delete expr;
-                } else {
-                    isArgumentLiteral.push_back(false);
-                    arguments.push_back(expr);
-                }
+                argumentStrings.push_back(argumentString);
             }
-            
-            
+        }
+    }
+    
+    reverse(argumentStrings.begin(), argumentStrings.end());
+    
+    // Now that we have all the expression strings parsed, test all different command overrides.
+    vector<const AvailableCppCommandDeclaration *> overrides = state->lookupCommandDeclarationsForName(functionName);
+    if(overrides.size() == 0) {
+        throw "Line " + to_string(l) + ":\nNo command named: " + functionName;
+    }
+
+    
+    int matchCount = 0;
+    const AvailableCppCommandDeclaration *matchedDecl = NULL;
+    for (auto it  = overrides.begin(); it != overrides.end(); ++it) {
+        const AvailableCppCommandDeclaration *decl = *it;
+        
+        if(decl->parameters.size() != argumentStrings.size()) {
+            continue;
         }
         
-    }
-    
-    reverse(arguments.begin(), arguments.end());
-    reverse(parameterTypes.begin(), parameterTypes.end());
-    reverse(isArgumentLiteral.begin(), isArgumentLiteral.end());
-    
-    
-    parameterValues = arguments;
-
-    const AvailableCppCommandDeclaration *decl = state->lookupCommandDeclaration(functionName, parameterTypes);
-
-    if(decl == NULL) {
-        ostringstream tempStream;
-        printParamTypes(parameterTypes, tempStream);
         
-        throw "Line " + to_string(l) + ":\nNo matching function: " + functionName + "(" + tempStream.str() + ")";
+        bool matched = true;
+        bool perfectMatch = true;
+        for (int paramIndex = 0; paramIndex < decl->parameters.size(); paramIndex++) {
+            DataType paramType = decl->parameters[paramIndex];
+            string argString = argumentStrings[paramIndex];
+            
+            try {
+                Expression expr(argString, paramType, state, l);
+                if(expr.neededToSupertype()) {
+                    perfectMatch = false;
+                }
+            } catch (string err) {
+                matched = false;
+                break;
+            }
+        }
+        
+        
+        if(!matched) {
+            continue;
+        }
+        
+        
+        matchCount++;
+        matchedDecl = decl;
+        
+        if(perfectMatch) {
+            matchCount = 1;
+            break;
+        }
     }
     
-    declaration = decl;
+    if(matchCount == 0) {
+        throw "Line " + to_string(l) + ":\nCould not match types for: " + functionName;
+    } else if(matchCount >= 2) {
+        throw "Line " + to_string(l) + ":\nCould not disambiguate types for: " + functionName;
+    }
     
+    
+    
+    declaration = matchedDecl;
+    
+    for (int paramIndex = 0; paramIndex < declaration->parameters.size(); paramIndex++) {
+        string argString = argumentStrings[paramIndex];
+        DataType paramType = declaration->parameters[paramIndex];
+        
+        Expression *expr = new Expression(argString, paramType, state, l);
+        if(expr->isConstant()) {
+            if(paramType == DataType::INT) {
+                int val;
+                expr->getValue(&val);
+                parameterValues.push_back(reinterpret_cast<void *>(val));
+            } else if(paramType == DataType::FLOAT) {
+                float val;
+                expr->getValue(&val);
+                int tempArgVal = *((int *)&val);
+                parameterValues.push_back(reinterpret_cast<void *>(tempArgVal));
+            } else if(paramType == DataType::BOOLEAN) {
+                bool val;
+                expr->getValue(&val);
+                parameterValues.push_back((void *)val);
+            }
+            
+            isArgumentLiteral.push_back(true);
+            
+            delete expr;
+            
+        } else {
+            isArgumentLiteral.push_back(false);
+            parameterValues.push_back(expr);
+        }
+    }
 }
 
 lemonscript::CppCommand::~CppCommand() {

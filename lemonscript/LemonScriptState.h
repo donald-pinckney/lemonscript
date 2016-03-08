@@ -53,6 +53,7 @@ public:
     DataType typeOfVariable(const std::string &variableName) const;
     
     const AvailableCppCommandDeclaration *lookupCommandDeclaration(const std::string &name, const std::vector<DataType> &parameterTypes) const;
+    std::vector<const AvailableCppCommandDeclaration *> lookupCommandDeclarationsForName(const std::string &name) const;
 };
 
 #endif /* LemonScriptState_hpp */

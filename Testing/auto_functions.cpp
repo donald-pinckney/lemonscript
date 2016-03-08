@@ -125,16 +125,16 @@ bool Wait5(void *data) {
 }
 
 bool PrintF(void *data, float f) {
-    printf("%g\n", f);
+    printf("f: %g\n", f);
     return true;
 }
 
 bool PrintI(void *data, int i) {
-    printf("%d\n", i);
+    printf("i: %d\n", i);
     return true;
 }
 
 bool PrintB(void *data, bool b) {
-    printf("%s\n", b ? "true" : "false");
+    printf("b: %s\n", b ? "true" : "false");
     return true;
 }

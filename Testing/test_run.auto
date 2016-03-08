@@ -2,4 +2,5 @@
 //DEF x = -7.9
 IMPORT constants.auto
 
-Print: e
+Print: 6
+Print: e^pi - 8

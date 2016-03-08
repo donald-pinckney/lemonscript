@@ -21,6 +21,19 @@ namespace lemonscript {
     };
     
     bool DataTypeIsSubtypeOf(DataType subtype, DataType type);
+    
+    int DataTypeIntCastFromTo(DataType from, DataType to, int value);
+
+    template <typename T>
+    int DataTypeBuildInt(T val) {
+        int retVal;
+        bzero(&retVal, sizeof(int));
+        
+        memcpy(&retVal, &val, sizeof(T));
+        
+        return retVal;
+    }
+
 }
 
 

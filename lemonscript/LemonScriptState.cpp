@@ -84,3 +84,12 @@ const lemonscript::AvailableCppCommandDeclaration * lemonscript::LemonScriptStat
     
     return NULL;
 }
+
+std::vector<const lemonscript::AvailableCppCommandDeclaration *> lemonscript::LemonScriptState::lookupCommandDeclarationsForName(const std::string &name) const {
+    auto mapIt = availableCppCommands.find(name);
+    if(mapIt == availableCppCommands.end()) {
+        return {};
+    }
+    
+    return mapIt->second;
+}
