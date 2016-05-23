@@ -8,6 +8,8 @@
 
 #include "ExpressionParser.h"
 
+#include <algorithm>
+
 using namespace lemonscript_expressions;
 using namespace lemonscript;
 using namespace std;
