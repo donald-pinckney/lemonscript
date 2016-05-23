@@ -242,7 +242,7 @@ ExpressionTreeRecurseAttributes ExpressionTree::compileTree(DataType neededType)
             bool match = true;
             
             vector<ExpressionTreeRecurseAttributes> childRecurseResults;
-            for (int childIndex = 0; childIndex < treeArgs.size(); childIndex++) {
+            for (size_t childIndex = 0; childIndex < treeArgs.size(); childIndex++) {
                 ExpressionTreeRecurseAttributes childRecurse = treeArgs[childIndex]->compileTree(spec.inputTypes[childIndex]);
                 childRecurseResults.push_back(childRecurse);
                 

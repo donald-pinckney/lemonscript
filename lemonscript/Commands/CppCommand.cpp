@@ -161,7 +161,7 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
     
     int matchCount = 0;
     const AvailableCppCommandDeclaration *matchedDecl = NULL;
-    for (auto it  = overrides.begin(); it != overrides.end(); ++it) {
+    for (auto it = overrides.begin(); it != overrides.end(); ++it) {
         const AvailableCppCommandDeclaration *decl = *it;
         
         if(decl->parameters.size() != argumentStrings.size()) {
@@ -171,7 +171,7 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
         
         bool matched = true;
         bool perfectMatch = true;
-        for (int paramIndex = 0; paramIndex < decl->parameters.size(); paramIndex++) {
+        for (size_t paramIndex = 0; paramIndex < decl->parameters.size(); paramIndex++) {
             DataType paramType = decl->parameters[paramIndex];
             string argString = argumentStrings[paramIndex];
             
@@ -211,7 +211,7 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
     
     declaration = matchedDecl;
     
-    for (int paramIndex = 0; paramIndex < declaration->parameters.size(); paramIndex++) {
+    for (size_t paramIndex = 0; paramIndex < declaration->parameters.size(); paramIndex++) {
         string argString = argumentStrings[paramIndex];
         DataType paramType = declaration->parameters[paramIndex];
         
@@ -244,7 +244,7 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
 }
 
 lemonscript::CppCommand::~CppCommand() {
-    for (int i = 0; i < parameterValues.size(); i++) {
+    for (size_t i = 0; i < parameterValues.size(); i++) {
         if(isArgumentLiteral[i] == false) {
             lemonscript_expressions::Expression *expr = (lemonscript_expressions::Expression *)parameterValues[i];
             delete expr;

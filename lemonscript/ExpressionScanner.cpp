@@ -8,6 +8,8 @@
 
 #include "ExpressionScanner.h"
 
+#include <ctype.h>
+
 using namespace lemonscript_expressions;
 
 std::ostream & lemonscript_expressions::operator<<(std::ostream &os, const Token &tok) {
