@@ -8,6 +8,8 @@
 
 #include "ExpressionScanner.h"
 
+#include <ctype.h>
+
 using namespace lemonscript_expressions;
 
 std::ostream & lemonscript_expressions::operator<<(std::ostream &os, const Token &tok) {
@@ -21,7 +23,7 @@ bool myisalpha(char c) {
 }
 
 bool myisdigit(char c) {
-    return isnumber(c);
+    return isdigit(c);
 }
 
 Token ccase1(char c, TK r) {

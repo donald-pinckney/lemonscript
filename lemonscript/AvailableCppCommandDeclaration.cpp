@@ -8,6 +8,9 @@
 
 #include "AvailableCppCommandDeclaration.h"
 
+#include <string.h>
+#include <strings.h>
+
 using lemonscript::DataType;
 
 // This could be build into a more general tree, but whatever

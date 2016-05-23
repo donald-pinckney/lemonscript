@@ -16,8 +16,6 @@
 
 #include "AvailableCppCommandDeclaration.h"
 
-//std::ostream & operator<<(std::ostream &o, const lemonscript_expressions::Atom &a);
-
 class lemonscript_expressions::Atom {
     
 public:

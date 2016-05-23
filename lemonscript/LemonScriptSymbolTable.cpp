@@ -73,7 +73,7 @@ DataType LemonScriptSymbolTable::typeOfVariable(const std::string &variableName)
 
 void LemonScriptSymbolTable::freeVariables() {
     
-    for (int i = 0; i < variableAddressHeap.size(); i++) {
+    for (size_t i = 0; i < variableAddressHeap.size(); i++) {
         void *varAddress = variableAddressHeap[i];
         free(varAddress);
     }

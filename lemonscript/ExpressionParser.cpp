@@ -8,6 +8,9 @@
 
 #include "ExpressionParser.h"
 
+#include <algorithm>
+#include <iostream>
+
 using namespace lemonscript_expressions;
 using namespace lemonscript;
 using namespace std;
@@ -398,6 +401,10 @@ set<TK> ExpressionParser::firstSet(lemonscript_expressions::NonTerminal nt) {
         case NonTerminal::digit:
             return {TK::DIGIT};
     }
+    
+    // This suppresses warnings with Travis CI compiler that isn't good enough to prove return type above.
+    cerr << "Error: Unknown Non-terminal: " << (int)nt << endl;
+    return {};
 }
 
 void ExpressionParser::scan() {

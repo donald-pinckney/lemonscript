@@ -316,6 +316,7 @@
 				50694F3C1C27D46600826B64 /* Sources */,
 				50694F3D1C27D46600826B64 /* Frameworks */,
 				50694F3E1C27D46600826B64 /* CopyFiles */,
+				509DDBBC1CF3C08500D1061F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -378,6 +379,22 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		509DDBBC1CF3C08500D1061F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.cpp\" -or -name \"*.hpp\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		50694F3C1C27D46600826B64 /* Sources */ = {
@@ -507,6 +524,7 @@
 		50694F481C27D46600826B64 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_WARN_SIGN_COMPARE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/lemonscript/**",
 					"$(SRCROOT)/**",
@@ -518,6 +536,7 @@
 		50694F491C27D46600826B64 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_WARN_SIGN_COMPARE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/lemonscript/**",
 					"$(SRCROOT)/**",

@@ -49,7 +49,7 @@
     
     class lemonscript_expressions::ExpressionScanner {
         std::string toParse;
-        int readIndex = 0;
+        size_t readIndex = 0;
         
         bool got_eof = false; // true iff have seen EOF
         // (int rather than char to handle EOF)

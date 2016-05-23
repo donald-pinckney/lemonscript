@@ -23,9 +23,7 @@ struct lemonscript_expressions::ExpressionTreeRecurseAttributes {
     bool CANT_MATCH_TYPE; // !!!
     lemonscript::DataType dataType;
     bool isConstant;
-    bool neededToSupertype;
-    
-//    std::function<int (std::vector<int>)> func;
+    bool neededToSupertype;    
 };
 
 class lemonscript_expressions::ExpressionTree {
