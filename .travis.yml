@@ -1,16 +1,28 @@
-language: objective-c
-osx_image: xcode7.3
+language: c++
+
+os:
+  - linux
+  - osx
+
+matrix:
+  include:
+    - os: linux
+    - os: osx
+      osx_image: xcode7.3
 
 before_install:
-  - wget 'https://github.com/bazelbuild/bazel/releases/download/0.2.3/bazel-0.2.3-installer-darwin-x86_64.sh'
-  - chmod +x bazel-0.2.3-installer-darwin-x86_64.sh
-  - ./bazel-0.2.3-installer-darwin-x86_64.sh --user
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then wget 'https://github.com/bazelbuild/bazel/releases/download/0.2.3/bazel-0.2.3-installer-darwin-x86_64.sh' ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then chmod +x bazel-0.2.3-installer-darwin-x86_64.sh ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./bazel-0.2.3-installer-darwin-x86_64.sh --user ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then wget 'https://github.com/bazelbuild/bazel/releases/download/0.2.3/bazel-0.2.3-installer-linux-x86_64.sh' ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then chmod +x bazel-0.2.3-installer-linux-x86_64.sh ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./bazel-0.2.3-installer-linux-x86_64.sh --user ; fi
   - cat .bazelrc_travis_patch > .bazelrc
   - cat ~/.bazelrc >> .bazelrc
 
 script:
   - bazel build //:lemonscript
-  - xctool test -project lemonscript.xcodeproj -scheme lemonscript_tests
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then xctool test -project lemonscript.xcodeproj -scheme lemonscript_tests ; fi
 
 after_script:
   - rm .bazelrc
