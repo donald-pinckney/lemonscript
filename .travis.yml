@@ -3,8 +3,9 @@ language: c++
 matrix:
   include:
     - os: linux
-      dist: trusty
+      #dist: trusty
       language: c++
+      jdk: oraclejdk8
       addons:
         apt:
           sources:
@@ -31,9 +32,9 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then wget 'https://github.com/bazelbuild/bazel/releases/download/0.2.3/bazel-0.2.3-installer-linux-x86_64.sh' ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then chmod +x bazel-0.2.3-installer-linux-x86_64.sh ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./bazel-0.2.3-installer-linux-x86_64.sh --user ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then add-apt-repository ppa:webupd8team/java ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then apt-get update ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then apt-get install oracle-java8-installer ; fi
+  # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then add-apt-repository ppa:webupd8team/java ; fi
+  # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then apt-get update ; fi
+  # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then apt-get install oracle-java8-installer ; fi
   - cat .bazelrc_travis_patch > .bazelrc
   - cat ~/.bazelrc >> .bazelrc
 
