@@ -28,8 +28,6 @@ before_install:
   - ./bazel-0.1.0-installer-linux-x86_64.sh --user
   - cat .bazelrc_travis_patch > .bazelrc
   - cat ~/.bazelrc >> .bazelrc
-
-script:
   - bazel build //:lemonscript
 
 after_script:
