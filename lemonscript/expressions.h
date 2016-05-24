@@ -17,7 +17,7 @@ namespace lemonscript_expressions {
     class ExpressionParser;
     class ExpressionListItem;
     class OperatorType;
-    class TypeSpecification;
+    struct TypeSpecification;
     class PrefixExpression;
     class Atom;
     class ExpressionTree;
