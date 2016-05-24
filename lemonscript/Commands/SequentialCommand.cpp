@@ -38,7 +38,7 @@ lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state
             break;
         }
         
-        printTok(token, type, lineNum);
+//        printTok(token, type, lineNum);
         
         Command *command;
         if(type == CppToken) {

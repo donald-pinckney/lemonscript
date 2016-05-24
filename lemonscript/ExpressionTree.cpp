@@ -45,6 +45,11 @@ ExpressionTree::ExpressionTree(PrefixExpression rootExp, LemonScriptState *s) {
         ExpressionTree *actualTree = new ExpressionTree(*(rootExp.expressionList[0].prefixExpression), s);
         this->leftTree = actualTree->leftTree;
         this->rightTree = actualTree->rightTree;
+        
+        // Transfer ownership to our own tree, so these don't get deleted
+        actualTree->leftTree = NULL;
+        actualTree->rightTree = NULL;
+        
         this->atom = actualTree->atom;
         this->op = actualTree->op;
         delete actualTree;

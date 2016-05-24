@@ -18,10 +18,6 @@
 #include "lemonscript.h"
 
 namespace lemonscript {
-    enum class DataType {
-        INT, FLOAT, BOOLEAN, TYPE
-    };
-    
     bool DataTypeIsSubtypeOf(DataType subtype, DataType type);
     
     int DataTypeIntCastFromTo(DataType from, DataType to, int value);

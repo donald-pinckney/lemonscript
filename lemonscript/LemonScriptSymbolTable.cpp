@@ -18,7 +18,7 @@ std::vector<void *> LemonScriptSymbolTable::variableAddressHeap;
 
 void LemonScriptSymbolTable::declareVariable(int line, const std::string &name, DataType type, void *pointerToValue) {
     if(variableAddresses.find(name) != variableAddresses.end()) {
-        throw "Line " + std::to_string(line) + ":\nDuplicate variable definition: " + name;
+        throw "Line " + std::to_string(line) + ": Duplicate variable definition: " + name;
     }
     
     void *address;
@@ -39,7 +39,7 @@ void LemonScriptSymbolTable::declareVariable(int line, const std::string &name, 
             break;
             
         case DataType::TYPE:
-            throw "Line " + std::to_string(line) + ":\nDeclaring type variables not yet supported: " + name;
+            throw "Line " + std::to_string(line) + ": Declaring type variables not yet supported: " + name;
             
         default:
             break;

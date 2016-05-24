@@ -25,7 +25,10 @@ namespace lemonscript {
     class LemonScriptState;
     class LemonScriptTokenizer;
     class LemonScriptCompiler;
+    
+    enum class DataType {
+        INT, FLOAT, BOOLEAN, TYPE
+    };
 }
-
 
 #endif /* lemonscript_h */

@@ -34,6 +34,11 @@ public:
     
     LemonScriptCompiler(const std::string &toParseFileName, LemonScriptState *stateParam) : state(stateParam), toParse(toParseFileName) {
         
+        // Check that the file exists
+        if(!toParse.good()) {
+            throw "File not found: " + toParseFileName;
+        }
+        
         // THIS DOES ALL THE PARSING / COMPILATION
         rootSequence = new SequentialCommand(1, state, ParsingUtils::readWholeStream(toParse));
         

@@ -155,7 +155,7 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
     // Now that we have all the expression strings parsed, test all different command overrides.
     vector<const AvailableCppCommandDeclaration *> overrides = state->lookupCommandDeclarationsForName(functionName);
     if(overrides.size() == 0) {
-        throw "Line " + to_string(l) + ":\nNo command named: " + functionName;
+        throw "Line " + to_string(l) + ": No command named: " + functionName;
     }
 
     
@@ -202,9 +202,9 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
     }
     
     if(matchCount == 0) {
-        throw "Line " + to_string(l) + ":\nCould not match types for: " + functionName;
+        throw "Line " + to_string(l) + ": Could not match types for: " + functionName;
     } else if(matchCount >= 2) {
-        throw "Line " + to_string(l) + ":\nCould not disambiguate types for: " + functionName;
+        throw "Line " + to_string(l) + ": Could not disambiguate types for: " + functionName;
     }
     
     
