@@ -2,15 +2,15 @@ language: objective-c
 osx_image: xcode7.3
 
 before_install:
-#  - wget 'https://github.com/bazelbuild/bazel/releases/download/0.2.3/bazel-0.2.3-installer-darwin-x86_64.sh'
-#  - chmod +x bazel-0.2.3-installer-darwin-x86_64.sh
-#  - ./bazel-0.2.3-installer-darwin-x86_64.sh --user
-#  - cat .bazelrc_travis_patch > .bazelrc
-#  - cat ~/.bazelrc >> .bazelrc
+  - wget 'https://github.com/bazelbuild/bazel/releases/download/0.2.3/bazel-0.2.3-installer-darwin-x86_64.sh'
+  - chmod +x bazel-0.2.3-installer-darwin-x86_64.sh
+  - ./bazel-0.2.3-installer-darwin-x86_64.sh --user
+  - cat .bazelrc_travis_patch > .bazelrc
+  - cat ~/.bazelrc >> .bazelrc
 
 script:
   - bazel build //:lemonscript
   - xctool test -project lemonscript.xcodeproj -scheme lemonscript_tests
 
 after_script:
-#  - rm .bazelrc
+  - rm .bazelrc
