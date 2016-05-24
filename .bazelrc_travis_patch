@@ -8,7 +8,7 @@ test --ram_utilization_factor=10
 build --verbose_failures
 
 # This is so we use a recent enough GCC when building.
-build --crosstool_top //tools/custom_crosstool:CROSSTOOL
+# build --crosstool_top //tools/custom_crosstool:CROSSTOOL
 
 # This is so we don't use sandboxed execution. Sandboxed execution
 # runs stuff in a container, and since Travis already runs its script
@@ -20,6 +20,6 @@ test --test_strategy=standalone
 # Below this line, .travis.yml will cat the default bazelrc.
 # This is needed so Bazel starts with the base workspace in its
 # package path.
-build --package_path %workspace%:/Users/donaldpinckney/.bazel/base_workspace
-fetch --package_path %workspace%:/Users/donaldpinckney/.bazel/base_workspace
-query --package_path %workspace%:/Users/donaldpinckney/.bazel/base_workspace
+#build --package_path %workspace%:/Users/donaldpinckney/.bazel/base_workspace
+#fetch --package_path %workspace%:/Users/donaldpinckney/.bazel/base_workspace
+#query --package_path %workspace%:/Users/donaldpinckney/.bazel/base_workspace

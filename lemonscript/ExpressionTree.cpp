@@ -170,7 +170,7 @@ ExpressionTreeRecurseAttributes ExpressionTree::compileTree(DataType neededType)
             
             if(atom.isIdentifier) {
                 void *address = state->addressOfVariable(atom.text);
-                int copySize;
+                int copySize = 0;
                 if(currentType == DataType::BOOLEAN) {
                     copySize = sizeof(bool);
                 } else if(currentType == DataType::FLOAT) {
@@ -351,8 +351,12 @@ int ExpressionTree::evaluate() {
         return func({});
     } else if(rightTree == NULL) {
         return func({leftTree->evaluate()});
-    } else {
+    } else if(leftTree != NULL && rightTree != NULL) {
         return func({leftTree->evaluate(), rightTree->evaluate()});
+    } else {
+        std::cerr << "This should never have happened" << std::endl;
+        exit(1);
+        return 0;
     }
 }
 
@@ -375,7 +379,7 @@ void ExpressionTree::print(std::ostream &os, int depth) const {
         
         os << op << endl;
         leftTree->print(os, depth + 1);
-    } else {
+    } else if(leftTree != NULL && rightTree != NULL) {
         leftTree->print(os, depth + 1);
         os << endl;
         
@@ -386,6 +390,9 @@ void ExpressionTree::print(std::ostream &os, int depth) const {
         os << op << endl;
         
         rightTree->print(os, depth + 1);
+    } else {
+        std::cerr << "This should never have happened" << std::endl;
+        exit(1);
     }
 }
 
