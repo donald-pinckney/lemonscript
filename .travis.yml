@@ -3,7 +3,7 @@ language: c++
 matrix:
   include:
     - os: linux
-      dist: wily
+      dist: trusty
       language: c++
       addons:
         apt:
