@@ -16,18 +16,18 @@ matrix:
       osx_image: xcode7.3
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then wget 'https://github.com/bazelbuild/bazel/releases/download/0.2.3/bazel-0.2.3-installer-darwin-x86_64.sh' ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then chmod +x bazel-0.2.3-installer-darwin-x86_64.sh ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./bazel-0.2.3-installer-darwin-x86_64.sh --user ; fi
+  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then wget 'https://github.com/bazelbuild/bazel/releases/download/0.2.3/bazel-0.2.3-installer-darwin-x86_64.sh' ; fi
+  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then chmod +x bazel-0.2.3-installer-darwin-x86_64.sh ; fi
+  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./bazel-0.2.3-installer-darwin-x86_64.sh --user ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then wget 'https://github.com/bazelbuild/bazel/releases/download/0.2.3/bazel-0.2.3-jdk7-installer-linux-x86_64.sh' ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then chmod +x bazel-0.2.3-jdk7-installer-linux-x86_64.sh ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./bazel-0.2.3-jdk7-installer-linux-x86_64.sh --user ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cat .bazelrc_travis_patch_osx > .bazelrc ; fi
+  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cat .bazelrc_travis_patch_osx > .bazelrc ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cat .bazelrc_travis_patch_linux > .bazelrc ; fi
   - cat ~/.bazelrc >> .bazelrc
 
 script:
-  - bazel build //:lemonscript
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bazel build //:lemonscript ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then xctool test -project lemonscript.xcodeproj -scheme lemonscript_tests ; fi
 
 after_script:
