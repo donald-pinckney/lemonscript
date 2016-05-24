@@ -3,6 +3,7 @@ language: c++
 matrix:
   include:
     - os: linux
+      dist: wily
       language: c++
       addons:
         apt:
@@ -14,10 +15,11 @@ matrix:
             - wget
             # Package list from http://bazel.io/docs/install.html
             - openjdk-8-jdk
-            - openjdk-8-source
+            # - openjdk-8-source
             - pkg-config
             - zip
             - zlib1g-dev
+            - unzip
     - os: osx
       language: objective-c
       osx_image: xcode7.3
