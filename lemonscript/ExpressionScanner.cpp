@@ -23,7 +23,7 @@ bool myisalpha(char c) {
 }
 
 bool myisdigit(char c) {
-    return isdigit(c);
+    return isnumber(c);
 }
 
 Token ccase1(char c, TK r) {
