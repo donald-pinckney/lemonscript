@@ -53,19 +53,6 @@
 		509DDC6F1CF3D35F00D1061F /* LemonScriptState.h in Headers */ = {isa = PBXBuildFile; fileRef = 5014806A1C2C0AA600153984 /* LemonScriptState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		509DDC701CF3D3E600D1061F /* AvailableCppCommandDeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = 501480671C2C08B400153984 /* AvailableCppCommandDeclaration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		509DDC711CF3D40B00D1061F /* auto_functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C5A5FF1C2BFC4300028D0B /* auto_functions.cpp */; };
-		509DDC811CF3D86D00D1061F /* pointturn.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50E535621C5D7EB5004F786D /* pointturn.auto */; };
-		509DDC821CF3D86D00D1061F /* test.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50E535631C5D7EB5004F786D /* test.auto */; };
-		509DDC831CF3D86D00D1061F /* twoBall2016.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50267ECC1C5566B300B0EB28 /* twoBall2016.auto */; };
-		509DDC841CF3D86D00D1061F /* deploy chokehold.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5A5F91C2BFBBD00028D0B /* deploy chokehold.auto */; };
-		509DDC851CF3D86D00D1061F /* CVR3Tote.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 508F60AF1C34B0CB008ED63E /* CVR3Tote.auto */; };
-		509DDC861CF3D86D00D1061F /* sequence.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5A5FB1C2BFBE900028D0B /* sequence.auto */; };
-		509DDC871CF3D86D00D1061F /* test_set.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 500BE39D1C66D6D600DA8A98 /* test_set.auto */; };
-		509DDC881CF3D86D00D1061F /* test_scope.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501B81DF1C7596B200F9D42A /* test_scope.auto */; };
-		509DDC891CF3D86D00D1061F /* test_empty.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501B81E41C75C3C700F9D42A /* test_empty.auto */; };
-		509DDC8A1CF3D86D00D1061F /* test_while.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5041E63A1C7A2AD300C07988 /* test_while.auto */; };
-		509DDC8B1CF3D86D00D1061F /* test_import.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5041E63F1C7A809700C07988 /* test_import.auto */; };
-		509DDC8C1CF3D86D00D1061F /* constants.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5041E6401C7A80A000C07988 /* constants.auto */; };
-		509DDC8D1CF3D86D00D1061F /* test_run.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5041E6461C7A898E00C07988 /* test_run.auto */; };
 		509DDC8E1CF3DA4600D1061F /* pointturn.auto in Resources */ = {isa = PBXBuildFile; fileRef = 50E535621C5D7EB5004F786D /* pointturn.auto */; };
 		509DDC8F1CF3DA4600D1061F /* test.auto in Resources */ = {isa = PBXBuildFile; fileRef = 50E535631C5D7EB5004F786D /* test.auto */; };
 		509DDC901CF3DA4600D1061F /* twoBall2016.auto in Resources */ = {isa = PBXBuildFile; fileRef = 50267ECC1C5566B300B0EB28 /* twoBall2016.auto */; };
@@ -123,28 +110,6 @@
 				508F60B01C34B0DC008ED63E /* CVR3Tote.auto in CopyFiles */,
 				50C5A5FE1C2BFC0400028D0B /* sequence.auto in CopyFiles */,
 				501B81E01C75977400F9D42A /* test_scope.auto in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		509DDC801CF3D85600D1061F /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "";
-			dstSubfolderSpec = 16;
-			files = (
-				509DDC811CF3D86D00D1061F /* pointturn.auto in CopyFiles */,
-				509DDC821CF3D86D00D1061F /* test.auto in CopyFiles */,
-				509DDC831CF3D86D00D1061F /* twoBall2016.auto in CopyFiles */,
-				509DDC841CF3D86D00D1061F /* deploy chokehold.auto in CopyFiles */,
-				509DDC851CF3D86D00D1061F /* CVR3Tote.auto in CopyFiles */,
-				509DDC861CF3D86D00D1061F /* sequence.auto in CopyFiles */,
-				509DDC871CF3D86D00D1061F /* test_set.auto in CopyFiles */,
-				509DDC881CF3D86D00D1061F /* test_scope.auto in CopyFiles */,
-				509DDC891CF3D86D00D1061F /* test_empty.auto in CopyFiles */,
-				509DDC8A1CF3D86D00D1061F /* test_while.auto in CopyFiles */,
-				509DDC8B1CF3D86D00D1061F /* test_import.auto in CopyFiles */,
-				509DDC8C1CF3D86D00D1061F /* constants.auto in CopyFiles */,
-				509DDC8D1CF3D86D00D1061F /* test_run.auto in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,7 +421,6 @@
 				50694F3C1C27D46600826B64 /* Sources */,
 				50694F3D1C27D46600826B64 /* Frameworks */,
 				50694F3E1C27D46600826B64 /* CopyFiles */,
-				509DDBBC1CF3C08500D1061F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -493,7 +457,6 @@
 				509DDC591CF3CEBD00D1061F /* Sources */,
 				509DDC5A1CF3CEBD00D1061F /* Frameworks */,
 				509DDC5B1CF3CEBD00D1061F /* Resources */,
-				509DDC801CF3D85600D1061F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -590,19 +553,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		509DDBBC1CF3C08500D1061F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "TAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.cpp\" -or -name \"*.hpp\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"";
-		};
 		509DDC381CF3CC3100D1061F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -885,6 +835,7 @@
 				509DDC1F1CF3CB8900D1061F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		509DDC651CF3CEBD00D1061F /* Build configuration list for PBXNativeTarget "lemonscript_tests" */ = {
 			isa = XCConfigurationList;
@@ -893,6 +844,7 @@
 				509DDC671CF3CEBD00D1061F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		50ACCCAF1C2D39F200964487 /* Build configuration list for PBXNativeTarget "GenCppCalls" */ = {
 			isa = XCConfigurationList;
