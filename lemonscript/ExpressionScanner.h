@@ -49,16 +49,16 @@
     
     class lemonscript_expressions::ExpressionScanner {
         std::string toParse;
-        size_t readIndex = 0;
+        size_t readIndex;
         
-        bool got_eof = false; // true iff have seen EOF
+        bool got_eof; // true iff have seen EOF
         // (int rather than char to handle EOF)
         static const int EndOfFile = -1;
         
         int getchar();
         
     public:
-        ExpressionScanner(const std::string &s) : toParse(s) { };
+        ExpressionScanner(const std::string &s) : toParse(s), readIndex(0), got_eof(false) { };
         Token scan();
     };
 
