@@ -16,6 +16,7 @@
 #include <strings.h>
 #include <functional>
 #include <map>
+#include <memory>
 
 #include "lemonscript.h"
 
