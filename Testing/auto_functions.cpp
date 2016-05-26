@@ -1,140 +1,107 @@
-//
-//  auto_functions.c
-//  FiniteStateMachine
-//
-//  Created by Donald Pinckney on 12/24/15.
-//  Copyright © 2015 Donald Pinckney. All rights reserved.
-//
+/***********************************************\
+*  _____          _   _  _____ ______ _____  _  *
+* |  __ \   /\   | \ | |/ ____|  ____|  __ \| | *
+* | |  | | /  \  |  \| | |  __| |__  | |__) | | *
+* | |  | |/ /\ \ | . ` | | |_ |  __| |  _  /| | *
+* | |__| / ____ \| |\  | |__| | |____| | \ \|_| *
+* |_____/_/    \_\_| \_|\_____|______|_|  \_(_) *
+*                                               *
+* This file was automatically generated - any   *
+* changes that you make to it *will* be deleted *
+* in the future. Do not change this file,       *
+* instead change the .func file for the auto    *
+* function that you want to change. If you have *
+* any questions, or there is a bug in the       *
+* transpiler, talk to Wesley about it.          *
+\***********************************************/
 
 #include "auto_functions.h"
 
-#include <time.h>
+#include <iostream>
 
-bool DeployChokehold(void *data) {
-    
-    printf("BANG! Chokehold has been deployed!\n");
-    
-    // Code here to deploy mechanism
-    
-    return true;
-    
+//// vim: set filetype=cpp:
+
+//TODO(Wesley) Don't do this every tick
+namespace ConvertArgs {
+int ls_convert_int(void *arg) {
+  return *((int *)arg);
+}
+bool ls_convert_bool(void *arg) {
+  return *((bool *)arg);
+}
+float ls_convert_float(void *arg) {
+  return *((float *)arg);
+}
+std::string ls_convert_string(void *arg) {
+  return *((std::string *)arg);
+}
+Time ls_convert_time(void *arg) {
+  return ls_convert_float(arg) * s;
+}
+Distance ls_convert_distance(void *arg) {
+  return ls_convert_float(arg) * m;
+}
+Angle ls_convert_angle(void *arg) {
+  return ls_convert_float(arg) * rad;
+}
+Velocity ls_convert_velocity(void *arg) {
+  return ls_convert_float(arg) * (m / s);
+}
+Acceleration ls_convert_acceleration(void *arg) {
+  return ls_convert_float(arg) * (m / (s * s));
+}
+AngularVelocity ls_convert_angularvelocity(void *arg) {
+  return ls_convert_float(arg) * (rad / s);
+}
+Voltage ls_convert_voltage(void *arg) {
+  return ls_convert_float(arg) * V;
+}
 }
 
+namespace AutoClass {
+//<<<classes>>>
 
-int currentDistance = 0;
-bool DriveStraight_3(void *data, float speed, int distance, bool left) {
+bool WaitClass::Init(std::vector<void *> ls_arg_list) {
+  // BEGIN AUTO GENERATED CODE
+//    Time time = ConvertArgs::ls_convert_time(ls_arg_list[1]);
+    int time = ConvertArgs::ls_convert_int(ls_arg_list[1]);
+
+  // END AUTO GENERATED CODE
+
+  start_time = 0;
+  return false;
+}
+
+bool WaitClass::Periodic(std::vector<void *> ls_arg_list) {
+  // BEGIN AUTO GENERATED CODE
+//  Time time = ConvertArgs::ls_convert_time(ls_arg_list[1]);
+    int time = ConvertArgs::ls_convert_int(ls_arg_list[1]);
+  // END AUTO GENERATED CODE
+    start_time++;
     
-    
-    printf("DriveStraight_3: Driving kinda straight, with speed = %f, distance = %d, left = %d?\n", speed, distance, left);
-    
-    
-    // Simulate driving here
-    currentDistance += 10; // in.
-    
-    if(currentDistance > distance) {
-        currentDistance = 0;
+    if(start_time >= time) {
+        std::cout << "Done waiting for " << time << " seconds." << std::endl;
         return true;
     }
     
     return false;
 }
-
-bool DriveStraight_2(void *data, float speed, int distance) {
-    
-    printf("DriveStraight_2: Driving kinda straight, with speed = %f, distance = %d?\n", speed, distance);
-    
-    
-    // Simulate driving here
-    currentDistance += 10; // in.
-    
-    if(currentDistance > distance) {
-        currentDistance = 0;
-        return true;
-    }
-    
-    return false;
 }
 
-bool DriveStraight_4(void *data, float speed, float distance) {
+namespace AutoGenerator {
+//<<<generators>>>
     
-    printf("DriveStraight_4: Driving kinda straight, with speed = %f, distance = %f?\n", speed, distance);
-    
-    
-    // Simulate driving here
-    currentDistance += 10; // in.
-    
-    if(currentDistance > distance) {
-        currentDistance = 0;
-        return true;
-    }
-    
-    return false;
+std::unique_ptr<lemonscript::BaseAutoFunction> NewWaitCommand() {
+    return std::make_unique<AutoClass::WaitClass>();
 }
 
-bool CalibrateElevator(void *data) {
-    printf("Calibrating elevator...\n");
-    
-    return true;
-}
+std::map<std::string, std::function<std::unique_ptr<lemonscript::BaseAutoFunction>()>> GetAutoGenerators() {
+  std::map<std::string, std::function<std::unique_ptr<lemonscript::BaseAutoFunction>()>> return_map;
 
-bool StopElevator(void *data) {
-    printf("Elevator STOP\n");
-    return true;
-}
-bool StopDriving(void *data) {
-    printf("Driving STOP\n");
-    return true;
-}
+  //<<<addgenerators>>>
+  std::function<std::unique_ptr<lemonscript::BaseAutoFunction>()> NewWaitGenerator = NewWaitCommand;
+  return_map["Wait-int"] = NewWaitCommand;
 
-bool RaiseWings(void *data) {
-    printf("Raising wings\n");
-    return true;
+  return return_map;
 }
-
-bool PointTurn(void *data, float x, float y, bool highgear) {
-    printf("%f, %f, %d\n", x, y, highgear);
-    return true;
-}
-
-bool PointTurn2(void *data, float angle) {
-    printf("%f\n", angle);
-    return true;
-}
-
-bool TestBool(void *data, bool willPrintMe, bool otherBool) {
-    printf("willPrintMe = %d, %d\n", willPrintMe, otherBool);
-    return true;
-}
-
-
-int startIt = 0;
-bool Wait(void *data, int t) {
-    printf("Wait: %d\n", t);
-    
-    if(startIt >= t) {
-        startIt = 0;
-        return true;
-    }
-    startIt++;
-    
-    return false;
-}
-
-bool Wait5(void *data) {
-    return Wait(data, 5);
-}
-
-bool PrintF(void *data, float f) {
-    printf("f: %g\n", f);
-    return true;
-}
-
-bool PrintI(void *data, int i) {
-    printf("i: %d\n", i);
-    return true;
-}
-
-bool PrintB(void *data, bool b) {
-    printf("b: %s\n", b ? "true" : "false");
-    return true;
 }

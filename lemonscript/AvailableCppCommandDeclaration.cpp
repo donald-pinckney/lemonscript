@@ -11,6 +11,9 @@
 #include <string.h>
 #include <strings.h>
 
+#include "BaseAutoFunction.h"
+#include "ParsingUtils.h"
+
 using lemonscript::DataType;
 
 // This could be build into a more general tree, but whatever
@@ -76,11 +79,47 @@ int lemonscript::DataTypeIntCastFromTo(DataType from, DataType to, int value) {
 
 
 
-
 std::string dataTypeDescription(DataType t) {
     if(t == DataType::INT) return "INT";
     if(t == DataType::FLOAT) return "FLOAT";
     if(t == DataType::BOOLEAN) return "BOOLEAN";
     if(t == DataType::TYPE) return "TYPE";
     return "ERROR_TYPE";
+}
+
+
+std::vector<const lemonscript::AvailableCppCommandDeclaration *> lemonscript::AvailableCppCommandDeclaration::parseCppCommands(const std::map<std::string, std::function<std::unique_ptr<BaseAutoFunction>()>> &autoFunctions) {
+    
+    std::vector<const AvailableCppCommandDeclaration *> decls;
+    
+    for(auto it = autoFunctions.begin(); it != autoFunctions.end(); it++) {
+        std::string funcString = it->first;
+        std::function<std::unique_ptr<BaseAutoFunction>()> func = it->second;
+        
+        std::vector<std::string> nameElems = ParsingUtils::split(funcString, '-');
+        
+        std::string funcName = nameElems[0];
+        std::vector<std::string> typeStrings(nameElems.begin() + 1, nameElems.end());
+        
+        std::vector<DataType> types;
+        for (auto typeIt = typeStrings.begin(); typeIt != typeStrings.end(); ++typeIt) {
+            std::string ts = *typeIt;
+            DataType t;
+            if(ts == "int") {
+                t = DataType::INT;
+            } else if(ts == "float") {
+                t = DataType::FLOAT;
+            } else if(ts == "bool") {
+                t = DataType::BOOLEAN;
+            } else {
+                t = DataType::UNIT;
+            }
+            types.push_back(t);
+        }
+        
+        AvailableCppCommandDeclaration *decl = new AvailableCppCommandDeclaration(func, funcName, types);
+        decls.push_back(decl);
+    }
+    
+    return decls;
 }

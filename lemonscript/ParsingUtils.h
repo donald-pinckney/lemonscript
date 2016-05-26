@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <string>
 #include <iostream>
+#include <vector>
 
 #include "lemonscript.h"
 
@@ -27,6 +28,7 @@ namespace ParsingUtils {
     
     std::string trimWhitespace(const std::string &s);
 
+    std::vector<std::string> split(const std::string &s, char delim);
 }
 
 #endif /* CommentSanitizer_hpp */

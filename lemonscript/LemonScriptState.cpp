@@ -11,6 +11,8 @@
 
 #include "LemonScriptState.h"
 
+#include "ParsingUtils.h"
+
 lemonscript::LemonScriptState::~LemonScriptState() {
     LemonScriptSymbolTable::freeVariables();
 }

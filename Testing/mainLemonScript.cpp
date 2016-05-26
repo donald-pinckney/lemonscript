@@ -26,10 +26,13 @@ int main() {
     try {
         lemonscript::LemonScriptState *state = PlayTestsShared::play_tests_make_state();
         
-        std::string fileName = "test_run.auto";
+        std::string fileName = "wait.auto";
         lemonscript::LemonScriptCompiler *compiler = new lemonscript::LemonScriptCompiler(fileName, state);
         
+        int i = 0;
         while (true) {
+            std::cout << "Iteration " << i++ << ":" << std::endl;
+            
             bool isDone = compiler->PeriodicUpdate();
             if(isDone) { break; }
         }

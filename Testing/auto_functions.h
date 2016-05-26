@@ -1,37 +1,53 @@
-//
-//  auto_functions.h
-//  FiniteStateMachine
-//
-//  Created by Donald Pinckney on 12/24/15.
-//  Copyright © 2015 Donald Pinckney. All rights reserved.
-//
+/***********************************************\
+*  _____          _   _  _____ ______ _____  _  *
+* |  __ \   /\   | \ | |/ ____|  ____|  __ \| | *
+* | |  | | /  \  |  \| | |  __| |__  | |__) | | *
+* | |  | |/ /\ \ | . ` | | |_ |  __| |  _  /| | *
+* | |__| / ____ \| |\  | |__| | |____| | \ \|_| *
+* |_____/_/    \_\_| \_|\_____|______|_|  \_(_) *
+*                                               *
+* This file was automatically generated - any   *
+* changes that you make to it *will* be deleted *
+* in the future. Do not change this file,       *
+* instead change the .func file for the auto    *
+* function that you want to change. If you have *
+* any questions, or there is a bug in the       *
+* transpiler, talk to Wesley about it.          *
+\***********************************************/
 
-#ifndef auto_functions_h
-#define auto_functions_h
+#ifndef AUTOGEN_AUTO_CLASSES_H_
+#define AUTOGEN_AUTO_CLASSES_H_
 
-#include <stdio.h>
+#include <functional>
+#include <map>
+#include <memory>
+#include <vector>
 
-bool DeployChokehold(void *data);
-bool DriveStraight_2(void *data, float speed, int distance);
-bool DriveStraight_4(void *data, float speed, float distance);
-bool DriveStraight_3(void *data, float speed, int distance, bool left);
+#include <lemonscript/BaseAutoFunction.h>
 
-bool CalibrateElevator(void *data);
-bool StopElevator(void *data);
-bool StopDriving(void *data);
-bool RaiseWings(void *data);
+//<<<include>>>
+#include "lemonscript-transpiler/tests/files/transpiler/unitscpp.h"
 
-bool TestBool(void *data, bool willPrintMe, bool otherBool);
 
-bool PointTurn(void *data, float x, float y, bool highgear);
-bool PointTurn2(void *data, float angle);
-bool Wait(void *data, int t);
-bool Wait5(void *data);
+namespace AutoClass {
+//<<<classes>>>
 
-bool PrintF(void *data, float f);
-bool PrintI(void *data, int i);
-bool PrintB(void *data, bool b);
+class WaitClass : public lemonscript::BaseAutoFunction {
+ public:
+  bool Init(std::vector<void *> ls_arg_list);
+  bool Periodic(std::vector<void *> ls_arg_list);
 
-bool TestBool(void *data, bool willPrintMe, bool otherBool);
+ private:
+  //<<<vars>>>
+  int start_time = 0;
+};
+}
 
-#endif /* auto_functions_h */
+namespace AutoGenerator {
+//<<<generators>>>
+std::unique_ptr<lemonscript::BaseAutoFunction> NewWaitCommand();
+
+std::map<std::string, std::function<std::unique_ptr<lemonscript::BaseAutoFunction>()>> GetAutoGenerators();
+}
+
+#endif

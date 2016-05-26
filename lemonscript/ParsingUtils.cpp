@@ -8,6 +8,8 @@
 
 #include "ParsingUtils.h"
 
+#include <sstream>
+
 std::string ParsingUtils::removeCommentFromLine(const std::string &line) {
     std::string::size_type loc = line.find("//");
     
@@ -91,4 +93,15 @@ std::string ParsingUtils::trimWhitespace(const std::string &s) {
     size_t lastNotSpace = s.find_last_not_of(" ");
     return s.substr(firstNotSpace, lastNotSpace - firstNotSpace + 1);
     
+}
+
+std::vector<std::string> ParsingUtils::split(const std::string &s, char delim) {
+    std::vector<std::string> elems;
+    
+    std::stringstream ss(s);
+    std::string item;
+    while (std::getline(ss, item, delim)) {
+        elems.push_back(item);
+    }
+    return elems;
 }

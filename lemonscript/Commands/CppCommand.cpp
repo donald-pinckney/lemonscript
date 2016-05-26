@@ -21,73 +21,6 @@
 using namespace std;
 
 using namespace lemonscript_expressions;
-using lemonscript::DataType;
-
-void printParamTypes(const vector<DataType> &types, ostream &stream) {
-    
-    for (auto it = types.rbegin(); it != types.rend(); ++it) {
-        string text;
-        switch (*it) {
-            case DataType::INT:
-                text = "int";
-                break;
-                
-            case DataType::FLOAT:
-                text = "float";
-                break;
-                
-            case DataType::BOOLEAN:
-                text = "bool";
-                break;
-                
-            case DataType::TYPE:
-                text = "type";
-                break;
-                
-            default:
-                break;
-        }
-        
-        stream << text;
-        if((it + 1) != types.rend()) {
-            stream << ", ";
-        }
-    }
-}
-
-bool isArgumentChar(char c) {
-    return isalnum(c) || c == '_' || c == '-' || c == '.';
-}
-
-string camelCase(const string &s) {
-    // s = "cat"
-    char *resultTemp = new char[s.length() + 1];
-    bzero(resultTemp, sizeof(char) * (s.length() + 1));
-    
-    int resultIndex = 0;
-    bool insideWord = false;
-    for (auto it = s.begin(); it != s.end(); ++it) {
-        char c = *it;
-        
-        if(insideWord && isalnum(c)) {
-            resultTemp[resultIndex++] = c;
-        }
-        
-        if((insideWord == false) && isalnum(c)) {
-            resultTemp[resultIndex++] = toupper(c);
-            insideWord = true;
-        }
-        
-
-        
-        if(insideWord && (isalnum(c) == false)) {
-            insideWord = false;
-        }
-    }
-    
-    return string(resultTemp);
-}
-
 
 
 inline bool IsSpace (char c) { return c == ' '; }
@@ -253,4 +186,34 @@ lemonscript::CppCommand::~CppCommand() {
 }
 
 
-#include "CppCommand_GENERATED.h"
+void lemonscript::CppCommand::allocateAutoFunction(vector<void *> args) {
+    autoFunc = declaration->generatorFunction();
+    autoFunc->Init(args);
+}
+    
+bool lemonscript::CppCommand::Update() {
+    void *data = savedState->userData;
+    
+    vector<void *> arguments = {data};
+    
+    int *argumentEvaluation = new int[parameterValues.size()];
+    bzero(argumentEvaluation, sizeof(int) * parameterValues.size());
+    
+    for(size_t i = 0; i < parameterValues.size(); i++) {
+        if(isArgumentLiteral[i]) {
+            argumentEvaluation[i] = *((int *)&parameterValues[i]);
+        } else {
+            ((Expression *)parameterValues[i])->getValue(argumentEvaluation + i);
+        }
+        
+        arguments.push_back(argumentEvaluation + i);
+    }
+    
+    if(autoFunc == NULL) {
+        allocateAutoFunction(arguments);
+    }
+    
+    bool retVal = autoFunc->Periodic(arguments);
+    delete [] argumentEvaluation;
+    return retVal;
+}

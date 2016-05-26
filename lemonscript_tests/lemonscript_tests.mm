@@ -83,15 +83,6 @@ using namespace lemonscript;
     }
 }
 
-make_test_compile(pointturn)
-make_test_compile(sequence)
-make_test_compile(test_set)
-make_test_compile(test_scope)
-make_test_compile(test_empty)
-make_test_compile(test_while)
-make_test_compile(test_import)
-make_test_compile(constants)
-make_test_compile(test_run)
 
 //// Performance and correctness tests for compilation only.
 //- (void)test_compile_pointturn {

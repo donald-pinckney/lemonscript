@@ -11,14 +11,18 @@
 
 #include <stdio.h>
 #include <vector>
+#include <memory>
 #include "Command.h"
 #include "AvailableCppCommandDeclaration.h"
+#include "BaseAutoFunction.h"
 
 #include "lemonscript.h"
 
 class lemonscript::CppCommand : public Command {
     
     const AvailableCppCommandDeclaration *declaration = NULL;
+    std::unique_ptr<BaseAutoFunction> autoFunc = nullptr;
+    
     
     std::vector<bool> isArgumentLiteral;
     std::vector<void *> parameterValues; // parallel to `parameters` in declaration (left to right order). If a parameter isConstant, then this contains the constant value directly.  If a parameter is an expression, then this contains a pointer to the expression
@@ -28,6 +32,9 @@ public:
     virtual ~CppCommand();
     
     bool Update();
+    
+private:
+    void allocateAutoFunction(std::vector<void *> args);
     
 };
 

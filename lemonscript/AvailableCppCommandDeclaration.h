@@ -14,6 +14,8 @@
 #include <string>
 #include <string.h>
 #include <strings.h>
+#include <functional>
+#include <map>
 
 #include "lemonscript.h"
 
@@ -32,6 +34,7 @@ namespace lemonscript {
         return retVal;
     }
 
+
 }
 
 
@@ -43,12 +46,14 @@ class lemonscript::AvailableCppCommandDeclaration {
 public:
     
     std::string functionName; // This function name has been camel-cased, and is in final form for C++
-    void *func;
+    std::function<std::unique_ptr<BaseAutoFunction>()> generatorFunction;
     std::vector<DataType> parameters; // in order from left to right
     
     
-    AvailableCppCommandDeclaration(void *f, const std::string &name, const std::vector<DataType> &ps) : functionName(name), func(f), parameters(ps) { };
+    AvailableCppCommandDeclaration(const std::function<std::unique_ptr<BaseAutoFunction>()> &genFunc, const std::string &name, const std::vector<DataType> &ps) : functionName(name), generatorFunction(genFunc), parameters(ps) { };
     
+    // Make sure you deallocate these later!
+    static std::vector<const AvailableCppCommandDeclaration *> parseCppCommands(const std::map<std::string, std::function<std::unique_ptr<BaseAutoFunction>()>> &autoFunctions);
 };
 
 

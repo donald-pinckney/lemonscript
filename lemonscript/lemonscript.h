@@ -25,9 +25,10 @@ namespace lemonscript {
     class LemonScriptState;
     class LemonScriptTokenizer;
     class LemonScriptCompiler;
+    class BaseAutoFunction;
     
     enum class DataType {
-        INT, FLOAT, BOOLEAN, TYPE
+        INT, FLOAT, BOOLEAN, UNIT, TYPE
     };
 }
 
