@@ -32,5 +32,6 @@ bool PrintF(void *data, float f);
 bool PrintI(void *data, int i);
 bool PrintB(void *data, bool b);
 
+bool TestBool(void *data, bool willPrintMe, bool otherBool);
 
 #endif /* auto_functions_h */

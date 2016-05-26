@@ -16,6 +16,14 @@
 
 #define XCTFailString(s) XCTFail("%s", s.c_str())
 
+#define CAT_I(a,b) a##b
+#define CAT(a,b) CAT_I(a, b)
+
+#define STRINGIFY2(X) #X
+#define STRINGIFY(X) STRINGIFY2(X)
+
+#define make_test_compile(x) CAT(-(void)test_, x) { [self test_compile: @STRINGIFY(x) ".auto"]; }
+
 using namespace lemonscript;
 
 @interface lemonscript_tests : XCTestCase
@@ -32,9 +40,11 @@ using namespace lemonscript;
     [super tearDown];
 }
 
+// Helper Methods
+
 - (std::string)auto_test_file_path:(NSString *)auto_name {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSString *path = [bundle pathForResource:auto_name ofType:@"auto"];
+    NSString *path = [bundle pathForResource:auto_name ofType:@""];
     if(path == nil) {
         return "DID NOT LOAD FILE";
     }
@@ -42,6 +52,28 @@ using namespace lemonscript;
     return std::string([path cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 
+- (void)test_compile:(NSString *)file {
+    try {
+        [self measureMetrics:[[self class] defaultPerformanceMetrics] automaticallyStartMeasuring:NO forBlock:^{
+            LemonScriptState *state = PlayTestsShared::play_tests_make_state();
+            std::string fileName = [self auto_test_file_path:file];
+
+            [self startMeasuring];
+            lemonscript::LemonScriptCompiler *compiler = new lemonscript::LemonScriptCompiler(fileName, state);
+            [self stopMeasuring];
+            
+            delete state;
+            delete compiler;
+        }];
+    } catch (std::string err) {
+        XCTFailString(err);
+    }
+}
+
+
+// Tests
+
+// Test to see that we can create C++ function bindings, and add them to a lemonscript state.
 - (void)test_make_state {
     try {
         LemonScriptState *state = PlayTestsShared::play_tests_make_state();
@@ -51,31 +83,21 @@ using namespace lemonscript;
     }
 }
 
-- (void)test_compile_pointturn {
-    try {
-        LemonScriptState *state = PlayTestsShared::play_tests_make_state();
-        
-        std::string fileName = [self auto_test_file_path:@"pointturn"];
-        
-        lemonscript::LemonScriptCompiler *compiler = new lemonscript::LemonScriptCompiler(fileName, state);
-        
-        while (true) {
-            bool isDone = compiler->PeriodicUpdate();
-            if(isDone) { break; }
-        }
-        
-        delete state;
-        delete compiler;
-    } catch (std::string err) {
-        XCTFailString(err);
-    }
-}
+make_test_compile(pointturn)
+make_test_compile(sequence)
+make_test_compile(test_set)
+make_test_compile(test_scope)
+make_test_compile(test_empty)
+make_test_compile(test_while)
+make_test_compile(test_import)
+make_test_compile(constants)
+make_test_compile(test_run)
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
-}
+//// Performance and correctness tests for compilation only.
+//- (void)test_compile_pointturn {
+//    [self test_compile:@"pointturn.auto"];
+//}
+
+
 
 @end

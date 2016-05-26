@@ -1,4 +1,4 @@
-deploy chokehold
-drive straight: speed: -0.65, distance: SECOND_RC_ENCODER // COMMENT HERE!
+DeployChokehold
+DriveStraight: speed: -0.65, distance: 1234 // COMMENT HERE!
 //more comment here lolz
-deploy chokehold
+DeployChokehold

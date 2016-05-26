@@ -1,5 +1,4 @@
 WHILE:
-  wait: 10
+  Wait: 10
 ALSO:
-  //wait: 4
-  //wait: 3
+  Wait: 4
