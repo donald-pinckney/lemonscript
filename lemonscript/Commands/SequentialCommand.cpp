@@ -12,7 +12,7 @@
 #include "CppCommand.h"
 #include "WhileAlsoCommand.h"
 #include "CompleteAnyCommand.h"
-#include "CompleteAllCommand.h"
+#include "CompleteCommand.h"
 #include "SetCommand.h"
 #include "DefCommand.h"
 #include "ImportCommand.h"
@@ -47,8 +47,8 @@ lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state
             command = new WhileAlsoCommand(lineNum, state, token);
         } else if(type == CompleteAnyToken) {
             command = new CompleteAnyCommand(lineNum, state, token);
-        } else if(type == CompleteAllToken) {
-            command = new CompleteAllCommand(lineNum, state, token);
+        } else if(type == CompleteToken) {
+            command = new CompleteCommand(lineNum, state, token);
         } else if(type == SetToken) {
             command = new SetCommand(lineNum, state, token);
         } else if(type == DefToken) {

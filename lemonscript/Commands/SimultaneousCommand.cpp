@@ -12,7 +12,7 @@
 #include "CppCommand.h"
 #include "WhileAlsoCommand.h"
 #include "CompleteAnyCommand.h"
-#include "CompleteAllCommand.h"
+#include "CompleteCommand.h"
 #include "SetCommand.h"
 #include "DefCommand.h"
 #include "ImportCommand.h"
@@ -39,10 +39,8 @@ lemonscript::SimultaneousCommand::SimultaneousCommand(int l, LemonScriptState *s
             command = new WhileAlsoCommand(l, state, token);
         } else if(type == CompleteAnyToken) {
             command = new CompleteAnyCommand(l, state, token);
-        } else if(type == CompleteAllToken) {
-            command = new CompleteAllCommand(l, state, token);
-        } else if(type == CompleteAllToken) {
-            command = new CompleteAllCommand(lineNum, state, token);
+        } else if(type == CompleteToken) {
+            command = new CompleteCommand(l, state, token);
         } else if(type == SetToken) {
             command = new SetCommand(lineNum, state, token);
         } else if(type == DefToken) {

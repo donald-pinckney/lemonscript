@@ -16,7 +16,7 @@ namespace lemonscript {
     class SimultaneousCommand;
     class WhileAlsoCommand;
     class CompleteAnyCommand;
-    class CompleteAllCommand;
+    class CompleteCommand;
     class SetCommand;
     class DefCommand;
     class ImportCommand;

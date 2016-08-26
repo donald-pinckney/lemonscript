@@ -24,7 +24,7 @@ typedef enum {
     NotToken,
     WhileAlsoToken,
     CompleteAnyToken,
-    CompleteAllToken,
+    CompleteToken,
     IfElseIfElseToken,
     NOT_A_TOKEN
 } TokenType;

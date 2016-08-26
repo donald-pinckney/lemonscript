@@ -56,9 +56,9 @@ tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
         type = ImportToken;
     } else if(beginsWith(firstLine, "RUN ")) {
         type = RunToken;
-    } else if(beginsWith(firstLine, "COMPLETE ALL:")) {
+    } else if(beginsWith(firstLine, "COMPLETE:")) {
         isScoping = true;
-        type = CompleteAllToken;
+        type = CompleteToken;
     } else if(beginsWith(firstLine, "COMPLETE ANY:")) {
         isScoping = true;
         type = CompleteAnyToken;
@@ -91,7 +91,7 @@ tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
             
             
         }
-    } else if(type == CompleteAllToken || type == CompleteAnyToken) {
+    } else if(type == CompleteToken || type == CompleteAnyToken) {
         while(true) {
             tempTokenStorage << firstLine << endl;
             
