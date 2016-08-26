@@ -17,8 +17,8 @@
 
 typedef enum : unsigned int {
     NoneComplete,
-    AnyComplete,
-    AllComplete,
+    AnyRequiredComplete,
+    AllRequiredComplete,
 } SimultaneousCommmandState;
 
 class lemonscript::SimultaneousCommand : Command {
@@ -34,7 +34,6 @@ public:
     virtual ~SimultaneousCommand();
     
     bool Update();
-    bool Update(bool forceUpdates);
     
     SimultaneousCommmandState getState() const {
         return state;

@@ -26,6 +26,7 @@ typedef enum {
     CompleteAnyToken,
     CompleteToken,
     IfElseIfElseToken,
+    OptionalCommandToken,
     NOT_A_TOKEN
 } TokenType;
 

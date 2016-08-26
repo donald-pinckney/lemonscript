@@ -67,6 +67,8 @@ tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
         type = IfElseIfElseToken;
     } else if(beginsWith(firstLine, "NOT ")) {
         type = NotToken;
+    } else if(beginsWith(firstLine, "? ")) {
+        type = OptionalCommandToken;
     } else {
         type = CppToken;
     }

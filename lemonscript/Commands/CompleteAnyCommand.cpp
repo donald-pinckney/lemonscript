@@ -43,5 +43,5 @@ bool lemonscript::CompleteAnyCommand::Update() {
     
     savedState->restoreScope(currentScope);
     
-    return anyCommands->getState() == SimultaneousCommmandState::AnyComplete || anyCommands->getState() == SimultaneousCommmandState::AllComplete;
+    return anyCommands->getState() == SimultaneousCommmandState::AnyRequiredComplete || anyCommands->getState() == SimultaneousCommmandState::AllRequiredComplete;
 }

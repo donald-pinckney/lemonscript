@@ -17,6 +17,7 @@
 #include "DefCommand.h"
 #include "ImportCommand.h"
 #include "RunCommand.h"
+#include "CommandFromToken.h"
 
 #include <stdio.h>
 
@@ -40,24 +41,7 @@ lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state
         
 //        printTok(token, type, lineNum);
         
-        Command *command;
-        if(type == CppToken) {
-            command = new CppCommand(lineNum, state, token);
-        } else if(type == WhileAlsoToken) {
-            command = new WhileAlsoCommand(lineNum, state, token);
-        } else if(type == CompleteAnyToken) {
-            command = new CompleteAnyCommand(lineNum, state, token);
-        } else if(type == CompleteToken) {
-            command = new CompleteCommand(lineNum, state, token);
-        } else if(type == SetToken) {
-            command = new SetCommand(lineNum, state, token);
-        } else if(type == DefToken) {
-            command = new DefCommand(lineNum, state, token);
-        } else if(type == ImportToken) {
-            command = new ImportCommand(lineNum, state, token);
-        } else if(type == RunToken) {
-            command = new RunCommand(lineNum, state, token);
-        }
+        Command *command = lemonscript::commandFromToken(token, type, state, lineNum);
         
         sequence.push_back(command);
     }

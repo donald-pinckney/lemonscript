@@ -21,6 +21,7 @@ namespace lemonscript {
     class DefCommand;
     class ImportCommand;
     class RunCommand;
+    class OptionalCommand;
     class AvailableCppCommandDeclaration;
     class LemonScriptState;
     class LemonScriptTokenizer;
@@ -29,7 +30,7 @@ namespace lemonscript {
     
     enum class DataType {
         INT, FLOAT, BOOLEAN, UNIT, TYPE
-    };
+    };    
 }
 
 #endif /* lemonscript_h */

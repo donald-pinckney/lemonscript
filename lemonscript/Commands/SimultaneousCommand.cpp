@@ -17,6 +17,8 @@
 #include "DefCommand.h"
 #include "ImportCommand.h"
 #include "RunCommand.h"
+#include "CommandFromToken.h"
+#include "OptionalCommand.h"
 
 lemonscript::SimultaneousCommand::SimultaneousCommand(int l, LemonScriptState *state, const std::string &sequenceString) : Command(l, state) {
     LemonScriptTokenizer tokenizer(sequenceString);
@@ -32,24 +34,7 @@ lemonscript::SimultaneousCommand::SimultaneousCommand(int l, LemonScriptState *s
             break;
         }
         
-        Command *command;
-        if(type == CppToken) {
-            command = new CppCommand(l, state, token);
-        } else if(type == WhileAlsoToken) {
-            command = new WhileAlsoCommand(l, state, token);
-        } else if(type == CompleteAnyToken) {
-            command = new CompleteAnyCommand(l, state, token);
-        } else if(type == CompleteToken) {
-            command = new CompleteCommand(l, state, token);
-        } else if(type == SetToken) {
-            command = new SetCommand(lineNum, state, token);
-        } else if(type == DefToken) {
-            command = new DefCommand(lineNum, state, token);
-        } else if(type == ImportToken) {
-            command = new ImportCommand(lineNum, state, token);
-        } else if(type == RunToken) {
-            command = new RunCommand(lineNum, state, token);
-        }
+        Command *command = lemonscript::commandFromToken(token, type, state, lineNum);
         
         
         commands.push_back(command);
@@ -64,25 +49,25 @@ lemonscript::SimultaneousCommand::~SimultaneousCommand() {
     }
 }
 
-bool lemonscript::SimultaneousCommand::Update() {
-    return Update(false);
-}
 
-bool lemonscript::SimultaneousCommand::Update(bool forceUpdates) {
+bool lemonscript::SimultaneousCommand::Update() {
     
     size_t len = commands.size();
     bool allDone = true;
     bool anyDone = false;
     for (size_t i = 0; i < len; i++) {
+        Command *command = commands[i];
         bool alreadyDone = doneCommands[i];
-        if(alreadyDone && !forceUpdates) {
+        bool isOptional = dynamic_cast<lemonscript::OptionalCommand *>(command);
+        
+        if(alreadyDone && !isOptional) {
             anyDone = true;
             continue;
         }
         
-        bool done = commands[i]->Update();
+        bool done = command->Update();
         doneCommands[i] = done;
-        if(done) {
+        if(done && !isOptional) {
             anyDone = true;
         }
         if(!done) {
@@ -91,9 +76,9 @@ bool lemonscript::SimultaneousCommand::Update(bool forceUpdates) {
     }
     
     if(allDone) {
-        state = SimultaneousCommmandState::AllComplete;
+        state = SimultaneousCommmandState::AllRequiredComplete;
     } else if(anyDone) {
-        state = SimultaneousCommmandState::AnyComplete;
+        state = SimultaneousCommmandState::AnyRequiredComplete;
     }
     
     return allDone;

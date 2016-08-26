@@ -66,6 +66,10 @@
 		50ACCCAE1C2D39F200964487 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACCCAD1C2D39F200964487 /* main.swift */; };
 		50C5A5FE1C2BFC0400028D0B /* sequence.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5A5FB1C2BFBE900028D0B /* sequence.auto */; };
 		50E535651C5D7EBE004F786D /* pointturn.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50E535621C5D7EB5004F786D /* pointturn.auto */; };
+		50F23CD21D701B84006C280A /* OptionalCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50F23CD01D701B84006C280A /* OptionalCommand.cpp */; };
+		50F23CD31D701B84006C280A /* OptionalCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 50F23CD11D701B84006C280A /* OptionalCommand.h */; };
+		50F23CDA1D70227E006C280A /* CommandFromToken.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50F23CD81D70227E006C280A /* CommandFromToken.cpp */; };
+		50F23CDB1D70227E006C280A /* CommandFromToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 50F23CD91D70227E006C280A /* CommandFromToken.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +199,10 @@
 		50E535621C5D7EB5004F786D /* pointturn.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pointturn.auto; path = Testing/pointturn.auto; sourceTree = "<group>"; };
 		50F173C11C4B4C1100C870D9 /* CompleteCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompleteCommand.cpp; sourceTree = "<group>"; };
 		50F173C21C4B4C1100C870D9 /* CompleteCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteCommand.h; sourceTree = "<group>"; };
+		50F23CD01D701B84006C280A /* OptionalCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OptionalCommand.cpp; sourceTree = "<group>"; };
+		50F23CD11D701B84006C280A /* OptionalCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalCommand.h; sourceTree = "<group>"; };
+		50F23CD81D70227E006C280A /* CommandFromToken.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandFromToken.cpp; sourceTree = "<group>"; };
+		50F23CD91D70227E006C280A /* CommandFromToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandFromToken.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +272,8 @@
 				501480661C2C08B400153984 /* AvailableCppCommandDeclaration.cpp */,
 				508F60AD1C3493D4008ED63E /* LemonScriptTokenizer.h */,
 				508F60AC1C3493D4008ED63E /* LemonScriptTokenizer.cpp */,
+				50F23CD91D70227E006C280A /* CommandFromToken.h */,
+				50F23CD81D70227E006C280A /* CommandFromToken.cpp */,
 				508F60B21C34BB4C008ED63E /* LemonScriptCompiler.h */,
 				508F60B11C34BB4C008ED63E /* LemonScriptCompiler.cpp */,
 				507B18121C4B0F62001BA48D /* ParsingUtils.h */,
@@ -383,6 +393,8 @@
 				5041E63C1C7A7C0E00C07988 /* ImportCommand.cpp */,
 				5041E6441C7A869400C07988 /* RunCommand.h */,
 				5041E6431C7A869400C07988 /* RunCommand.cpp */,
+				50F23CD11D701B84006C280A /* OptionalCommand.h */,
+				50F23CD01D701B84006C280A /* OptionalCommand.cpp */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -394,9 +406,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F23CD31D701B84006C280A /* OptionalCommand.h in Headers */,
 				509DDC681CF3CF6B00D1061F /* lemonscript.h in Headers */,
 				509DDC6E1CF3D35F00D1061F /* LemonScriptCompiler.h in Headers */,
 				509DDC6F1CF3D35F00D1061F /* LemonScriptState.h in Headers */,
+				50F23CDB1D70227E006C280A /* CommandFromToken.h in Headers */,
 				501CF1CA1CF6A54200AEE769 /* BaseAutoFunction.h in Headers */,
 				509DDC701CF3D3E600D1061F /* AvailableCppCommandDeclaration.h in Headers */,
 			);
@@ -583,10 +597,12 @@
 				509DDC3C1CF3CC9E00D1061F /* SimultaneousCommand.cpp in Sources */,
 				509DDC3D1CF3CC9E00D1061F /* WhileAlsoCommand.cpp in Sources */,
 				509DDC3E1CF3CC9E00D1061F /* CompleteAnyCommand.cpp in Sources */,
+				50F23CD21D701B84006C280A /* OptionalCommand.cpp in Sources */,
 				509DDC3F1CF3CC9E00D1061F /* CompleteCommand.cpp in Sources */,
 				509DDC401CF3CC9E00D1061F /* SetCommand.cpp in Sources */,
 				509DDC411CF3CC9E00D1061F /* DefCommand.cpp in Sources */,
 				509DDC421CF3CC9E00D1061F /* ImportCommand.cpp in Sources */,
+				50F23CDA1D70227E006C280A /* CommandFromToken.cpp in Sources */,
 				509DDC431CF3CC9E00D1061F /* RunCommand.cpp in Sources */,
 				509DDC441CF3CC9E00D1061F /* AvailableCppCommandDeclaration.cpp in Sources */,
 				509DDC451CF3CC9E00D1061F /* LemonScriptTokenizer.cpp in Sources */,
