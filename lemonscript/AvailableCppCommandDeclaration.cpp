@@ -80,11 +80,18 @@ int lemonscript::DataTypeIntCastFromTo(DataType from, DataType to, int value) {
 
 
 std::string dataTypeDescription(DataType t) {
-    if(t == DataType::INT) return "INT";
-    if(t == DataType::FLOAT) return "FLOAT";
-    if(t == DataType::BOOLEAN) return "BOOLEAN";
-    if(t == DataType::TYPE) return "TYPE";
-    return "ERROR_TYPE";
+    switch (t) {
+        case DataType::INT:
+            return "INT";
+        case DataType::FLOAT:
+            return "FLOAT";
+        case DataType::BOOLEAN:
+            return "BOOLEAN";
+        case DataType::TYPE:
+            return "TYPE";
+        case DataType::UNIT:
+            return "UNIT";
+    }
 }
 
 

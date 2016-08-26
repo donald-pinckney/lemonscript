@@ -44,7 +44,6 @@
 		509DDC511CF3CCAA00D1061F /* Atom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50869CB01C83B8750069FB1D /* Atom.cpp */; };
 		509DDC521CF3CCAA00D1061F /* ExpressionTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5089598D1C8436A900F30125 /* ExpressionTree.cpp */; };
 		509DDC531CF3CD1A00D1061F /* mainLemonScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5014806C1C2C17D400153984 /* mainLemonScript.cpp */; };
-		509DDC541CF3CD1A00D1061F /* auto_functions_old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C5A5FF1C2BFC4300028D0B /* auto_functions_old.cpp */; };
 		509DDC571CF3CD3500D1061F /* liblemonscript.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 509DDC1C1CF3CB8800D1061F /* liblemonscript.a */; };
 		509DDC601CF3CEBD00D1061F /* lemonscript_tests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 509DDC5F1CF3CEBD00D1061F /* lemonscript_tests.mm */; };
 		509DDC621CF3CEBD00D1061F /* liblemonscript.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 509DDC1C1CF3CB8800D1061F /* liblemonscript.a */; };
@@ -484,7 +483,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Donald Pinckney";
 				TargetAttributes = {
 					50694F3F1C27D46600826B64 = {
@@ -564,7 +563,6 @@
 				501CF1C61CF6982900AEE769 /* auto_functions.cpp in Sources */,
 				509DDC6C1CF3D07A00D1061F /* PlayTestsShared.cpp in Sources */,
 				509DDC531CF3CD1A00D1061F /* mainLemonScript.cpp in Sources */,
-				509DDC541CF3CD1A00D1061F /* auto_functions_old.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,8 +646,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -691,8 +691,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -711,6 +713,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};

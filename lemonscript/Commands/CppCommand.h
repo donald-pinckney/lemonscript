@@ -20,7 +20,7 @@
 
 class lemonscript::CppCommand : public Command {
     
-    const AvailableCppCommandDeclaration *declaration = NULL;
+    const AvailableCppCommandDeclaration *declaration = nullptr;
     std::unique_ptr<BaseAutoFunction> autoFunc = nullptr;
     
     
