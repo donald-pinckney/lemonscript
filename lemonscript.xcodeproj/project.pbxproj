@@ -23,7 +23,7 @@
 		509DDC3C1CF3CC9E00D1061F /* SimultaneousCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B180E1C4B0D58001BA48D /* SimultaneousCommand.cpp */; };
 		509DDC3D1CF3CC9E00D1061F /* WhileAlsoCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508F60A91C3492E2008ED63E /* WhileAlsoCommand.cpp */; };
 		509DDC3E1CF3CC9E00D1061F /* CompleteAnyCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 507B18141C4B4A47001BA48D /* CompleteAnyCommand.cpp */; };
-		509DDC3F1CF3CC9E00D1061F /* CompleteAllCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50F173C11C4B4C1100C870D9 /* CompleteAllCommand.cpp */; };
+		509DDC3F1CF3CC9E00D1061F /* CompleteCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50F173C11C4B4C1100C870D9 /* CompleteCommand.cpp */; };
 		509DDC401CF3CC9E00D1061F /* SetCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 500BE39A1C66CD6D00DA8A98 /* SetCommand.cpp */; };
 		509DDC411CF3CC9E00D1061F /* DefCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 501B81E11C75987300F9D42A /* DefCommand.cpp */; };
 		509DDC421CF3CC9E00D1061F /* ImportCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5041E63C1C7A7C0E00C07988 /* ImportCommand.cpp */; };
@@ -193,8 +193,8 @@
 		50C5A5FF1C2BFC4300028D0B /* auto_functions_old.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = auto_functions_old.cpp; path = Testing/auto_functions_old.cpp; sourceTree = "<group>"; };
 		50C5A6001C2BFC4300028D0B /* auto_functions_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = auto_functions_old.h; path = Testing/auto_functions_old.h; sourceTree = "<group>"; };
 		50E535621C5D7EB5004F786D /* pointturn.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pointturn.auto; path = Testing/pointturn.auto; sourceTree = "<group>"; };
-		50F173C11C4B4C1100C870D9 /* CompleteAllCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompleteAllCommand.cpp; sourceTree = "<group>"; };
-		50F173C21C4B4C1100C870D9 /* CompleteAllCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteAllCommand.h; sourceTree = "<group>"; };
+		50F173C11C4B4C1100C870D9 /* CompleteCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompleteCommand.cpp; sourceTree = "<group>"; };
+		50F173C21C4B4C1100C870D9 /* CompleteCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteCommand.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,8 +373,8 @@
 				508F60A91C3492E2008ED63E /* WhileAlsoCommand.cpp */,
 				507B18151C4B4A47001BA48D /* CompleteAnyCommand.h */,
 				507B18141C4B4A47001BA48D /* CompleteAnyCommand.cpp */,
-				50F173C21C4B4C1100C870D9 /* CompleteAllCommand.h */,
-				50F173C11C4B4C1100C870D9 /* CompleteAllCommand.cpp */,
+				50F173C21C4B4C1100C870D9 /* CompleteCommand.h */,
+				50F173C11C4B4C1100C870D9 /* CompleteCommand.cpp */,
 				500BE39B1C66CD6D00DA8A98 /* SetCommand.h */,
 				500BE39A1C66CD6D00DA8A98 /* SetCommand.cpp */,
 				501B81E21C75987300F9D42A /* DefCommand.h */,
@@ -583,7 +583,7 @@
 				509DDC3C1CF3CC9E00D1061F /* SimultaneousCommand.cpp in Sources */,
 				509DDC3D1CF3CC9E00D1061F /* WhileAlsoCommand.cpp in Sources */,
 				509DDC3E1CF3CC9E00D1061F /* CompleteAnyCommand.cpp in Sources */,
-				509DDC3F1CF3CC9E00D1061F /* CompleteAllCommand.cpp in Sources */,
+				509DDC3F1CF3CC9E00D1061F /* CompleteCommand.cpp in Sources */,
 				509DDC401CF3CC9E00D1061F /* SetCommand.cpp in Sources */,
 				509DDC411CF3CC9E00D1061F /* DefCommand.cpp in Sources */,
 				509DDC421CF3CC9E00D1061F /* ImportCommand.cpp in Sources */,
