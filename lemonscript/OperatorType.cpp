@@ -10,13 +10,17 @@
 
 #include <string.h>
 #include <functional>
-#include <math.h>
+#include <cmath>
 
 #include "AvailableCppCommandDeclaration.h"
 
 using namespace lemonscript_expressions;
 using namespace lemonscript;
-using namespace std;
+
+using std::function;
+using std::vector;
+using std::map;
+using std::string;
 
 std::ostream & lemonscript_expressions::operator<<(std::ostream &o, OperatorType opType) {
     o << opType.operatorText;
