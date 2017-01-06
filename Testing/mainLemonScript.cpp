@@ -17,6 +17,7 @@
 #include <lemonscript/lemonscript.h>
 #include <lemonscript/AvailableCppCommandDeclaration.h>
 #include <lemonscript/LemonScriptCompiler.h>
+#include "auto_functions.h"
 
 //using namespace lemonscript;
 //using namespace lemonscript_expressions;

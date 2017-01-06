@@ -15,6 +15,12 @@
 
 lemonscript::LemonScriptState::~LemonScriptState() {
     LemonScriptSymbolTable::freeVariables();
+    
+    for(auto mapIt : availableCppCommands) {
+        for(auto vectorIt = mapIt.second.begin(); vectorIt != mapIt.second.end(); vectorIt++) {
+            delete *vectorIt;
+        }
+    }
 }
 
 void lemonscript::LemonScriptState::declareGlobalVariable(int line, const std::string &name, DataType type, void *pointerToValue) {
