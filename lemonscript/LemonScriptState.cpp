@@ -95,3 +95,16 @@ std::vector<const lemonscript::AvailableCppCommandDeclaration *> lemonscript::Le
     
     return mapIt->second;
 }
+
+void lemonscript::LemonScriptState::setSearchPath(const std::string &searchPath) {
+    if(searchPath != "" && searchPath[searchPath.length() - 1] != '/') {
+        this->searchPath = searchPath + "/";
+    } else {
+        this->searchPath = searchPath;
+    }
+}
+
+std::string lemonscript::LemonScriptState::getSearchPath() const {
+    return searchPath;
+}
+

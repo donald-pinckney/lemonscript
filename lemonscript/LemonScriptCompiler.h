@@ -32,7 +32,7 @@ class lemonscript::LemonScriptCompiler {
     
 public:
     
-    LemonScriptCompiler(const std::string &toParseFileName, LemonScriptState *stateParam) : state(stateParam), toParse(toParseFileName) {
+    LemonScriptCompiler(const std::string &toParseFileName, LemonScriptState *stateParam) : state(stateParam), toParse(stateParam->getSearchPath() + toParseFileName) {
         
         // Check that the file exists
         if(!toParse.good()) {

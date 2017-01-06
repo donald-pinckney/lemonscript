@@ -23,13 +23,14 @@ class lemonscript::LemonScriptState {
     
     LemonScriptSymbolTableStack symbolStack;
     std::map<std::string, std::vector<const AvailableCppCommandDeclaration *> > availableCppCommands;
+    std::string searchPath = "";
     
 public:
     ~LemonScriptState();
     
     void *userData = NULL;
     
-    // Declaration functions
+    // Variable declaration functions
     void declareGlobalVariable(int line, const std::string &name, DataType type, void *pointerToValue);
     void declareVariable(int line, const std::string &name, DataType type, void *pointerToValue);
     
@@ -42,7 +43,7 @@ public:
     void restoreScope(const LemonScriptSymbolTableStack &scope);
     
     
-    
+    // Command declaration functions
     void declareAvailableCppCommand(const AvailableCppCommandDeclaration *decl);
     void declareAvailableCppCommands(const std::vector<const AvailableCppCommandDeclaration *> decls);
     
@@ -54,6 +55,9 @@ public:
     
     const AvailableCppCommandDeclaration *lookupCommandDeclaration(const std::string &name, const std::vector<DataType> &parameterTypes) const;
     std::vector<const AvailableCppCommandDeclaration *> lookupCommandDeclarationsForName(const std::string &name) const;
+    
+    void setSearchPath(const std::string &searchPath);
+    std::string getSearchPath() const;
 };
 
 #endif /* LemonScriptState_hpp */

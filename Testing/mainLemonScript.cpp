@@ -18,7 +18,7 @@
 #include <lemonscript/AvailableCppCommandDeclaration.h>
 #include <lemonscript/LemonScriptCompiler.h>
 
-using namespace lemonscript;
+//using namespace lemonscript;
 //using namespace lemonscript_expressions;
 
 int main() {
