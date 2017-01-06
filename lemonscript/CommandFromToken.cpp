@@ -39,6 +39,8 @@ lemonscript::Command *lemonscript::commandFromToken(const std::string &token, To
         command = new RunCommand(lineNum, state, token);
     } else if(type == OptionalCommandToken) {
         command = new OptionalCommand(lineNum, state, token);
+    } else {
+        throw "Unknow token type: " + std::to_string(type);
     }
     
     return command;
