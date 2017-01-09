@@ -5,6 +5,7 @@ cc_library(
   name = "lemonscript",
   srcs = glob(["lemonscript/**/*.cpp"]),
   hdrs = glob(["lemonscript/**/*.h"]),
-  includes = ["lemonscript", "lemonscript/Commands"]
+  includes = ["lemonscript", "lemonscript/Commands"],
+  linkopts = ["-lm"]
 )
 
