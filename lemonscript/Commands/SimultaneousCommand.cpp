@@ -58,7 +58,7 @@ bool lemonscript::SimultaneousCommand::Update() {
     for (size_t i = 0; i < len; i++) {
         Command *command = commands[i];
         bool alreadyDone = doneCommands[i];
-        bool isOptional = dynamic_cast<lemonscript::OptionalCommand *>(command);
+        bool isOptional = dynamic_cast<lemonscript::OptionalCommand *>(command) != nullptr;
         
         if(alreadyDone && !isOptional) {
             anyDone = true;
