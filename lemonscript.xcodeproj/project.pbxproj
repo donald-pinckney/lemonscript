@@ -60,7 +60,6 @@
 		509DDC6E1CF3D35F00D1061F /* LemonScriptCompiler.h in Headers */ = {isa = PBXBuildFile; fileRef = 508F60B21C34BB4C008ED63E /* LemonScriptCompiler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		509DDC6F1CF3D35F00D1061F /* LemonScriptState.h in Headers */ = {isa = PBXBuildFile; fileRef = 5014806A1C2C0AA600153984 /* LemonScriptState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		509DDC701CF3D3E600D1061F /* AvailableCppCommandDeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = 501480671C2C08B400153984 /* AvailableCppCommandDeclaration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		50ACCCAE1C2D39F200964487 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ACCCAD1C2D39F200964487 /* main.swift */; };
 		50F23CD21D701B84006C280A /* OptionalCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50F23CD01D701B84006C280A /* OptionalCommand.cpp */; };
 		50F23CD31D701B84006C280A /* OptionalCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 50F23CD11D701B84006C280A /* OptionalCommand.h */; };
 		50F23CDA1D70227E006C280A /* CommandFromToken.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50F23CD81D70227E006C280A /* CommandFromToken.cpp */; };
@@ -93,15 +92,6 @@
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-		};
-		50ACCCA91C2D39F200964487 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -186,8 +176,6 @@
 		509DDC611CF3CEBD00D1061F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		509DDC6A1CF3D07A00D1061F /* PlayTestsShared.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayTestsShared.cpp; sourceTree = "<group>"; };
 		509DDC6B1CF3D07A00D1061F /* PlayTestsShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayTestsShared.h; sourceTree = "<group>"; };
-		50ACCCAB1C2D39F200964487 /* GenCppCalls */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GenCppCalls; sourceTree = BUILT_PRODUCTS_DIR; };
-		50ACCCAD1C2D39F200964487 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		50C0CE581C4C56CC00C4C333 /* lemonscript.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lemonscript.h; sourceTree = "<group>"; };
 		50F173C11C4B4C1100C870D9 /* CompleteCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompleteCommand.cpp; sourceTree = "<group>"; };
 		50F173C21C4B4C1100C870D9 /* CompleteCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteCommand.h; sourceTree = "<group>"; };
@@ -218,13 +206,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				509DDC621CF3CEBD00D1061F /* liblemonscript.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		50ACCCA81C2D39F200964487 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +250,6 @@
 				509DDC581CF3CDB900D1061F /* lemonscript_play */,
 				50694F421C27D46600826B64 /* lemonscript */,
 				509DDC5E1CF3CEBD00D1061F /* lemonscript_tests */,
-				50ACCCAC1C2D39F200964487 /* GenCppCalls */,
 				50694F411C27D46600826B64 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -278,7 +258,6 @@
 			isa = PBXGroup;
 			children = (
 				50694F401C27D46600826B64 /* lemonscript_play */,
-				50ACCCAB1C2D39F200964487 /* GenCppCalls */,
 				509DDC1C1CF3CB8800D1061F /* liblemonscript.a */,
 				509DDC5D1CF3CEBD00D1061F /* lemonscript_tests.xctest */,
 			);
@@ -374,14 +353,6 @@
 				5089598D1C8436A900F30125 /* ExpressionTree.cpp */,
 			);
 			name = Expressions;
-			sourceTree = "<group>";
-		};
-		50ACCCAC1C2D39F200964487 /* GenCppCalls */ = {
-			isa = PBXGroup;
-			children = (
-				50ACCCAD1C2D39F200964487 /* main.swift */,
-			);
-			path = GenCppCalls;
 			sourceTree = "<group>";
 		};
 		50F173C41C4B4D3500C870D9 /* Commands */ = {
@@ -488,23 +459,6 @@
 			productReference = 509DDC5D1CF3CEBD00D1061F /* lemonscript_tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		50ACCCAA1C2D39F200964487 /* GenCppCalls */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 50ACCCAF1C2D39F200964487 /* Build configuration list for PBXNativeTarget "GenCppCalls" */;
-			buildPhases = (
-				50ACCCA71C2D39F200964487 /* Sources */,
-				50ACCCA81C2D39F200964487 /* Frameworks */,
-				50ACCCA91C2D39F200964487 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = GenCppCalls;
-			productName = GenCppCalls;
-			productReference = 50ACCCAB1C2D39F200964487 /* GenCppCalls */;
-			productType = "com.apple.product-type.tool";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -524,9 +478,6 @@
 					509DDC5C1CF3CEBD00D1061F = {
 						CreatedOnToolsVersion = 7.3;
 					};
-					50ACCCAA1C2D39F200964487 = {
-						CreatedOnToolsVersion = 7.2;
-					};
 				};
 			};
 			buildConfigurationList = 50694F3B1C27D46600826B64 /* Build configuration list for PBXProject "lemonscript" */;
@@ -542,7 +493,6 @@
 			projectRoot = "";
 			targets = (
 				50694F3F1C27D46600826B64 /* lemonscript_play */,
-				50ACCCAA1C2D39F200964487 /* GenCppCalls */,
 				509DDC1B1CF3CB8800D1061F /* lemonscript */,
 				509DDC5C1CF3CEBD00D1061F /* lemonscript_tests */,
 			);
@@ -642,14 +592,6 @@
 				509DDC6D1CF3D07A00D1061F /* PlayTestsShared.cpp in Sources */,
 				505A425D1E3DD35100D5255A /* StdCapture.cpp in Sources */,
 				509DDC601CF3CEBD00D1061F /* lemonscript_tests.mm in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		50ACCCA71C2D39F200964487 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				50ACCCAE1C2D39F200964487 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,21 +769,6 @@
 			};
 			name = Release;
 		};
-		50ACCCB01C2D39F200964487 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		50ACCCB11C2D39F200964487 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -877,15 +804,6 @@
 			buildConfigurations = (
 				509DDC661CF3CEBD00D1061F /* Debug */,
 				509DDC671CF3CEBD00D1061F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		50ACCCAF1C2D39F200964487 /* Build configuration list for PBXNativeTarget "GenCppCalls" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				50ACCCB01C2D39F200964487 /* Debug */,
-				50ACCCB11C2D39F200964487 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
