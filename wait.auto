@@ -1,5 +1,0 @@
-DEF s = 1000
-DEF ms = 1
-
-Wait: 3 * s
-Wait: 4*ms

@@ -5,5 +5,6 @@ DEF z = 7
 
 WHILE:
   DEF x = 7
-  TestBool: x == y, other: x == z
+  PrintBool: x == y
+  PrintBool: x == z
 ALSO:
