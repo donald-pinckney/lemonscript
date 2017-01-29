@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		501CF1CA1CF6A54200AEE769 /* BaseAutoFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = 501CF1C81CF6A54200AEE769 /* BaseAutoFunction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		502A533D1E3E7F4E00EA569F /* constants.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505A42351E3DC27400D5255A /* constants.auto */; };
+		502A533E1E3E7F4E00EA569F /* constants.auto.correct in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505A42601E3DDF3F00D5255A /* constants.auto.correct */; };
+		502A533F1E3E7F4E00EA569F /* sequence.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505A42371E3DC27400D5255A /* sequence.auto */; };
+		502A53401E3E7F4E00EA569F /* sequence.auto.correct in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505A42621E3DDFC000D5255A /* sequence.auto.correct */; };
+		502A53411E3E7F4E00EA569F /* test_empty.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505A42381E3DC27400D5255A /* test_empty.auto */; };
+		502A53421E3E7F4E00EA569F /* test_empty.auto.correct in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505A42641E3DDFDA00D5255A /* test_empty.auto.correct */; };
+		502A53431E3E7F4E00EA569F /* test_import.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505A42391E3DC27400D5255A /* test_import.auto */; };
+		502A53441E3E7F4E00EA569F /* test_import.auto.correct in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505A426A1E3DE6FB00D5255A /* test_import.auto.correct */; };
+		502A53451E3E7F4E00EA569F /* test_scope.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505A423B1E3DC27400D5255A /* test_scope.auto */; };
+		502A53461E3E7F4E00EA569F /* test_scope.auto.correct in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505A42661E3DE11600D5255A /* test_scope.auto.correct */; };
+		502A53471E3E7F4E00EA569F /* test_set.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505A423C1E3DC27400D5255A /* test_set.auto */; };
+		502A53481E3E7F4E00EA569F /* test_set.auto.correct in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505A42681E3DE51E00D5255A /* test_set.auto.correct */; };
+		502A53491E3E7F4E00EA569F /* print.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505A423E1E3DC27400D5255A /* print.auto */; };
+		502A534A1E3E7F4E00EA569F /* print.auto.correct in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505A425E1E3DD74D00D5255A /* print.auto.correct */; };
 		505A423F1E3DC27400D5255A /* constants.auto in Resources */ = {isa = PBXBuildFile; fileRef = 505A42351E3DC27400D5255A /* constants.auto */; };
 		505A42411E3DC27400D5255A /* sequence.auto in Resources */ = {isa = PBXBuildFile; fileRef = 505A42371E3DC27400D5255A /* sequence.auto */; };
 		505A42421E3DC27400D5255A /* test_empty.auto in Resources */ = {isa = PBXBuildFile; fileRef = 505A42381E3DC27400D5255A /* test_empty.auto */; };
@@ -90,6 +104,20 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				502A533D1E3E7F4E00EA569F /* constants.auto in CopyFiles */,
+				502A533E1E3E7F4E00EA569F /* constants.auto.correct in CopyFiles */,
+				502A533F1E3E7F4E00EA569F /* sequence.auto in CopyFiles */,
+				502A53401E3E7F4E00EA569F /* sequence.auto.correct in CopyFiles */,
+				502A53411E3E7F4E00EA569F /* test_empty.auto in CopyFiles */,
+				502A53421E3E7F4E00EA569F /* test_empty.auto.correct in CopyFiles */,
+				502A53431E3E7F4E00EA569F /* test_import.auto in CopyFiles */,
+				502A53441E3E7F4E00EA569F /* test_import.auto.correct in CopyFiles */,
+				502A53451E3E7F4E00EA569F /* test_scope.auto in CopyFiles */,
+				502A53461E3E7F4E00EA569F /* test_scope.auto.correct in CopyFiles */,
+				502A53471E3E7F4E00EA569F /* test_set.auto in CopyFiles */,
+				502A53481E3E7F4E00EA569F /* test_set.auto.correct in CopyFiles */,
+				502A53491E3E7F4E00EA569F /* print.auto in CopyFiles */,
+				502A534A1E3E7F4E00EA569F /* print.auto.correct in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,16 +347,8 @@
 				509DDC6A1CF3D07A00D1061F /* PlayTestsShared.cpp */,
 				505A42581E3DC88700D5255A /* auto_functions.h */,
 				505A42571E3DC88700D5255A /* auto_functions.cpp */,
-				509DDC721CF3D4A200D1061F /* Auto Files */,
 			);
 			name = lemonscript_play_tests_shared;
-			sourceTree = "<group>";
-		};
-		509DDC721CF3D4A200D1061F /* Auto Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Auto Files";
 			sourceTree = "<group>";
 		};
 		50A41B511C714CAF00A312DC /* Expressions */ = {
@@ -419,7 +439,7 @@
 				509DDC561CF3CD2600D1061F /* PBXTargetDependency */,
 			);
 			name = lemonscript_play;
-			productName = FiniteStateMachine;
+			productName = lemonscript_play;
 			productReference = 50694F401C27D46600826B64 /* lemonscript_play */;
 			productType = "com.apple.product-type.tool";
 		};
