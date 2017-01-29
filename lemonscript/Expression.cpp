@@ -38,8 +38,6 @@ Expression::Expression(const std::string &str, lemonscript::LemonScriptState *st
             dataSize = sizeof(float);
         } else if(t == lemonscript::DataType::BOOLEAN) {
             dataSize = sizeof(bool);
-        } else {
-            throw "Type expressions not yet supported";
         }
         
         

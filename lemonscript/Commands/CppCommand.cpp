@@ -116,6 +116,8 @@ lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::s
             } catch (string err) {
                 matched = false;
                 break;
+            } catch (HaltError err) {
+                throw err.message;
             }
         }
         

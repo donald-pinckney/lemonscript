@@ -53,7 +53,6 @@
 		509DDC6E1CF3D35F00D1061F /* LemonScriptCompiler.h in Headers */ = {isa = PBXBuildFile; fileRef = 508F60B21C34BB4C008ED63E /* LemonScriptCompiler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		509DDC6F1CF3D35F00D1061F /* LemonScriptState.h in Headers */ = {isa = PBXBuildFile; fileRef = 5014806A1C2C0AA600153984 /* LemonScriptState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		509DDC701CF3D3E600D1061F /* AvailableCppCommandDeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = 501480671C2C08B400153984 /* AvailableCppCommandDeclaration.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		509DDC711CF3D40B00D1061F /* auto_functions_old.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C5A5FF1C2BFC4300028D0B /* auto_functions_old.cpp */; };
 		509DDC8E1CF3DA4600D1061F /* pointturn.auto in Resources */ = {isa = PBXBuildFile; fileRef = 50E535621C5D7EB5004F786D /* pointturn.auto */; };
 		509DDC931CF3DA4600D1061F /* sequence.auto in Resources */ = {isa = PBXBuildFile; fileRef = 50C5A5FB1C2BFBE900028D0B /* sequence.auto */; };
 		509DDC941CF3DA4600D1061F /* test_set.auto in Resources */ = {isa = PBXBuildFile; fileRef = 500BE39D1C66D6D600DA8A98 /* test_set.auto */; };
@@ -194,8 +193,6 @@
 		50ACCCAD1C2D39F200964487 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		50C0CE581C4C56CC00C4C333 /* lemonscript.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lemonscript.h; sourceTree = "<group>"; };
 		50C5A5FB1C2BFBE900028D0B /* sequence.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sequence.auto; path = Testing/sequence.auto; sourceTree = "<group>"; };
-		50C5A5FF1C2BFC4300028D0B /* auto_functions_old.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = auto_functions_old.cpp; path = Testing/auto_functions_old.cpp; sourceTree = "<group>"; };
-		50C5A6001C2BFC4300028D0B /* auto_functions_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = auto_functions_old.h; path = Testing/auto_functions_old.h; sourceTree = "<group>"; };
 		50E535621C5D7EB5004F786D /* pointturn.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pointturn.auto; path = Testing/pointturn.auto; sourceTree = "<group>"; };
 		50F173C11C4B4C1100C870D9 /* CompleteCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompleteCommand.cpp; sourceTree = "<group>"; };
 		50F173C21C4B4C1100C870D9 /* CompleteCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteCommand.h; sourceTree = "<group>"; };
@@ -313,8 +310,6 @@
 				509DDC6A1CF3D07A00D1061F /* PlayTestsShared.cpp */,
 				501CF1C51CF6982900AEE769 /* auto_functions.h */,
 				501CF1C41CF6982900AEE769 /* auto_functions.cpp */,
-				50C5A6001C2BFC4300028D0B /* auto_functions_old.h */,
-				50C5A5FF1C2BFC4300028D0B /* auto_functions_old.cpp */,
 				509DDC721CF3D4A200D1061F /* Auto Files */,
 			);
 			name = lemonscript_play_tests_shared;
@@ -618,7 +613,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				509DDC711CF3D40B00D1061F /* auto_functions_old.cpp in Sources */,
 				501CF1CD1CF6D6B200AEE769 /* auto_functions.cpp in Sources */,
 				509DDC6D1CF3D07A00D1061F /* PlayTestsShared.cpp in Sources */,
 				509DDC601CF3CEBD00D1061F /* lemonscript_tests.mm in Sources */,
