@@ -30,6 +30,8 @@ lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state
 
     std::string seqBody = sequenceString;
     // Optionally parse out SEQUENCE:
+    isExplicit = explicitSequence;
+    
     if(explicitSequence) {
         const std::string seqDelim = "SEQUENCE:\n";
         size_t seqLoc = sequenceString.find(seqDelim);
@@ -50,6 +52,10 @@ lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state
     TokenType type;
     int lineNum;
     
+    if(isExplicit) {
+        state->pushScope();
+    }
+    
     while(true) {
         std::tie(token, type, lineNum) = tokenizer.nextToken();
         if(type == NOT_A_TOKEN) {
@@ -61,6 +67,11 @@ lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state
         Command *command = lemonscript::commandFromToken(token, type, state, lineNum);
         
         sequence.push_back(command);
+    }
+    
+    if(isExplicit) {
+        sequenceScope = state->getScope();
+        state->popScope();
     }
 }
 
@@ -75,8 +86,18 @@ bool lemonscript::SequentialCommand::Update() {
         return true;
     }
     
+    LemonScriptSymbolTableStack currentScope = savedState->getScope();
+
+    if(isExplicit) {
+        savedState->restoreScope(sequenceScope);
+    }
+    
     Command *currentCommand = sequence[currentIndex];
     bool isDone = currentCommand->Update();
+    
+    if(isExplicit) {
+        savedState->restoreScope(currentScope);
+    }
     
     // If the last command just finished, then we are done
     if(isDone && static_cast<size_t>(currentIndex) == sequence.size() - 1) {
