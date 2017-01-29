@@ -45,10 +45,7 @@ tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
     int startLine = currentLine;
     bool isScoping = false;
     TokenType type;
-    if(beginsWith(firstLine, "WHILE:")) {
-        isScoping = true;
-        type = WhileAlsoToken;
-    } else if(beginsWith(firstLine, "SET ")) {
+    if(beginsWith(firstLine, "SET ")) {
         type = SetToken;
     } else if(beginsWith(firstLine, "DEF ")) {
         type = DefToken;
@@ -81,21 +78,6 @@ tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
     ostringstream tempTokenStorage;
     if(!isScoping) {
         tempTokenStorage << firstLine;
-    } else if(type == WhileAlsoToken) {
-        while(true) {
-            tempTokenStorage << firstLine << endl;
-        
-
-            string nextLine = peekLine(*input);
-            if((!beginsWith(nextLine, "  ") && !beginsWith(nextLine, "ALSO:") && isExecutableLine(nextLine)) || isEof(input)) {
-                break;
-            }
-
-            getline(*input, firstLine);
-            currentLine++;
-            
-            
-        }
     } else if(type == CompleteToken || type == CompleteAnyToken) {
         while(true) {
             tempTokenStorage << firstLine << endl;

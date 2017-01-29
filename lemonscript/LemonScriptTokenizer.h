@@ -22,7 +22,6 @@ typedef enum {
     ImportToken,
     RunToken,
     NotToken,
-    WhileAlsoToken,
     CompleteAnyToken,
     CompleteToken,
     IfElseIfElseToken,

@@ -3,8 +3,7 @@ DEF y = 5
 DEF z = 7
 
 
-WHILE:
+SEQUENCE:
   DEF x = 7
   PrintBool: x == y
   PrintBool: x == z
-ALSO:

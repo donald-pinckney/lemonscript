@@ -10,7 +10,6 @@
 #include "LemonScriptTokenizer.h"
 
 #include "CppCommand.h"
-#include "WhileAlsoCommand.h"
 #include "CompleteAnyCommand.h"
 #include "CompleteCommand.h"
 #include "SetCommand.h"

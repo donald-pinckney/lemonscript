@@ -14,7 +14,6 @@ namespace lemonscript {
     class CppCommand;
     class SequentialCommand;
     class SimultaneousCommand;
-    class WhileAlsoCommand;
     class CompleteAnyCommand;
     class CompleteCommand;
     class SetCommand;
