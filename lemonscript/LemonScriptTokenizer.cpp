@@ -69,6 +69,9 @@ tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
         type = NotToken;
     } else if(beginsWith(firstLine, "? ")) {
         type = OptionalCommandToken;
+    } else if(beginsWith(firstLine, "SEQUENCE:")) {
+        isScoping = true;
+        type = SequenceToken;
     } else {
         type = CppToken;
     }
@@ -114,6 +117,18 @@ tuple<string, TokenType, int> lemonscript::LemonScriptTokenizer::nextToken() {
                 break;
             }
             
+            
+            getline(*input, firstLine);
+            currentLine++;
+        }
+    } else if(type == SequenceToken) {
+        while(true) {
+            tempTokenStorage << firstLine << endl;
+            
+            string nextLine = peekLine(*input);
+            if((!beginsWith(nextLine, "  ") && isExecutableLine(nextLine)) || isEof(input)) {
+                break;
+            }
             
             getline(*input, firstLine);
             currentLine++;

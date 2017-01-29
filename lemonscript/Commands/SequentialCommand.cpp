@@ -18,6 +18,7 @@
 #include "ImportCommand.h"
 #include "RunCommand.h"
 #include "CommandFromToken.h"
+#include "ParsingUtils.h"
 
 #include <stdio.h>
 
@@ -25,8 +26,25 @@ void printTok(const std::string &tok, TokenType tk, int lineNum) {
     printf("===== TOKEN =====\nToken type = %d, lineNum = %d, tok = \n%s\n\n", tk, lineNum, tok.c_str());
 }
 
-lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state, const std::string &sequenceString) : Command(l, state) {
-    LemonScriptTokenizer tokenizer(sequenceString);
+lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state, const std::string &sequenceString, bool explicitSequence) : Command(l, state) {
+    
+
+    std::string seqBody = sequenceString;
+    // Optionally parse out SEQUENCE:
+    if(explicitSequence) {
+        const std::string seqDelim = "SEQUENCE:\n";
+        size_t seqLoc = sequenceString.find(seqDelim);
+        
+        size_t endOfSeqLoc = seqLoc + seqDelim.length();
+        
+        // Get the sequence body
+        seqBody = sequenceString.substr(endOfSeqLoc);
+        
+        // Un-indent them before parsing
+        seqBody = ParsingUtils::decreaseIndent(seqBody);
+    }
+    
+    LemonScriptTokenizer tokenizer(seqBody);
     
     
     std::string token;

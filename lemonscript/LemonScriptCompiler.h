@@ -40,7 +40,7 @@ public:
         }
         
         // THIS DOES ALL THE PARSING / COMPILATION
-        rootSequence = new SequentialCommand(1, state, ParsingUtils::readWholeStream(toParse));
+        rootSequence = new SequentialCommand(1, state, ParsingUtils::readWholeStream(toParse), false);
         
         if(rootSequence->getSequenceCount() == 0) {
             printf("Warning: empty file provided to Lemon Script\n");

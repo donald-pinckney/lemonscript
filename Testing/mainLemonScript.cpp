@@ -27,7 +27,9 @@ int main() {
     try {
         lemonscript::LemonScriptState *state = PlayTestsShared::play_tests_make_state();
         
-        std::string fileName = "print.auto";
+        std::string fileName = "sequence_command.auto";
+//        std::string fileName = "test_scope.auto";
+
         lemonscript::LemonScriptCompiler *compiler = new lemonscript::LemonScriptCompiler(fileName, state);
         
         int i = 0;

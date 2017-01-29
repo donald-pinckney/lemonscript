@@ -33,13 +33,13 @@ lemonscript::WhileAlsoCommand::WhileAlsoCommand(int l, LemonScriptState *s, cons
     //TODO: Fix line number parameters.
     
     s->pushScope();
-    whileCondition = new SequentialCommand(l, s, whileBody);
+    whileCondition = new SequentialCommand(l, s, whileBody, false);
     whileScope = s->getScope();
     s->popScope();
     
     
     s->pushScope();
-    alsoCommands = new SequentialCommand(l, s, alsoBody);
+    alsoCommands = new SequentialCommand(l, s, alsoBody, false);
     alsoScope = s->getScope();
     s->popScope();
 }
