@@ -77,7 +77,7 @@ void StdCapture::EndCapture()
         if (!eof(m_pipe[READ]))
             bytesRead = read(m_pipe[READ], buf, bufSize-1);
 #else
-        bytesRead = read(m_pipe[READ], buf, bufSize-1);
+        bytesRead = (int)read(m_pipe[READ], buf, bufSize-1);
 #endif
         if (bytesRead > 0)
         {
