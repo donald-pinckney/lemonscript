@@ -74,6 +74,11 @@
 		50F48C5A1E468EE600B41508 /* test_multiarg.auto in Resources */ = {isa = PBXBuildFile; fileRef = 50F48C591E468EE600B41508 /* test_multiarg.auto */; };
 		50F48C601E46905C00B41508 /* test_multiarg.auto.correct in Resources */ = {isa = PBXBuildFile; fileRef = 50F48C5F1E46905C00B41508 /* test_multiarg.auto.correct */; };
 		50F48C621E46917300B41508 /* test_import.auto.correct in Resources */ = {isa = PBXBuildFile; fileRef = 50F48C611E46917300B41508 /* test_import.auto.correct */; };
+		50F48C641E4691CD00B41508 /* units.auto in Resources */ = {isa = PBXBuildFile; fileRef = 50F48C631E4691CD00B41508 /* units.auto */; };
+		50F48C661E4691D800B41508 /* test_units.auto in Resources */ = {isa = PBXBuildFile; fileRef = 50F48C651E4691D800B41508 /* test_units.auto */; };
+		50F48C671E46947100B41508 /* units.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50F48C631E4691CD00B41508 /* units.auto */; };
+		50F48C681E46947300B41508 /* test_units.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50F48C651E4691D800B41508 /* test_units.auto */; };
+		50F48C6A1E4697BC00B41508 /* test_units.auto.correct in Resources */ = {isa = PBXBuildFile; fileRef = 50F48C691E4697BC00B41508 /* test_units.auto.correct */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,7 +109,9 @@
 				502A533D1E3E7F4E00EA569F /* constants.auto in CopyFiles */,
 				502A533F1E3E7F4E00EA569F /* test_sequence.auto in CopyFiles */,
 				502A53411E3E7F4E00EA569F /* test_empty.auto in CopyFiles */,
+				50F48C671E46947100B41508 /* units.auto in CopyFiles */,
 				502A53431E3E7F4E00EA569F /* test_import.auto in CopyFiles */,
+				50F48C681E46947300B41508 /* test_units.auto in CopyFiles */,
 				502A53451E3E7F4E00EA569F /* test_scope.auto in CopyFiles */,
 				502A53471E3E7F4E00EA569F /* test_set.auto in CopyFiles */,
 				502A53491E3E7F4E00EA569F /* test_print.auto in CopyFiles */,
@@ -202,6 +209,9 @@
 		50F48C591E468EE600B41508 /* test_multiarg.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_multiarg.auto; sourceTree = "<group>"; };
 		50F48C5F1E46905C00B41508 /* test_multiarg.auto.correct */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_multiarg.auto.correct; sourceTree = "<group>"; };
 		50F48C611E46917300B41508 /* test_import.auto.correct */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_import.auto.correct; sourceTree = "<group>"; };
+		50F48C631E4691CD00B41508 /* units.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = units.auto; sourceTree = "<group>"; };
+		50F48C651E4691D800B41508 /* test_units.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_units.auto; sourceTree = "<group>"; };
+		50F48C691E4697BC00B41508 /* test_units.auto.correct */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_units.auto.correct; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +261,9 @@
 				505A42681E3DE51E00D5255A /* test_set.auto.correct */,
 				505A423E1E3DC27400D5255A /* test_print.auto */,
 				505A425E1E3DD74D00D5255A /* test_print.auto.correct */,
+				50F48C631E4691CD00B41508 /* units.auto */,
+				50F48C651E4691D800B41508 /* test_units.auto */,
+				50F48C691E4697BC00B41508 /* test_units.auto.correct */,
 			);
 			path = auto_files;
 			sourceTree = "<group>";
@@ -516,14 +529,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F48C6A1E4697BC00B41508 /* test_units.auto.correct in Resources */,
 				505A425F1E3DD74D00D5255A /* test_print.auto.correct in Resources */,
 				50F48C601E46905C00B41508 /* test_multiarg.auto.correct in Resources */,
 				505A42421E3DC27400D5255A /* test_empty.auto in Resources */,
 				505A42431E3DC27400D5255A /* test_import.auto in Resources */,
 				505A42411E3DC27400D5255A /* test_sequence.auto in Resources */,
+				50F48C661E4691D800B41508 /* test_units.auto in Resources */,
 				505A42651E3DDFDA00D5255A /* test_empty.auto.correct in Resources */,
 				5080BD5C1E3E9723004E68D9 /* test_sequence_command.auto in Resources */,
 				505A42451E3DC27400D5255A /* test_scope.auto in Resources */,
+				50F48C641E4691CD00B41508 /* units.auto in Resources */,
 				505A423F1E3DC27400D5255A /* constants.auto in Resources */,
 				505A42671E3DE11600D5255A /* test_scope.auto.correct in Resources */,
 				5080BD5F1E3EA0CF004E68D9 /* test_sequence_command.auto.correct in Resources */,
