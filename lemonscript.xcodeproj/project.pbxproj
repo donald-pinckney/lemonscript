@@ -73,6 +73,8 @@
 		50F23CD31D701B84006C280A /* OptionalCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 50F23CD11D701B84006C280A /* OptionalCommand.h */; };
 		50F23CDA1D70227E006C280A /* CommandFromToken.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50F23CD81D70227E006C280A /* CommandFromToken.cpp */; };
 		50F23CDB1D70227E006C280A /* CommandFromToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 50F23CD91D70227E006C280A /* CommandFromToken.h */; };
+		50F48C5A1E468EE600B41508 /* test_multiarg.auto in Resources */ = {isa = PBXBuildFile; fileRef = 50F48C591E468EE600B41508 /* test_multiarg.auto */; };
+		50F48C601E46905C00B41508 /* test_multiarg.auto.correct in Resources */ = {isa = PBXBuildFile; fileRef = 50F48C5F1E46905C00B41508 /* test_multiarg.auto.correct */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +202,8 @@
 		50F23CD11D701B84006C280A /* OptionalCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionalCommand.h; sourceTree = "<group>"; };
 		50F23CD81D70227E006C280A /* CommandFromToken.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommandFromToken.cpp; sourceTree = "<group>"; };
 		50F23CD91D70227E006C280A /* CommandFromToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandFromToken.h; sourceTree = "<group>"; };
+		50F48C591E468EE600B41508 /* test_multiarg.auto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_multiarg.auto; sourceTree = "<group>"; };
+		50F48C5F1E46905C00B41508 /* test_multiarg.auto.correct */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_multiarg.auto.correct; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +237,8 @@
 			isa = PBXGroup;
 			children = (
 				505A42351E3DC27400D5255A /* test_constants.auto */,
+				50F48C591E468EE600B41508 /* test_multiarg.auto */,
+				50F48C5F1E46905C00B41508 /* test_multiarg.auto.correct */,
 				505A42601E3DDF3F00D5255A /* test_constants.auto.correct */,
 				505A42371E3DC27400D5255A /* test_sequence.auto */,
 				5080BD5B1E3E9723004E68D9 /* test_sequence_command.auto */,
@@ -514,6 +520,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				505A425F1E3DD74D00D5255A /* test_print.auto.correct in Resources */,
+				50F48C601E46905C00B41508 /* test_multiarg.auto.correct in Resources */,
 				505A42421E3DC27400D5255A /* test_empty.auto in Resources */,
 				505A42431E3DC27400D5255A /* test_import.auto in Resources */,
 				505A42411E3DC27400D5255A /* test_sequence.auto in Resources */,
@@ -528,6 +535,7 @@
 				505A42631E3DDFC000D5255A /* test_sequence.auto.correct in Resources */,
 				505A42691E3DE51E00D5255A /* test_set.auto.correct in Resources */,
 				505A42461E3DC27400D5255A /* test_set.auto in Resources */,
+				50F48C5A1E468EE600B41508 /* test_multiarg.auto in Resources */,
 				505A42481E3DC27400D5255A /* test_print.auto in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
