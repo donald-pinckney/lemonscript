@@ -21,6 +21,7 @@ lemonscript::ImportCommand::ImportCommand(int l, LemonScriptState *s, const std:
     importFileName = ParsingUtils::trimWhitespace(importFileName);
     
     importCompiler = new lemonscript::LemonScriptCompiler(importFileName, s);
+    _hasExternalCode = importCompiler->RootSequence()->HasExternalCode();
 }
 
 lemonscript::ImportCommand::~ImportCommand() {

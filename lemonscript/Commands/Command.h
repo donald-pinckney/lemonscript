@@ -19,6 +19,11 @@
 
 class lemonscript::Command {
 
+protected:
+    // This needs to be set to true if the command runs code external to lemonscript. For example, a CppCommand.
+    // True prevents the command from being sequentially optimized.
+    bool _hasExternalCode = true;
+
 public:
     LemonScriptState *savedState;
     
@@ -28,6 +33,7 @@ public:
     int lineNumber;
     
     virtual bool Update() = 0;
+    const bool HasExternalCode() const { return _hasExternalCode; };
 };
 
 #endif /* Command_hpp */

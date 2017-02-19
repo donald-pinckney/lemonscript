@@ -22,6 +22,7 @@ class lemonscript::SequentialCommand : public Command {
     int currentIndex = 0;
     bool isExplicit;
     LemonScriptSymbolTableStack sequenceScope;
+        
 public:
     SequentialCommand(int l, LemonScriptState *s, const std::string &sequenceString, bool explicitSequence);
     virtual ~SequentialCommand();

@@ -34,9 +34,9 @@ lemonscript::SimultaneousCommand::SimultaneousCommand(int l, LemonScriptState *s
         }
         
         Command *command = lemonscript::commandFromToken(token, type, state, lineNum);
-        
-        
         commands.push_back(command);
+        
+        _hasExternalCode = _hasExternalCode || command->HasExternalCode();
     }
     
     doneCommands = std::vector<bool>(commands.size(), false);

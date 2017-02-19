@@ -61,12 +61,11 @@ lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state
         if(type == NOT_A_TOKEN) {
             break;
         }
-        
-//        printTok(token, type, lineNum);
-        
+                
         Command *command = lemonscript::commandFromToken(token, type, state, lineNum);
-        
         sequence.push_back(command);
+        
+        _hasExternalCode = _hasExternalCode || command->HasExternalCode();
     }
     
     if(isExplicit) {

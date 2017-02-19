@@ -26,6 +26,8 @@ using namespace lemonscript_expressions;
 inline bool IsSpace (char c) { return c == ' '; }
 
 lemonscript::CppCommand::CppCommand(int l, LemonScriptState *state, const std::string &commandStringInput) : Command(l, state) {
+    _hasExternalCode = true;
+    
     std::string commandString = ParsingUtils::removeCommentFromLine(commandStringInput);
     
     string functionName;

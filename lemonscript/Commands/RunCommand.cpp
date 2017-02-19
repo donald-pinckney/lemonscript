@@ -24,7 +24,7 @@ lemonscript::RunCommand::RunCommand(int l, LemonScriptState *s, const std::strin
     runCompiler = new lemonscript::LemonScriptCompiler(runFileName, s);
     runScope = s->getScope();
     s->popScope();
-    
+    _hasExternalCode = runCompiler->RootSequence()->HasExternalCode();
 }
 
 lemonscript::RunCommand::~RunCommand() {

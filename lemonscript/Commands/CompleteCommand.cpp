@@ -28,6 +28,8 @@ lemonscript::CompleteCommand::CompleteCommand(int l, LemonScriptState *s, const 
     allCommands = new SimultaneousCommand(l, s, allBody);
     allScope = s->getScope();
     s->popScope();
+    
+    _hasExternalCode = allCommands->HasExternalCode();
 }
 
 lemonscript::CompleteCommand::~CompleteCommand() {
