@@ -26,7 +26,7 @@ int main() {
 
     try {
         lemonscript::LemonScriptState *state = PlayTestsShared::play_tests_make_state();
-        
+        state->setIMPORTs({"units.auto"});
         std::string fileName = "test_units.auto";
 //        std::string fileName = "test_scope.auto";
 

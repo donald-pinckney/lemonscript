@@ -114,3 +114,11 @@ std::string lemonscript::LemonScriptState::getSearchPath() const {
     return searchPath;
 }
 
+void lemonscript::LemonScriptState::setIMPORTs(const std::vector<std::string> &imports) {
+    this->imports = imports;
+}
+
+std::vector<std::string> lemonscript::LemonScriptState::getIMPORTs() const {
+    return imports;
+}
+

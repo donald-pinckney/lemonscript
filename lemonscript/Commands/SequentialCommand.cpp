@@ -25,7 +25,7 @@ void printTok(const std::string &tok, TokenType tk, int lineNum) {
     printf("===== TOKEN =====\nToken type = %d, lineNum = %d, tok = \n%s\n\n", tk, lineNum, tok.c_str());
 }
 
-lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state, const std::string &sequenceString, bool explicitSequence) : Command(l, state) {
+lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state, const std::string &sequenceString, bool explicitSequence, const std::string &prefixString) : Command(l, state) {
     
 
     std::string seqBody = sequenceString;
@@ -45,6 +45,7 @@ lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state
         seqBody = ParsingUtils::decreaseIndent(seqBody);
     }
     
+    seqBody = prefixString + "\n" + seqBody;
     LemonScriptTokenizer tokenizer(seqBody);
     
     

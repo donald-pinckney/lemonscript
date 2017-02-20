@@ -39,8 +39,14 @@ public:
             throw "File not found: " + toParseFileName;
         }
         
+        // Convert IMPORTs to lemonscript string code.
+        std::string importCode = "";
+        for(auto it = state->getIMPORTs().begin(); it != state->getIMPORTs().end(); ++it) {
+            importCode += "IMPORT " + *it + "\n";
+        }
+        
         // THIS DOES ALL THE PARSING / COMPILATION
-        _rootSequence = new SequentialCommand(1, state, ParsingUtils::readWholeStream(toParse), false);
+        _rootSequence = new SequentialCommand(1, state, ParsingUtils::readWholeStream(toParse), false, importCode);
         
         if(_rootSequence->getSequenceCount() == 0) {
             printf("Warning: empty file provided to Lemon Script\n");

@@ -25,7 +25,7 @@ class lemonscript::SequentialCommand : public Command {
     bool updateSingleCommand();
     
 public:
-    SequentialCommand(int l, LemonScriptState *s, const std::string &sequenceString, bool explicitSequence);
+    SequentialCommand(int l, LemonScriptState *s, const std::string &sequenceString, bool explicitSequence, const std::string &prefixString);
     virtual ~SequentialCommand();
 
     bool Update();
