@@ -18,7 +18,7 @@ class lemonscript::OptionalCommand : public Command {
     
     Command *command;
     bool isCommandComplete;
-        
+    
 public:
     OptionalCommand(int l, LemonScriptState *s, const std::string &optionalCommandString);
     virtual ~OptionalCommand();

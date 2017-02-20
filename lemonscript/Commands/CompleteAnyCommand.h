@@ -22,7 +22,6 @@ class lemonscript::CompleteAnyCommand : public Command {
     
     LemonScriptSymbolTableStack anyScope;
     
-    
 public:
     CompleteAnyCommand(int l, LemonScriptState *s, const std::string &commandString);
     virtual ~CompleteAnyCommand();
