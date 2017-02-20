@@ -8,6 +8,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <algorithm>
 
 #include "LemonScriptState.h"
 
