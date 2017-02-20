@@ -34,8 +34,6 @@ public:
     bool Update();
     bool fastForward();
 
-private:
-    void allocateAutoFunction(std::vector<void *> args);
     
 };
 

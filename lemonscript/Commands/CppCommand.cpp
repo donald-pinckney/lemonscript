@@ -190,10 +190,6 @@ lemonscript::CppCommand::~CppCommand() {
 }
 
 
-void lemonscript::CppCommand::allocateAutoFunction(vector<void *> args) {
-    autoFunc = declaration->generatorFunction();
-    autoFunc->Init(args);
-}
     
 bool lemonscript::CppCommand::Update() {
     void *data = savedState->userData;
@@ -213,12 +209,17 @@ bool lemonscript::CppCommand::Update() {
         arguments.push_back(argumentEvaluation + i);
     }
     
+    bool retVal;
     if(autoFunc == NULL) {
-        allocateAutoFunction(arguments);
+        autoFunc = declaration->generatorFunction();
+        autoFunc->Init(arguments);
+        retVal = false;
+    } else {
+        retVal = autoFunc->Periodic(arguments);
     }
     
-    bool retVal = autoFunc->Periodic(arguments);
     delete [] argumentEvaluation;
+    
     return retVal;
 }
 
