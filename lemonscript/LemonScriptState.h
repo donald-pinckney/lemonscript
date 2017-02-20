@@ -25,6 +25,7 @@ class lemonscript::LemonScriptState {
     std::map<std::string, std::vector<const AvailableCppCommandDeclaration *> > availableCppCommands;
     std::string searchPath = "";
     std::vector<std::string> imports;
+    std::vector<std::string> evaluatedImports;
     
 public:
     ~LemonScriptState();
@@ -63,6 +64,9 @@ public:
     
     void setIMPORTs(const std::vector<std::string> &imports);
     std::vector<std::string> getIMPORTs() const;
+    
+    void addEvaluatedIMPORT(const std::string &name);
+    bool alreadyEvaluatedIMPORT(const std::string &name) const;
 };
 
 #endif /* LemonScriptState_hpp */

@@ -122,3 +122,11 @@ std::vector<std::string> lemonscript::LemonScriptState::getIMPORTs() const {
     return imports;
 }
 
+void lemonscript::LemonScriptState::addEvaluatedIMPORT(const std::string &name) {
+    evaluatedImports.push_back(name);
+}
+
+bool lemonscript::LemonScriptState::alreadyEvaluatedIMPORT(const std::string &name) const {
+    return std::find(evaluatedImports.begin(), evaluatedImports.end(), name) != evaluatedImports.end();
+}
+
