@@ -32,3 +32,7 @@ lemonscript::ImportCommand::~ImportCommand() {
 bool lemonscript::ImportCommand::Update() {
     return importCompiler->PeriodicUpdate();
 }
+
+bool lemonscript::ImportCommand::fastForward() {
+    return !HasExternalCode();
+}

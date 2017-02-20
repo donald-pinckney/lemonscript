@@ -71,6 +71,9 @@
 		509DDC6F1CF3D35F00D1061F /* LemonScriptState.h in Headers */ = {isa = PBXBuildFile; fileRef = 5014806A1C2C0AA600153984 /* LemonScriptState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		509DDC701CF3D3E600D1061F /* AvailableCppCommandDeclaration.h in Headers */ = {isa = PBXBuildFile; fileRef = 501480671C2C08B400153984 /* AvailableCppCommandDeclaration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		50AD1FC81E5A54B70012CC76 /* test_do_nothing.auto.correct in Resources */ = {isa = PBXBuildFile; fileRef = 50AD1FC71E5A54B70012CC76 /* test_do_nothing.auto.correct */; };
+		50AD1FCA1E5A69000012CC76 /* test_def_scope.auto in Resources */ = {isa = PBXBuildFile; fileRef = 50AD1FC91E5A69000012CC76 /* test_def_scope.auto */; };
+		50AD1FCB1E5A69390012CC76 /* test_def_scope.auto in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50AD1FC91E5A69000012CC76 /* test_def_scope.auto */; };
+		50AD1FCD1E5ACEDE0012CC76 /* test_def_scope.auto.correct in Resources */ = {isa = PBXBuildFile; fileRef = 50AD1FCC1E5ACEDE0012CC76 /* test_def_scope.auto.correct */; };
 		50F23CD21D701B84006C280A /* OptionalCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50F23CD01D701B84006C280A /* OptionalCommand.cpp */; };
 		50F23CD31D701B84006C280A /* OptionalCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 50F23CD11D701B84006C280A /* OptionalCommand.h */; };
 		50F23CDA1D70227E006C280A /* CommandFromToken.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50F23CD81D70227E006C280A /* CommandFromToken.cpp */; };
@@ -113,6 +116,7 @@
 				502A533D1E3E7F4E00EA569F /* constants.auto in CopyFiles */,
 				502A533F1E3E7F4E00EA569F /* test_sequence.auto in CopyFiles */,
 				502A53411E3E7F4E00EA569F /* test_empty.auto in CopyFiles */,
+				50AD1FCB1E5A69390012CC76 /* test_def_scope.auto in CopyFiles */,
 				50F48C671E46947100B41508 /* units.auto in CopyFiles */,
 				502A53431E3E7F4E00EA569F /* test_import.auto in CopyFiles */,
 				503A06311E51118B007C6B5F /* test_do_nothing.auto in CopyFiles */,
@@ -207,6 +211,8 @@
 		509DDC6A1CF3D07A00D1061F /* PlayTestsShared.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayTestsShared.cpp; sourceTree = "<group>"; };
 		509DDC6B1CF3D07A00D1061F /* PlayTestsShared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayTestsShared.h; sourceTree = "<group>"; };
 		50AD1FC71E5A54B70012CC76 /* test_do_nothing.auto.correct */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_do_nothing.auto.correct; sourceTree = "<group>"; };
+		50AD1FC91E5A69000012CC76 /* test_def_scope.auto */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; path = test_def_scope.auto; sourceTree = "<group>"; tabWidth = 2; };
+		50AD1FCC1E5ACEDE0012CC76 /* test_def_scope.auto.correct */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test_def_scope.auto.correct; sourceTree = "<group>"; };
 		50C0CE581C4C56CC00C4C333 /* lemonscript.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lemonscript.h; sourceTree = "<group>"; };
 		50F173C11C4B4C1100C870D9 /* CompleteCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompleteCommand.cpp; sourceTree = "<group>"; };
 		50F173C21C4B4C1100C870D9 /* CompleteCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteCommand.h; sourceTree = "<group>"; };
@@ -252,17 +258,20 @@
 		505A42341E3DC1D600D5255A /* auto_files */ = {
 			isa = PBXGroup;
 			children = (
+				505A42351E3DC27400D5255A /* constants.auto */,
+				50F48C631E4691CD00B41508 /* units.auto */,
 				50F48C591E468EE600B41508 /* test_multiarg.auto */,
+				50F48C6B1E469BD100B41508 /* test_multiarg.auto.correct */,
+				50AD1FC91E5A69000012CC76 /* test_def_scope.auto */,
+				50AD1FCC1E5ACEDE0012CC76 /* test_def_scope.auto.correct */,
 				503A062F1E511177007C6B5F /* test_do_nothing.auto */,
 				50AD1FC71E5A54B70012CC76 /* test_do_nothing.auto.correct */,
-				50F48C6B1E469BD100B41508 /* test_multiarg.auto.correct */,
 				505A42371E3DC27400D5255A /* test_sequence.auto */,
+				505A42621E3DDFC000D5255A /* test_sequence.auto.correct */,
 				5080BD5B1E3E9723004E68D9 /* test_sequence_command.auto */,
 				5080BD5E1E3EA0CF004E68D9 /* test_sequence_command.auto.correct */,
-				505A42621E3DDFC000D5255A /* test_sequence.auto.correct */,
 				505A42381E3DC27400D5255A /* test_empty.auto */,
 				505A42641E3DDFDA00D5255A /* test_empty.auto.correct */,
-				505A42351E3DC27400D5255A /* constants.auto */,
 				505A42391E3DC27400D5255A /* test_import.auto */,
 				50F48C611E46917300B41508 /* test_import.auto.correct */,
 				505A423B1E3DC27400D5255A /* test_scope.auto */,
@@ -271,7 +280,6 @@
 				505A42681E3DE51E00D5255A /* test_set.auto.correct */,
 				505A423E1E3DC27400D5255A /* test_print.auto */,
 				505A425E1E3DD74D00D5255A /* test_print.auto.correct */,
-				50F48C631E4691CD00B41508 /* units.auto */,
 				50F48C651E4691D800B41508 /* test_units.auto */,
 				50F48C691E4697BC00B41508 /* test_units.auto.correct */,
 			);
@@ -543,6 +551,7 @@
 				50F48C6A1E4697BC00B41508 /* test_units.auto.correct in Resources */,
 				505A425F1E3DD74D00D5255A /* test_print.auto.correct in Resources */,
 				505A42421E3DC27400D5255A /* test_empty.auto in Resources */,
+				50AD1FCA1E5A69000012CC76 /* test_def_scope.auto in Resources */,
 				505A42431E3DC27400D5255A /* test_import.auto in Resources */,
 				505A42411E3DC27400D5255A /* test_sequence.auto in Resources */,
 				50F48C6C1E469BD100B41508 /* test_multiarg.auto.correct in Resources */,
@@ -551,6 +560,7 @@
 				505A42651E3DDFDA00D5255A /* test_empty.auto.correct in Resources */,
 				5080BD5C1E3E9723004E68D9 /* test_sequence_command.auto in Resources */,
 				503A062E1E5110AD007C6B5F /* DoNothing.func in Resources */,
+				50AD1FCD1E5ACEDE0012CC76 /* test_def_scope.auto.correct in Resources */,
 				505A42451E3DC27400D5255A /* test_scope.auto in Resources */,
 				50F48C641E4691CD00B41508 /* units.auto in Resources */,
 				505A423F1E3DC27400D5255A /* constants.auto in Resources */,

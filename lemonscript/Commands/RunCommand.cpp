@@ -42,3 +42,7 @@ bool lemonscript::RunCommand::Update() {
     
     return retVal;
 }
+
+bool lemonscript::RunCommand::fastForward() {
+    return !HasExternalCode();
+}

@@ -34,7 +34,8 @@ public:
     virtual ~SimultaneousCommand();
     
     bool Update();
-    
+    bool fastForward();
+
     SimultaneousCommmandState getState() const {
         return state;
     }

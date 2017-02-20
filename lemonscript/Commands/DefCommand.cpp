@@ -50,3 +50,7 @@ bool lemonscript::DefCommand::Update() {
     rhsExpression->getValue(variableAddress);
     return true;
 }
+
+bool lemonscript::DefCommand::fastForward() {
+    return Update();
+}

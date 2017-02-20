@@ -45,6 +45,8 @@ public:
         if(_rootSequence->getSequenceCount() == 0) {
             printf("Warning: empty file provided to Lemon Script\n");
         }
+        
+        isDone = _rootSequence->fastForward();
     }
     
     bool PeriodicUpdate() {

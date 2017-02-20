@@ -59,3 +59,7 @@ bool lemonscript::SetCommand::Update() {
     rhsExpression->getValue(variableAddress);
     return true;
 }
+
+bool lemonscript::SetCommand::fastForward() {
+    return Update();
+}

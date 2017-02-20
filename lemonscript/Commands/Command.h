@@ -33,6 +33,7 @@ public:
     int lineNumber;
     
     virtual bool Update() = 0;
+    virtual bool fastForward() = 0;
     const bool HasExternalCode() const { return _hasExternalCode; };
 };
 

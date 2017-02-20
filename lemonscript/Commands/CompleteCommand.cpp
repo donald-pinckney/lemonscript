@@ -47,3 +47,13 @@ bool lemonscript::CompleteCommand::Update() {
     
     return ret;
 }
+
+bool lemonscript::CompleteCommand::fastForward() {
+    if(HasExternalCode()) {
+        return allCommands->getState() == SimultaneousCommmandState::AllRequiredComplete;
+    }
+    
+    while (Update() == false) { };
+    
+    return true;
+}

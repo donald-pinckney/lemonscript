@@ -44,3 +44,11 @@ bool lemonscript::OptionalCommand::Update() {
     
     return true;
 }
+
+bool lemonscript::OptionalCommand::fastForward() {
+    if(HasExternalCode()) {
+        return false;
+    }
+    
+    return command->fastForward();
+}

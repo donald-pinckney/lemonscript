@@ -21,13 +21,14 @@ class lemonscript::CompleteCommand : public Command {
     SimultaneousCommand *allCommands = NULL;
     
     LemonScriptSymbolTableStack allScope;
-    
+        
 public:
     CompleteCommand(int l, LemonScriptState *s, const std::string &commandString);
     virtual ~CompleteCommand();
     
     bool Update();
-    
+    bool fastForward();
+
 };
 
 #endif /* CompleteCommand_hpp */

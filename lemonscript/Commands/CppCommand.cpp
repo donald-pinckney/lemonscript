@@ -221,3 +221,7 @@ bool lemonscript::CppCommand::Update() {
     delete [] argumentEvaluation;
     return retVal;
 }
+
+bool lemonscript::CppCommand::fastForward() {
+    return false;
+}

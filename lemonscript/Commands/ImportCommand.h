@@ -18,13 +18,14 @@
 class lemonscript::ImportCommand : public Command {
     
     LemonScriptCompiler *importCompiler = NULL;
-    
+        
 public:
     ImportCommand(int l, LemonScriptState *s, const std::string &commandString);
     virtual ~ImportCommand();
     
     bool Update();
-    
+    bool fastForward();
+
 };
 
 #endif /* ImportCommand_hpp */

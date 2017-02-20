@@ -19,12 +19,13 @@ class lemonscript::RunCommand : public Command {
     
     LemonScriptCompiler *runCompiler = NULL;
     LemonScriptSymbolTableStack runScope;
-    
+        
 public:
     RunCommand(int l, LemonScriptState *s, const std::string &commandString);
     virtual ~RunCommand();
     
     bool Update();
-    
+    bool fastForward();
+
 };
 #endif /* RunCommand_hpp */

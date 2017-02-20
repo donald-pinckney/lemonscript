@@ -25,14 +25,14 @@ class lemonscript::DefCommand : public lemonscript::Command {
     DataType type;
     void *variableAddress;
     lemonscript::LemonScriptState *state;
-    
-    
+        
 public:
     DefCommand(int l, LemonScriptState *s, const std::string &commandString);
     virtual ~DefCommand();
     
     bool Update();
-    
+    bool fastForward();
+
 };
 
 #endif /* DefCommand_hpp */

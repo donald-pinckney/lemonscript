@@ -82,3 +82,7 @@ bool lemonscript::SimultaneousCommand::Update() {
     
     return allDone;
 }
+
+bool lemonscript::SimultaneousCommand::fastForward() {
+    throw "Fast forward called on simultaneous command!";
+}

@@ -56,6 +56,7 @@ lemonscript::SequentialCommand::SequentialCommand(int l, LemonScriptState *state
         state->pushScope();
     }
     
+    _hasExternalCode = false;
     while(true) {
         std::tie(token, type, lineNum) = tokenizer.nextToken();
         if(type == NOT_A_TOKEN) {
@@ -81,25 +82,32 @@ lemonscript::SequentialCommand::~SequentialCommand() {
 }
 
 bool lemonscript::SequentialCommand::Update() {
-    if(sequence.size() == 0) {
-        return true;
-    }
-    
     LemonScriptSymbolTableStack currentScope = savedState->getScope();
-
+    
     if(isExplicit) {
         savedState->restoreScope(sequenceScope);
     }
     
-    Command *currentCommand = sequence[currentIndex];
-    bool isDone = currentCommand->Update();
+    bool done = updateSingleCommand() || fastForward();
     
     if(isExplicit) {
         savedState->restoreScope(currentScope);
     }
     
+    return done;
+}
+
+// Returns true if the last command in the sequence just finished.
+bool lemonscript::SequentialCommand::updateSingleCommand() {
+    if(sequence.size() == 0) {
+        return true;
+    }
+    
+    Command *currentCommand = sequence[currentIndex];
+    bool isDone = currentCommand->Update();
+    
     // If the last command just finished, then we are done
-    if(isDone && static_cast<size_t>(currentIndex) == sequence.size() - 1) {
+    if(isDone && currentIndex == sequence.size() - 1) {
         return true;
     } else if(isDone) {
         // If a command other than the last finished, go to next command
@@ -107,4 +115,18 @@ bool lemonscript::SequentialCommand::Update() {
     }
     
     return false;
+}
+
+// Return true iff: we have already finished all the commands, or we just finished all the remaining commands by fast forwarding.
+bool lemonscript::SequentialCommand::fastForward() {
+    while (currentIndex < sequence.size() && sequence[currentIndex]->HasExternalCode() == false) {
+        sequence[currentIndex]->fastForward();
+        currentIndex++;
+    }
+    
+    if(currentIndex < sequence.size()) {
+        return sequence[currentIndex]->fastForward();
+    } else {
+        return true;
+    }
 }
